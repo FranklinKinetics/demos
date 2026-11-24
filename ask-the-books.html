@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<title>Ask the Books</title>
+<meta name="description" content="Franklin Kinetics Labs demo: text a question about your money and get the answer from your own books. Sample data for a made-up company.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap">
+<style>
+/* Franklin Kinetics brand: Beacon orange marks the point that matters, Steel carries structure, Draftstock is the paper.
+   Layout: single column report, summary first, then the two work queues, then proof, then how it works. */
+:root{
+  --beacon:#ED6B2E; --steel:#2B424A; --carbon:#211F21; --draftstock:#EDE8E0;
+  --bg:#EDE8E0; --panel:#FBF9F5; --ink:#211F21; --ink-2:#2B424A; --muted:#5d6b70; --line:#d8d1c5;
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#e4ddd1;
+  --before:#1B7DB5; --after:#ED6B2E; --ok:#2f7d4f; --ok-bg:#e2efe6;
+  --display:"Syne","Prompt","Arial Black",Arial,sans-serif;
+  --body:"Arimo","Nimbus Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"Space Mono","SFMono-Regular",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px}
+a{color:inherit}
+header.brand{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--ink-2)}
+.logo{display:flex;align-items:center;gap:12px;color:var(--ink-2);text-decoration:none}
+.logo svg.icon{width:26px;height:27px;flex:none}
+.logo svg.word{width:170px;height:35px}
+.labs{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sample{font-family:var(--mono);font-size:.78rem;background:var(--chip);padding:4px 8px;border-radius:3px;color:var(--ink-2)}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(1.9rem,5vw,2.9rem);text-transform:uppercase;letter-spacing:.02em}
+h2{font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em}
+h3{font-size:1rem}
+p{margin:0}
+.lede{max-width:62ch;color:var(--ink-2)}
+.eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+/* v2 owner-first frame. Order on every page: hero (the first-screen line) -> "What you see" surface -> optional "What your office sees" -> Behind the scenes (collapsed) -> CTA. */
+:root{--warn-bg:#fbeee0;--warn-ink:#7a3f12;--ok:#2f7d4f;--ok-bg:#e2efe6;--bubble-in:#ffffff;--bubble-out:#2B424A;--bubble-out-ink:#EDE8E0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}}
+:root[data-theme="dark"]{--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}
+.wrap{max-width:720px;gap:28px}
+[hidden]{display:none!important}
+.hero{display:grid;gap:10px}
+.hero h1{font-size:clamp(1.6rem,6vw,2.4rem);text-transform:none;letter-spacing:0;line-height:1.12}
+.hero .lede{font-size:1.02rem}
+.forwho{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+section{display:grid;gap:12px}
+.label{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+.label::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.label.office::before{background:var(--ink-2)}
+.hint{color:var(--muted);font-size:.95rem}
+/* The surface: a plain card on phones (no fake bezel), a framed device on wide screens. */
+.surface{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.surface .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.surface .bar b{color:var(--ink);font-weight:700}
+.surface .body{padding:14px;display:grid;gap:10px}
+@media (min-width:700px){.surface{max-width:400px;justify-self:center;width:100%;border:10px solid var(--carbon);box-shadow:0 10px 30px rgba(0,0,0,.18)}}
+/* Text thread */
+.thread{display:grid;gap:8px}
+.bub{max-width:85%;padding:9px 12px;border-radius:16px;font-size:1rem;line-height:1.4;background:var(--bubble-in);border:1px solid var(--line);justify-self:start;white-space:pre-wrap}
+.bub.me{justify-self:end;background:var(--bubble-out);color:var(--bubble-out-ink);border-color:transparent}
+.bub small{display:block;font-size:.78rem;opacity:.75;margin-top:4px}
+.stamp{justify-self:center;font-size:.8rem;color:var(--muted)}
+.bub.fresh{animation:fkin .25s ease-out}
+@keyframes fkin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Email */
+.mail .from{font-weight:700}
+.mail .subj{font-family:var(--display);font-size:1.15rem;line-height:1.2}
+.mail h4{margin:8px 0 4px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* Tappable rows: big targets with a visible cue */
+.tap{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;width:100%;min-height:52px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.tap::after{content:"›";grid-column:2;grid-row:1 / span 2;font-size:1.5rem;color:var(--muted)}
+.tap[aria-expanded="true"]::after{content:"⌄"}
+.tap:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tap .t{font-weight:700}
+.tap .s{color:var(--muted);font-size:.92rem}
+.open{padding:10px 12px;border-left:3px solid var(--accent);display:grid;gap:8px;background:var(--bg);border-radius:0 8px 8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:10px 14px;border-radius:22px;border:1.5px solid var(--ink-2);color:var(--ink-2);font-weight:600;font-size:.95rem}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chip[disabled]{opacity:.4;cursor:default}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;min-height:48px;padding:12px 18px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1rem;text-align:center}
+.btn.quiet{background:transparent;color:var(--ink-2);border:1.5px solid var(--line)}
+.btn:focus-visible{outline:3px solid var(--ink-2);outline-offset:2px}
+.row2{display:flex;flex-wrap:wrap;gap:8px}
+.flag{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.okmsg{background:var(--ok-bg);color:var(--ok);border-radius:8px;padding:10px 12px;font-weight:600}
+.big{font-family:var(--mono);font-weight:700;font-size:1.6rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.quote{font-style:italic;border-left:3px solid var(--line);padding-left:10px;color:var(--ink-2)}
+/* Office view: plain, short, clearly secondary */
+.office{background:var(--chip);border-radius:10px;padding:14px;display:grid;gap:8px}
+/* Behind the scenes */
+details.bts{border-top:2px solid var(--ink-2);padding-top:12px}
+details.bts>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px;font-family:var(--display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em}
+details.bts>summary::-webkit-details-marker{display:none}
+details.bts>summary::after{content:"+";font-size:1.6rem;color:var(--accent)}
+details.bts[open]>summary::after{content:"\2212"}
+.steps2{display:grid;gap:12px;margin-top:8px}
+.steps2 div{border-left:3px solid var(--ink-2);padding:2px 0 2px 12px;display:grid;gap:2px}
+.steps2 div.never{border-color:var(--accent)}
+.steps2 b{font-weight:700}
+.cta{background:var(--steel);color:#EDE8E0;border-radius:10px;padding:20px;display:grid;gap:10px}
+.cta h2{color:#EDE8E0;font-family:var(--display);font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em;margin:0}
+.cta a{justify-self:start;background:var(--beacon);color:#211F21;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:8px;min-height:48px;box-sizing:border-box}
+footer{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+footer button{all:unset;cursor:pointer;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.linklbl{font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.label.office{display:flex;background:none;padding:0;border-radius:0;gap:8px}
+</style>
+
+<div class="wrap">
+  <header class="brand">
+    <a class="logo" href="https://www.franklinkinetics.com" aria-label="Franklin Kinetics">
+      <svg class="icon" viewBox="0 0 100 103.63" aria-hidden="true"><path fill="#ED6B2E" d="M100,68.13l-.03,10.03v.03h-.03c-19.27-.08-32.46,3.26-39.25,10.03-3.830,3.86-5.7,8.89-5.67,15.39v.03h-10.05v-.03c.03-6.5-1.840-11.53-5.7-15.39-6.76-6.76-19.950-10.1-39.22-10.03h-.03v-.03l-.03-10.03h.05c14.53.03,23.91-2.88,30.65-9.56C46.79,42.56,44.97,0,44.97,0h10.05s-1.81,42.56,14.27,58.58c6.74,6.68,16.11,9.59,30.65,9.56h.05Z"/></svg>
+      <svg class="word" viewBox="0 0 500 101.62" aria-hidden="true"><path fill="currentColor" d="M10.32,8.9v10.45h29.81v8.9H10.32v16.9H0V0h45.68v8.9H10.32ZM107.18,45.16l-12.97-15.36h-16.32v15.36h-10.26V0h31.16C109.82,0,118.15,5.1,118.15,14.9c0,7.68-5.1,12.45-12.58,14.19l13.94,16.07h-12.32ZM98.21,21.29c5.42,0,9.42-1.29,9.42-6.320s-4-6.32-9.42-6.32h-20.39v12.64h20.39ZM177.33,35.61h-27.29l-4.84,9.55h-11.03L158.1,0h11.29l23.94,45.16h-11.16l-4.84-9.55ZM173,27.23l-9.35-18.39-9.35,18.39h18.71ZM259.98,0v45.16h-9.03l-32.39-32.65v32.65h-10V0h10.97l30.45,30.97V0h10ZM323.5,45.16l-17.42-21.23-11.81,10v11.23h-10.32V0h10.32v22.9L321.12,0h13.55l-21.03,17.81,22.26,27.36h-12.39ZM398.17,36.26v8.9h-42.26V0h10.32v36.26h31.94ZM416.68,45.16V0h10.32v45.160h-10.32ZM500,0v45.16h-9.03l-32.39-32.65v32.65h-10V0h10.97l30.45,30.97V0h10ZM149.79,100.92l-7.11-9.11-4.69,4.18v4.93h-6.18v-21.19h6.18v9.81l10.84-9.81h7.69l-9.41,8.45,9.96,12.74h-7.27ZM168.36,100.92v-21.19h6.17v21.19h-6.17ZM212.46,79.73v21.19h-5.42l-13.68-13.92v13.92h-5.96v-21.19h6.54l12.56,12.95v-12.95h5.96ZM247.91,96.2v4.72h-22.61v-21.19h22.28v4.72h-16.2v3.48h13.35v4.51h-13.35v3.75h16.53ZM282.06,84.67h-8.81v16.25h-6.17v-16.25h-8.75v-4.93h23.73v4.93ZM292.51,100.92v-21.19h6.18v21.19h-6.18ZM328.34,93.35l5.3,2.72c-1.970,3.12-6.23,5.54-11.96,5.54-7.99,0-13.38-4.15-13.38-11.29s5.39-11.29,13.62-11.29c5.48,0,9.72,2.48,11.62,5.51l-5.33,2.72c-1.39-2.18-3.54-3.21-6.39-3.21-4.36,0-7.26,2.21-7.26,6.27s2.91,6.27,7.26,6.27c2.85,0,5.03-.97,6.51-3.24ZM368.19,94.29c0,4.36-4.02,7.33-11.71,7.33-5.45,0-10.02-1.48-13.35-4.15l3.24-3.81c2.51,2.12,5.99,3.3,10.23,3.3,3.63,0,5.45-.67,5.45-2.06s-1.7-1.82-6.06-2.18c-6.29-.54-12.020-1.94-12.02-6.66s4.9-7.02,11.62-7.020c4.54,0,8.72,1.09,11.62,3.15l-3.12,3.84c-2.36-1.67-5.21-2.33-8.51-2.36-2.48,0-5.48.39-5.48,1.91,0,1.42,2.45,1.6,6.23,1.91,6.93.58,11.83,1.94,11.83,6.81Z"/></svg>
+    </a>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="labs">Labs</span><span class="sample">Sample data. Prairie Line Electric is a made-up company.</span></div>
+  </header>
+<div class="hero">
+  <div class="forwho">For electrical and trade shops</div>
+  <h1>Ask me anything about your money.</h1>
+  <p class="lede">Text a question, get the answer from your own books. Tap one below.</p>
+</div>
+
+<section>
+  <div class="label">What you see</div>
+  <div class="hint">A real text conversation. You text a question to your office number like any contact, and the answer comes back by text. The buttons type a question for you.</div>
+  <div class="surface">
+    <div class="bar"><b>Books</b><span>Reads last night's copy</span></div>
+    <div class="body">
+      <div class="thread" id="thread" aria-live="polite"></div>
+      <div class="chips" id="chips"></div>
+      <form class="askrow" id="askform" autocomplete="off">
+        <label class="sr" for="askin">Type a question</label>
+        <input id="askin" type="text" placeholder="Or type a question" maxlength="120">
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label office">What your office sees</div>
+  <div class="office">
+    <p>Nothing changes for your bookkeeper. It reads a copy each night.</p>
+    <p>If an answer looks wrong, it shows you the rows so your bookkeeper can check them.</p>
+  </div>
+</section>
+
+<details class="bts">
+  <summary>Behind the scenes</summary>
+  <div class="steps2">
+    <div><b>Reads</b><span>A nightly read-only copy of QuickBooks: invoices, bills, jobs and the bank balance.</span></div>
+    <div><b>Does</b><span>Answers in plain words and shows the rows it used.</span></div>
+    <div><b>A person approves</b><span>Nothing to approve. It only reads.</span></div>
+    <div class="never"><b>Never</b><span>Changes the books, sends a reminder to a customer, or gives tax or investment advice.</span></div>
+    <div><b>Runs on</b><span>QuickBooks Online. Answers by text or email.</span></div>
+  </div>
+</details>
+
+<section class="cta">
+  <h2>See it on your own books</h2>
+  <p>Send a sample you already have. You get back a one-time page like this within three business days. It's free.</p>
+  <a href="https://www.franklinkinetics.com/contact">Start a conversation</a>
+</section>
+
+<footer>
+  <span>Franklin Kinetics · Regina, Saskatchewan</span>
+  <button type="button" id="reset">Start over</button>
+</footer>
+
+<style>
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.askrow{display:flex;gap:8px;align-items:stretch}
+.askrow input{flex:1;min-width:0;box-sizing:border-box;min-height:48px;padding:10px 12px;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px}
+.askrow input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.askrow .btn{display:flex;align-items:center}
+.bub{white-space:normal;display:grid;gap:4px}
+.bub .btn{display:flex;align-items:center;justify-self:start;margin-top:6px;min-height:44px;padding:8px 14px;font-size:.92rem}
+.bub .open{background:transparent;margin-top:4px}
+.bub .src{display:grid;gap:1px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.bub .src:last-child{border-bottom:0}
+.bub .src b{font-weight:700}
+</style>
+
+<script>
+(function(){
+  var ASOF = Date.UTC(2026,10,23);
+  var FRIDAY = Date.UTC(2026,10,27);
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DAY = 86400000;
+
+  function d(y,m,dd){ return Date.UTC(y,m-1,dd); }
+  function fmtDate(t){ var x=new Date(t); return MON[x.getUTCMonth()]+" "+x.getUTCDate(); }
+  function money(n){
+    var neg = n < 0; n = Math.abs(n);
+    var whole = Math.floor(n + 1e-9);
+    var cents = Math.round((n - whole) * 100);
+    if (cents === 100){ whole += 1; cents = 0; }
+    var s = String(whole).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return (neg ? "-" : "") + "$" + s + (cents ? "." + (cents < 10 ? "0" : "") + cents : "");
+  }
+  function money2(n){
+    var s = (Math.round(n*100)/100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return "$" + s;
+  }
+
+  /* Data: last night's copy of the books */
+  var invoices = [
+    {no:"2291", cust:"Lakeview Storage", date:d(2026,6,24), amt:6000},
+    {no:"2318", cust:"Harbour Street Dental", date:d(2026,7,30), amt:5400},
+    {no:"2342", cust:"Cathedral Bakery", date:d(2026,8,18), amt:4300},
+    {no:"2347", cust:"Ridge Road Auto", date:d(2026,8,22), amt:2500},
+    {no:"2355", cust:"Northgate Daycare", date:d(2026,8,28), amt:1850},
+    {no:"2391", cust:"Elm Court Condos", date:d(2026,9,30), amt:3100},
+    {no:"2410", cust:"Dunlop Warehouse", date:d(2026,10,22), amt:7250}
+  ];
+  var TERMS = 30;
+
+  var jobs = [
+    {no:"2614", name:"Harbour Street Dental, panel upgrade", done:d(2026,10,9), quote:8400, cost:9650, note:"Two extra days, panel change not in the quote."},
+    {no:"2587", name:"Dunlop Warehouse, lighting retrofit", done:d(2026,8,14), quote:14200, cost:15100, note:"Fixture prices went up after we quoted and we did not re-price."},
+    {no:"2561", name:"Albert Street duplex, rewire", done:d(2026,6,19), quote:6800, cost:7420, note:"Old wiring behind the walls took more hours than quoted."}
+  ];
+  (function(){
+    for (var i = 0; i < 37; i++){
+      var quote = 2400 + Math.round(((i * 617) % 9000) / 50) * 50;
+      var cost = Math.round(quote * (0.60 + ((i * 7) % 25) / 100));
+      jobs.push({no:String(2400 + i * 4), name:"Completed job " + (i + 1), done:d(2026, 1 + (i % 10), 1 + ((i * 3) % 27)), quote:quote, cost:cost, note:""});
+    }
+  })();
+
+  var fuel = [
+    {y:2025, m:9, amt:3188.15}, {y:2025, m:10, amt:3310.40}, {y:2025, m:11, amt:3425.75},
+    {y:2026, m:8, amt:3702.30}, {y:2026, m:9, amt:3811.95}, {y:2026, m:10, amt:3942.60}
+  ];
+
+  var bank = {balance:31480.25, acct:"Operating account"};
+  var bills = [
+    {vendor:"Prairie Wire Supply", due:d(2026,11,25), amt:6420.00},
+    {vendor:"Fleet insurance", due:d(2026,11,26), amt:1850.00},
+    {vendor:"Payroll deductions remittance", due:d(2026,11,27), amt:7310.55},
+    {vendor:"Truck lease", due:d(2026,11,27), amt:2240.00},
+    {vendor:"Dunlop Warehouse permit fees", due:d(2026,12,1), amt:980.00}
+  ];
+
+  /* Answers: each returns {lines:[...], rows:[...]} computed from the data */
+  var Q = {
+    owed: {
+      label: "Who owes me over 60 days?",
+      run: function(){
+        var list = invoices.map(function(v){
+          var due = v.date + TERMS * DAY;
+          return {v:v, due:due, over:Math.round((ASOF - due) / DAY)};
+        }).filter(function(x){ return x.over > 60; })
+          .sort(function(a,b){ return b.over - a.over; });
+        var total = list.reduce(function(s,x){ return s + x.v.amt; }, 0);
+        var lines = [list.length + " customers are more than 60 days past due. Total: " + money(total) + ". Oldest first:"];
+        list.forEach(function(x){ lines.push(x.v.cust + ": " + money(x.v.amt) + ", " + x.over + " days overdue"); });
+        var rows = list.map(function(x){
+          return {t:"Invoice " + x.v.no + ", " + x.v.cust, s:money2(x.v.amt) + ". Invoiced " + fmtDate(x.v.date) + ", due " + fmtDate(x.due) + " (net " + TERMS + ")."};
+        });
+        return {lines:lines, rows:rows};
+      }
+    },
+    lost: {
+      label: "Which jobs lost money this year?",
+      run: function(){
+        var done = jobs.filter(function(j){ return new Date(j.done).getUTCFullYear() === 2026; });
+        var bad = done.filter(function(j){ return j.cost > j.quote; });
+        var total = bad.reduce(function(s,j){ return s + (j.cost - j.quote); }, 0);
+        var lines = [bad.length + " of " + done.length + " completed jobs lost money this year. Total loss: " + money(total) + "."];
+        bad.forEach(function(j){
+          lines.push(j.name + ": quoted " + money(j.quote) + ", actual cost " + money(j.cost) + ", lost " + money(j.cost - j.quote) + ". Why: " + j.note);
+        });
+        var rows = bad.map(function(j){
+          return {t:"Job " + j.no + ", " + j.name, s:"Closed " + fmtDate(j.done) + ". Quote " + money2(j.quote) + ", cost " + money2(j.cost) + ". Job note: " + j.note};
+        });
+        return {lines:lines, rows:rows};
+      }
+    },
+    fuel: {
+      label: "Fuel last month vs a year ago?",
+      run: function(){
+        function find(y,m){ return fuel.filter(function(f){ return f.y === y && f.m === m; })[0]; }
+        var now = find(2026,10), then = find(2025,10);
+        var diff = now.amt - then.amt;
+        var pct = Math.round(diff / then.amt * 1000) / 10;
+        var lines = [
+          "October 2026: " + money2(now.amt),
+          "October 2025: " + money2(then.amt),
+          "That is " + money2(Math.abs(diff)) + " " + (diff >= 0 ? "more" : "less") + ", " + (diff >= 0 ? "up " : "down ") + Math.abs(pct).toFixed(1) + "%."
+        ];
+        var rows = [
+          {t:"Vehicle fuel, October 2026", s:"Total for the month: " + money2(now.amt)},
+          {t:"Vehicle fuel, October 2025", s:"Total for the month: " + money2(then.amt)}
+        ];
+        return {lines:lines, rows:rows};
+      }
+    },
+    cash: {
+      label: "Cash in the bank vs bills due this week?",
+      run: function(){
+        var due = bills.filter(function(b){ return b.due <= FRIDAY; });
+        var total = due.reduce(function(s,b){ return s + b.amt; }, 0);
+        var left = bank.balance - total;
+        var lines = [
+          "In the bank: " + money2(bank.balance),
+          "Bills due by Friday, Nov 27: " + money2(total) + " (" + due.length + " bills)",
+          "What's left: " + money2(left)
+        ];
+        var rows = [{t:bank.acct + ", balance", s:money2(bank.balance) + " as of last night"}];
+        due.forEach(function(b){ rows.push({t:b.vendor, s:money2(b.amt) + ", due " + fmtDate(b.due)}); });
+        return {lines:lines, rows:rows};
+      }
+    }
+  };
+  var ORDER = ["owed","lost","fuel","cash"];
+
+  var thread = document.getElementById("thread");
+  var chips = document.getElementById("chips");
+  var form = document.getElementById("askform");
+  var input = document.getElementById("askin");
+  var seq = 0;
+
+  function bubble(cls, fresh){
+    var b = document.createElement("div");
+    b.className = "bub" + (cls ? " " + cls : "") + (fresh ? " fresh" : "");
+    thread.appendChild(b);
+    return b;
+  }
+  function line(parent, text){
+    var p = document.createElement("div");
+    p.textContent = text;
+    parent.appendChild(p);
+    return p;
+  }
+  function opening(){
+    thread.innerHTML = "";
+    var b = bubble("", false);
+    line(b, "Ask me anything about your money. I'm reading last night's copy of your QuickBooks (Nov 23, 11 pm).");
+  }
+  function ask(key, shownText){
+    var me = bubble("me", true);
+    line(me, shownText);
+    var res = Q[key].run();
+    var a = bubble("", true);
+    res.lines.forEach(function(t){ line(a, t); });
+    var id = "src" + (++seq);
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn quiet";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", id);
+    btn.textContent = "Where this came from";
+    var open = document.createElement("div");
+    open.className = "open";
+    open.id = id;
+    open.hidden = true;
+    res.rows.forEach(function(r){
+      var s = document.createElement("div");
+      s.className = "src";
+      var t = document.createElement("b"); t.textContent = r.t;
+      var u = document.createElement("span"); u.className = "num"; u.textContent = r.s;
+      s.appendChild(t); s.appendChild(u);
+      open.appendChild(s);
+    });
+    btn.addEventListener("click", function(){
+      var show = open.hidden;
+      open.hidden = !show;
+      btn.setAttribute("aria-expanded", show ? "true" : "false");
+    });
+    a.appendChild(btn);
+    a.appendChild(open);
+    a.scrollIntoView({block:"nearest", behavior:"smooth"});
+  }
+  function fallback(text){
+    var me = bubble("me", true);
+    line(me, text);
+    var a = bubble("", true);
+    line(a, "In the real version I'd answer that from your books. In this demo, try one of the buttons.");
+    a.scrollIntoView({block:"nearest", behavior:"smooth"});
+  }
+  function match(text){
+    var t = text.toLowerCase();
+    if (/bank|cash|bills?|balance|this week/.test(t)) return "cash";
+    if (/fuel|gas\b|gasoline|diesel/.test(t)) return "fuel";
+    if (/lost money|lose|loss|losing|jobs?\b/.test(t)) return "lost";
+    if (/\bowes?\b|overdue|60|unpaid|receivable|late pay/.test(t)) return "owed";
+    return null;
+  }
+
+  ORDER.forEach(function(k){
+    var c = document.createElement("button");
+    c.type = "button";
+    c.className = "chip";
+    c.textContent = Q[k].label;
+    c.addEventListener("click", function(){ ask(k, Q[k].label); });
+    chips.appendChild(c);
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var text = input.value.replace(/^\s+|\s+$/g, "");
+    if (!text) return;
+    input.value = "";
+    var k = match(text);
+    if (k) ask(k, text); else fallback(text);
+  });
+
+  document.getElementById("reset").addEventListener("click", function(){
+    input.value = "";
+    opening();
+  });
+
+  opening();
+})();
+</script>
+</div>
+
+</body>
+</html>

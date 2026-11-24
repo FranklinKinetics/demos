@@ -7,7 +7,7 @@
 </head>
 <body>
 <title>Get Paid Faster</title>
-<meta name="description" content="Franklin Kinetics Labs demo: a tech's voice note becomes a work order and a draft invoice, with gaps flagged for the office, plus overdue reminders. Sample data for a made-up company.">
+<meta name="description" content="Franklin Kinetics Labs demo: techs talk through each job, invoices are drafted the same day, and you only price what is missing. Sample data for a made-up company.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap">
 <style>
 /* Franklin Kinetics brand: Beacon orange marks the point that matters, Steel carries structure, Draftstock is the paper.
@@ -16,17 +16,17 @@
   --beacon:#ED6B2E; --steel:#2B424A; --carbon:#211F21; --draftstock:#EDE8E0;
   --bg:#EDE8E0; --panel:#FBF9F5; --ink:#211F21; --ink-2:#2B424A; --muted:#5d6b70; --line:#d8d1c5;
   --accent:#ED6B2E; --accent-ink:#211F21; --chip:#e4ddd1;
-  --before:#1B7DB5; --after:#ED6B2E; --ok:#2f7d4f; --ok-bg:#e2efe6; --warn-bg:#fbeee0; --warn-ink:#7a3f12;
+  --before:#1B7DB5; --after:#ED6B2E; --ok:#2f7d4f; --ok-bg:#e2efe6;
   --display:"Syne","Prompt","Arial Black",Arial,sans-serif;
   --body:"Arimo","Nimbus Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"Space Mono","SFMono-Regular",Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
-  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; --warn-bg:#3a2a1c; --warn-ink:#f4b98f; color-scheme:dark}}
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
-  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; --warn-bg:#3a2a1c; --warn-ink:#f4b98f; color-scheme:dark}
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
 .wrap{max-width:980px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px}
@@ -44,117 +44,80 @@ h3{font-size:1rem}
 p{margin:0}
 .lede{max-width:62ch;color:var(--ink-2)}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.hero{display:grid;gap:12px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:4px}
-.stat .num{font-family:var(--mono);font-size:1.9rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
-.stat.key{border-top:4px solid var(--accent)}
-.stat .lbl{color:var(--muted);font-size:.92rem}
-section{display:grid;gap:12px}
-.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
-.count{font-family:var(--mono);color:var(--muted);font-size:.9rem}
-.queue{display:grid;gap:8px}
-.item{background:var(--panel);border:1px solid var(--line);border-radius:4px}
-.item>button.row{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:12px 14px;align-items:center}
-.item>button.row:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.who{font-weight:700}
-.what{color:var(--muted);font-size:.92rem}
-.amt{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
-.age{font-family:var(--mono);font-size:.82rem;text-align:right;color:var(--muted)}
-.age.hot{color:var(--accent);font-weight:700}
-.status{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px}
-.pill{font-size:.75rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:3px;background:var(--chip);color:var(--ink-2)}
-.pill.ok{background:var(--ok-bg);color:var(--ok)}
-.pill.tone-friendly{background:var(--chip)}
-.pill.tone-firm{background:var(--chip);color:var(--ink)}
-.pill.tone-final{background:var(--accent);color:var(--accent-ink)}
-.detail{border-top:1px dashed var(--line);padding:12px 14px 14px;display:grid;gap:12px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.note{font-family:var(--mono);font-size:.86rem;background:var(--chip);padding:10px 12px;border-radius:3px;white-space:pre-wrap}
-.lbl2{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-table.lines{width:100%;border-collapse:collapse;font-size:.92rem}
-table.lines td{padding:4px 0;border-bottom:1px solid var(--line)}
-table.lines td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-table.lines tr.tot td{font-weight:700;border-bottom:0;padding-top:8px}
-.msg{white-space:pre-wrap;background:var(--chip);padding:10px 12px;border-radius:3px;font-size:.95rem}
-.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-button.act{font-family:var(--body);font-weight:700;font-size:.95rem;background:var(--accent);color:var(--accent-ink);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
-button.ghost{font-family:var(--body);font-size:.9rem;background:transparent;color:var(--ink-2);border:1.5px solid var(--line);border-radius:3px;padding:7px 12px;cursor:pointer}
-button.act:focus-visible,button.ghost:focus-visible{outline:3px solid var(--ink-2);outline-offset:2px}
-.done-msg{color:var(--ok);font-size:.92rem;font-weight:600}
-.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:10px;min-width:0}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:var(--ink-2)}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
-.chart{position:relative;overflow-x:auto}
-.chart svg{display:block;width:100%;min-width:520px;height:auto}
-.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.8rem;padding:6px 8px;border-radius:3px;white-space:nowrap;transform:translate(-50%,-110%)}
-.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.how div{border-left:3px solid var(--ink-2);padding:2px 0 2px 12px;display:grid;gap:4px}
-.how div.never{border-color:var(--accent)}
-.how b{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:.9rem}
-.cta{background:var(--steel);color:#EDE8E0;border-radius:4px;padding:22px;display:grid;gap:10px}
-.cta h2{color:#EDE8E0}
-.cta a.btn{justify-self:start;background:var(--beacon);color:#211F21;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:3px}
-.cta a.btn:focus-visible{outline:3px solid #EDE8E0;outline-offset:2px}
-footer{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
-@media (max-width:640px){.two{grid-template-columns:1fr}.stat .num{font-size:1.6rem}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-button.ghost[aria-pressed="true"]{background:var(--ink-2);color:var(--bg);border-color:var(--ink-2)}
-/* v3 components: truck-to-office walkthrough, flags, price-needed inputs, PO meter, history, shop rules */
-.mono{font-family:var(--mono)}
-.scroll{overflow-x:auto}
-.steps{display:flex;flex-wrap:wrap;gap:8px}
-.step{font-family:var(--mono);font-size:.76rem;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--panel)}
-.step.on{border-color:var(--accent);color:var(--ink);background:var(--warn-bg)}
-.walk{display:grid;grid-template-columns:310px 1fr;gap:20px;align-items:start}
-.phone{background:var(--carbon);border-radius:28px;padding:11px}
-.screen{background:var(--panel);border-radius:19px;padding:14px;display:grid;gap:12px}
-.jobcard{border:1px solid var(--line);border-radius:4px;padding:10px;display:grid;gap:3px}
-.transcript{font-size:.9rem;background:var(--chip);border-radius:3px;padding:10px 12px;line-height:1.45}
-.thumbs{display:flex;flex-wrap:wrap;gap:8px}
-.thumb{width:66px;height:66px;border-radius:4px;background:var(--steel);color:#EDE8E0;font-family:var(--mono);font-size:.6rem;line-height:1.15;padding:5px;display:flex;align-items:flex-end}
-.desk{display:grid;gap:12px;min-width:0}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:12px;min-width:0}
-.panel>.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
-.empty{color:var(--muted);font-size:.92rem;padding:18px 0;text-align:center}
-.flag{background:var(--warn-bg);color:var(--warn-ink);border-left:3px solid var(--accent);padding:7px 10px;font-size:.9rem;border-radius:3px}
-.tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:3px;background:var(--warn-bg);color:var(--warn-ink);margin-left:6px;white-space:nowrap}
-.pill.warn{background:var(--warn-bg);color:var(--warn-ink)}
-dl.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:.9rem;margin:0}
-dl.kv dt{color:var(--muted)}
-dl.kv dd{margin:0;font-family:var(--mono);font-size:.84rem}
-ul.work{margin:0;padding-left:18px;font-size:.92rem}
-ul.work li{margin:2px 0}
-.meter{height:8px;background:var(--chip);border-radius:99px;overflow:hidden;margin:6px 0 2px}
-.meter i{display:block;height:100%;background:var(--ok)}
-.meter.warn i{background:var(--accent)}
-.po{border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:.9rem;display:grid;gap:4px}
-.opp{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;border:1px solid var(--line);border-left:3px solid var(--ink-2);padding:8px 10px;border-radius:3px;font-size:.92rem}
-table.lines{min-width:340px}
-table.lines th{text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;padding:4px 0;border-bottom:1px solid var(--line)}
-table.lines th.r{text-align:right}
-table.lines tr.sec td{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:12px;border-bottom:0}
-table.lines td{padding:5px 8px 5px 0}
-table.lines td.r{padding-right:0;padding-left:8px;white-space:nowrap}
-table.lines input{width:86px;font:inherit;font-family:var(--mono);text-align:right;background:var(--bg);color:var(--ink);border:1.5px solid var(--accent);border-radius:3px;padding:2px 6px}
-table.hist{width:100%;border-collapse:collapse;font-size:.88rem}
-table.hist td,table.hist th{padding:5px 8px 5px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-table.hist th{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
-table.hist td:first-child{font-family:var(--mono);white-space:nowrap}
-.rule{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--panel);border:1px dashed var(--line);border-radius:4px;padding:10px 12px;font-size:.92rem}
-.rule label{font-weight:700}
-.rule select,.actions select{font:inherit;font-size:.9rem;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:6px 8px;max-width:100%}
-button.act:disabled{opacity:.45;cursor:not-allowed}
-.why-off{font-size:.86rem;color:var(--muted)}
-.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.ladder div{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--ink-2);border-radius:4px;padding:10px 12px;display:grid;gap:2px;font-size:.92rem}
-.ladder div.last{border-top-color:var(--accent)}
-.ladder b{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
-.spin{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:fkspin .8s linear infinite;vertical-align:-1px;margin-right:6px}
-@keyframes fkspin{to{transform:rotate(360deg)}}
-@media (max-width:820px){.walk{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+/* v2 owner-first frame. Order on every page: hero (the first-screen line) -> "What you see" surface -> optional "What your office sees" -> Behind the scenes (collapsed) -> CTA. */
+:root{--warn-bg:#fbeee0;--warn-ink:#7a3f12;--ok:#2f7d4f;--ok-bg:#e2efe6;--bubble-in:#ffffff;--bubble-out:#2B424A;--bubble-out-ink:#EDE8E0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}}
+:root[data-theme="dark"]{--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}
+.wrap{max-width:720px;gap:28px}
 [hidden]{display:none!important}
+.hero{display:grid;gap:10px}
+.hero h1{font-size:clamp(1.6rem,6vw,2.4rem);text-transform:none;letter-spacing:0;line-height:1.12}
+.hero .lede{font-size:1.02rem}
+.forwho{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+section{display:grid;gap:12px}
+.label{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+.label::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.label.office::before{background:var(--ink-2)}
+.hint{color:var(--muted);font-size:.95rem}
+/* The surface: a plain card on phones (no fake bezel), a framed device on wide screens. */
+.surface{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.surface .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.surface .bar b{color:var(--ink);font-weight:700}
+.surface .body{padding:14px;display:grid;gap:10px}
+@media (min-width:700px){.surface{max-width:400px;justify-self:center;width:100%;border:10px solid var(--carbon);box-shadow:0 10px 30px rgba(0,0,0,.18)}}
+/* Text thread */
+.thread{display:grid;gap:8px}
+.bub{max-width:85%;padding:9px 12px;border-radius:16px;font-size:1rem;line-height:1.4;background:var(--bubble-in);border:1px solid var(--line);justify-self:start;white-space:pre-wrap}
+.bub.me{justify-self:end;background:var(--bubble-out);color:var(--bubble-out-ink);border-color:transparent}
+.bub small{display:block;font-size:.78rem;opacity:.75;margin-top:4px}
+.stamp{justify-self:center;font-size:.8rem;color:var(--muted)}
+.bub.fresh{animation:fkin .25s ease-out}
+@keyframes fkin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Email */
+.mail .from{font-weight:700}
+.mail .subj{font-family:var(--display);font-size:1.15rem;line-height:1.2}
+.mail h4{margin:8px 0 4px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* Tappable rows: big targets with a visible cue */
+.tap{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;width:100%;min-height:52px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.tap::after{content:"›";grid-column:2;grid-row:1 / span 2;font-size:1.5rem;color:var(--muted)}
+.tap[aria-expanded="true"]::after{content:"⌄"}
+.tap:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tap .t{font-weight:700}
+.tap .s{color:var(--muted);font-size:.92rem}
+.open{padding:10px 12px;border-left:3px solid var(--accent);display:grid;gap:8px;background:var(--bg);border-radius:0 8px 8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:10px 14px;border-radius:22px;border:1.5px solid var(--ink-2);color:var(--ink-2);font-weight:600;font-size:.95rem}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chip[disabled]{opacity:.4;cursor:default}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;min-height:48px;padding:12px 18px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1rem;text-align:center}
+.btn.quiet{background:transparent;color:var(--ink-2);border:1.5px solid var(--line)}
+.btn:focus-visible{outline:3px solid var(--ink-2);outline-offset:2px}
+.row2{display:flex;flex-wrap:wrap;gap:8px}
+.flag{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.okmsg{background:var(--ok-bg);color:var(--ok);border-radius:8px;padding:10px 12px;font-weight:600}
+.big{font-family:var(--mono);font-weight:700;font-size:1.6rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.quote{font-style:italic;border-left:3px solid var(--line);padding-left:10px;color:var(--ink-2)}
+/* Office view: plain, short, clearly secondary */
+.office{background:var(--chip);border-radius:10px;padding:14px;display:grid;gap:8px}
+/* Behind the scenes */
+details.bts{border-top:2px solid var(--ink-2);padding-top:12px}
+details.bts>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px;font-family:var(--display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em}
+details.bts>summary::-webkit-details-marker{display:none}
+details.bts>summary::after{content:"+";font-size:1.6rem;color:var(--accent)}
+details.bts[open]>summary::after{content:"\2212"}
+.steps2{display:grid;gap:12px;margin-top:8px}
+.steps2 div{border-left:3px solid var(--ink-2);padding:2px 0 2px 12px;display:grid;gap:2px}
+.steps2 div.never{border-color:var(--accent)}
+.steps2 b{font-weight:700}
+.cta{background:var(--steel);color:#EDE8E0;border-radius:10px;padding:20px;display:grid;gap:10px}
+.cta h2{color:#EDE8E0;font-family:var(--display);font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em;margin:0}
+.cta a{justify-self:start;background:var(--beacon);color:#211F21;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:8px;min-height:48px;box-sizing:border-box}
+footer{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+footer button{all:unset;cursor:pointer;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.linklbl{font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.label.office{display:flex;background:none;padding:0;border-radius:0;gap:8px}
 </style>
 
 <div class="wrap">
@@ -165,361 +128,231 @@ button.act:disabled{opacity:.45;cursor:not-allowed}
     </a>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="labs">Labs</span><span class="sample">Sample data. Northgate Mechanical is a made-up company.</span></div>
   </header>
-
-  <div class="hero">
-    <span class="eyebrow">Cash report · Monday, November 23</span>
-    <h1>Get paid faster</h1>
-    <p class="lede">Techs talk through each job for thirty seconds in the truck and snap the nameplate. AI turns that into a work order and a draft invoice, priced from Northgate's own price book and rates. Anything it can't settle (a missing price, a possible warranty part, a purchase order near its limit) is flagged for the office, and the invoice can't be approved until it's handled.</p>
-    <div class="stats" id="stats"></div>
-  </div>
-
-  <section aria-labelledby="h-walk">
-    <div class="sechead"><h2 id="h-walk">One job, truck to invoice</h2><span class="count">Eastview Condos · make-up air unit · purchase order job</span></div>
-    <div class="steps" aria-label="Progress"><span class="step on" id="s1">1 · Tech talks through the job</span><span class="step" id="s2">2 · AI builds the work order</span><span class="step" id="s3">3 · Office approves the invoice</span></div>
-    <div class="walk">
-      <div class="phone"><div class="screen" id="phone"></div></div>
-      <div class="desk" id="desk"></div>
-    </div>
-  </section>
-
-  <section aria-labelledby="h-jobs">
-    <div class="sechead"><h2 id="h-jobs">Finished jobs, not invoiced</h2><span class="count" id="jobsCount"></span></div>
-    <p class="lede">Each one drafted from the tech's note and photos. The draft lives here: QuickBooks only gets an invoice when the office approves it, and it stays unsent there. Nothing reaches the customer until the office sends it.</p>
-    <div class="rule"><label for="ot">Shop overtime rule, set once</label><select id="ot"></select><span class="why-off">Changes how after-hours time is billed on every job.</span></div>
-    <div class="queue" id="jobs"></div>
-  </section>
-
-  <section aria-labelledby="h-over">
-    <div class="sechead"><h2 id="h-over">Overdue, reminder written</h2><span class="count" id="overCount"></span></div>
-    <p class="lede">Polite at 7 days, firmer at 14, final at 30. The tone is set once, in Northgate's own words. Approving puts the email in the office's Drafts folder. The office presses send.</p>
-    <div class="queue" id="over"></div>
-  </section>
-
-  <section aria-labelledby="h-proof">
-    <div class="sechead"><h2 id="h-proof">What it changes</h2><span class="count">example numbers, made-up company</span></div>
-    <div class="chartbox">
-      <h3>Illustration: days from job done to invoice sent</h3>
-      <div class="legend"><span><i style="background:var(--before)"></i>Before: invoices written up when someone finds time</span><span><i style="background:var(--after)"></i>After: drafts waiting each morning</span></div>
-      <div class="chart" id="chart"></div>
-      <p class="count">These numbers are an illustration, not a client result. Invoices go out about <b id="avgDiff"></b> days sooner, from <b id="avgBefore"></b> days to <b id="avgAfter"></b>. For a shop invoicing $160,000 a month, that is about $40,000 in the bank earlier, once. Your numbers come from your own jobs.</p>
-    </div>
-  </section>
-
-  <section aria-labelledby="h-how">
-    <h2 id="h-how">How it works</h2>
-    <div class="how">
-      <div><b>Reads</b><span>The tech's voice note and photos, or the job ticket from your field software, plus your price book, labour rates, tax codes and invoices in QuickBooks.</span></div>
-      <div><b>Drafts</b><span>AI writes the work order, the invoice in your office's style, a plain-language report for the customer, and reminders at 7, 14 and 30 days.</span></div>
-      <div><b>Flags</b><span>Missing prices, serial numbers, warranty parts and purchase orders near their limit. It never guesses a price or a reading.</span></div>
-      <div><b>A person approves</b><span>The office settles each flag and approves. Repairs the tech spotted go to the service manager to price.</span></div>
-      <div class="never"><b>Never</b><span>Sends anything to a customer, sets a price, or touches payment details.</span></div>
-      <div><b>You own it</b><span>Everything runs in your accounts. If it stops, you invoice the way you do today. No contract.</span></div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <h2>See it on your own jobs</h2>
-    <p>Send last month's finished jobs and invoices, as an export, a printout or a photo of the ticket book. Cover customer names if you like; dates and amounts are enough. You get back a one-time page like this for your company within three business days: what's waiting to be invoiced, what's overdue, and what the drafts would have flagged. It's free.</p>
-    <a class="btn" href="https://www.franklinkinetics.com/contact">Start a conversation</a>
-  </section>
-
-  <footer><span>Franklin Kinetics · Regina, Saskatchewan</span><span><button class="ghost" type="button" id="reset">Reset demo</button></span></footer>
+<style>
+.stk{display:grid;gap:6px}
+.stk .ln{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--bg);display:grid;gap:2px;font-size:.92rem}
+.stk .ln b{font-size:.78rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.bub .quote{margin:6px 0}
+.chips.pr .chip{min-width:84px;text-align:center}
+.office .orow{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.office .orow .st{font-weight:700;text-align:right}
+.office .orow .nt{grid-column:1 / span 2;color:var(--muted);font-size:.92rem}
+.office .st.ok{color:var(--ok)}
+.office .st.hold{color:var(--warn-ink)}
+.rc{font-size:.9rem;color:var(--ink-2);font-weight:600}
+</style>
+<div class="hero">
+  <div class="forwho">For plumbing, HVAC and electrical shops</div>
+  <h1 id="h1"></h1>
+  <p class="lede">The techs talk through each job in the truck. The drafts are already in QuickBooks. You only hear about what needs a decision from you. Tap below.</p>
 </div>
 
+<section>
+  <div class="label">What you see</div>
+  <div class="hint">A real text from your office number, Tuesday 4:05 pm, once the day's jobs are drafted.</div>
+  <div class="surface">
+    <div class="bar"><b>Northgate Office</b><span>Tue 4:05 pm</span></div>
+    <div class="body">
+      <div class="thread" id="thread" aria-live="polite"></div>
+      <div class="linklbl">Tapping the link opens a review page. These buttons stand in for it.</div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label office">What your office sees</div>
+  <div class="office" id="office"></div>
+</section>
+
+<details class="bts">
+  <summary>Behind the scenes</summary>
+  <div class="steps2">
+    <div><b>Reads</b><span>The tech's voice note from the truck, your price book, and the customer's agreement and purchase order.</span></div>
+    <div><b>Does</b><span>Writes the work order and the draft invoice. Prices come from your price book only.</span></div>
+    <div><b>A person approves</b><span>Any missing price, any purchase order increase, and every invoice before it goes out.</span></div>
+    <div class="never"><b>Never</b><span>Makes up a price, sends an invoice, or changes your price book.</span></div>
+    <div><b>Runs on</b><span>QuickBooks Online and the phones your techs already carry.</span></div>
+  </div>
+</details>
+
+<section class="cta">
+  <h2>See it on your own jobs</h2>
+  <p>Send a sample you already have. You get back a one-time page like this within three business days. It's free.</p>
+  <a href="https://www.franklinkinetics.com/contact">Start a conversation</a>
+</section>
+
+<footer>
+  <span>Franklin Kinetics · Regina, Saskatchewan</span>
+  <button type="button" id="reset">Start over</button>
+</footer>
+</div>
 <script>
-const fmt=n=>n.toLocaleString("en-CA",{style:"currency",currency:"CAD",maximumFractionDigits:0});
-const fmt2=n=>n.toLocaleString("en-CA",{style:"currency",currency:"CAD",minimumFractionDigits:2,maximumFractionDigits:2});
-const $=id=>document.getElementById(id);
-const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
-const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
-const TAX=0.11, OTX=1.5, WARN=0.8, TRUCK=95;
-const RATES={res:{Journeyman:135,Apprentice:90},com:{Journeyman:145,Apprentice:90}};
-const OT_RULES={split:"After-hours time at 1.5×, the rest at the regular rate",whole:"The whole call at 1.5× if any of it was after hours",block:"A 2-hour after-hours minimum, then the regular rate"};
-let otRule="split";
+(function(){
+  var TRUCK=95, RJ=135, RA=90, CJ=145;
+  var JOBS=[
+    {id:"J-2501",who:"Eastview Condos",lines:[
+      ["Journeyman, Marcus, 5 h",5,CJ],["Apprentice, Kyle, 5.5 h",5.5,RA],
+      ["Ignition control board",1,640],["Flame sensor",1,145],["Burner gasket",1,38],["Truck charge",1,TRUCK]],po:{no:"EV-2211",limit:2500,bill:"Crescent Property Group"}},
+    {id:"J-2508",who:"Westside Auto Glass",lines:[
+      ["Journeyman, Priya, 9 h",9,CJ],["Apprentice, Kyle, 9 h",9,RA],["Unit heater x 2",2,2990],["Gas piping and fittings",1,860],
+      ["Thermostat x 2",2,175],["Disposal, old units",1,184],["Scissor lift rental, 1 day",1,null,"lift"],["Truck charge",1,TRUCK]]},
+    {id:"J-2481",who:"Kowalski residence",lines:[
+      ["Journeyman, Dale, 6.5 h",6.5,RJ],["Apprentice, Sam, 6.5 h",6.5,RA],["Furnace, 60k BTU, 96%",1,4890],
+      ["Filter rack and venting adapters",1,548],["Gas permit, at cost",1,95],["Removal and disposal",1,165],["Truck charge",1,TRUCK]]},
+    {id:"J-2490",who:"Chen residence",lines:[
+      ["Journeyman, Mike, 5 h",5,RJ],["50 gal power vent water heater",1,1890],["Expansion tank and valves",1,235],["Disposal",1,35],["Truck charge",1,TRUCK]]},
+    {id:"J-2486",who:"Lakeview Dental",lines:[
+      ["Labour, under agreement",1,0],["Filters x 8",8,37],["Belt, unit 2",1,62],["Truck charge",1,TRUCK]]},
+    {id:"J-2497",who:"Okafor residence",lines:[
+      ["Journeyman, Priya, 1.5 h",1.5,RJ],["Bypass humidifier",1,289],["Water line kit",1,null,"kit"],["Furnace tune-up, comfort plan",1,0],["Truck charge",1,TRUCK]]}
+  ];
+  var VOICE="Chen place in Lakeview. Swapped the fifty gallon power vent for a new fifty gallon power vent. New expansion tank and shutoff. Five hours. Hauled the old tank.";
+  var NEWLIMIT=3500;
+  var PRICES={lift:[180,240,320],kit:[45,68,95]};
+  var NAMES={lift:"Westside lift rental",kit:"Okafor water line kit"};
+  var OWNER={lift:"Westside",kit:"Okafor"};
 
-const jobs=[
- {id:"J-2501",who:"Eastview Condos",billTo:"Crescent Property Group",what:"Make-up air unit, no heat",site:"Eastview Condos, roof",type:"com",done:"Nov 19",days:4,po:"EV-2211",nte:2500,audience:"property manager",
-  note:"Back in the truck after Eastview Condos. Make-up air unit wasn't firing. Kyle and I were on the roof at six-thirty, before the residents were up. Flame sensor was coated and the ignition board was in lockout, so we replaced both and put in a new burner gasket. Cleaned the burners, ran it through two heat cycles, it's good. Manifold pressure three and a half inches, temp rise fifty-five. Same board we put in back in February, so check the warranty. Done at eleven. Second-floor corridor exhaust fan is squealing, someone should look at it.",
-  photos:["Nameplate","Old board","Lockout code"],
-  unit:"Make-up air unit, 2017",serial:"MA-17-04412 (read from photo, office confirms)",
-  readings:[["Manifold pressure","3.5 in. WC"],["Temperature rise","55 °F"]],
-  crew:[{name:"Marcus",role:"Journeyman",hrs:4.5,ah:1.5},{name:"Kyle",role:"Apprentice",hrs:4.5,ah:1.5}],
-  parts:[{n:"Ignition control board",q:1,p:640,w:true},{n:"Flame sensor",q:1,p:145},{n:"Burner gasket",q:1,p:null}],
-  extras:[],
-  work:["Diagnosed no heat: ignition control board in lockout, flame sensor coated","Replaced ignition control board and flame sensor","Replaced burner gasket, cleaned burners","Ran two heat cycles, operating normally"],
-  flags:["Northgate replaced this ignition board in February. Check the supplier's parts warranty: bill the labour, claim the part.","Burner gasket isn't in the price book. Enter a price before approving.","The call started at 6:30, so 1.5 hours per tech fall before 8 AM. The shop's overtime rule sets how they're billed."],
-  defs:[{t:"Second-floor corridor exhaust fan",n:"Tech heard it squealing. For the service manager to price."}],
-  invNote:"Nov 19 / Marcus & Kyle - MAU no heat. Found ignition control board in lockout and flame sensor coated. Replaced board, flame sensor and burner gasket. Cleaned burners. Ran 2 heat cycles, operating normally. Manifold 3.5\" WC, temp rise 55F.",
-  report:"The make-up air unit wasn't heating because its ignition control board had failed and the flame sensor was coated. We replaced both, cleaned the burners and confirmed it heats normally. We also noticed the second-floor corridor exhaust fan is noisy and can quote a repair."},
- {id:"J-2508",who:"Westside Auto Glass",what:"Unit heater replacement, two bays",site:"Westside Auto Glass, bays 1 and 3",type:"com",done:"Nov 20",days:3,audience:"owner",
-  note:"Westside Auto Glass. Swapped both unit heaters in bays one and three for new Modine HD100s. Ran new gas drops and moved the thermostats over by the overhead doors. Kyle and me, nine hours each. Had the scissor lift all day. Hauled the old units.",
-  photos:["Nameplate, bay 1","Nameplate, bay 3"],unit:"Modine HD100 × 2",serial:"2411-0387, 2411-0391 (read from photos, office confirms)",readings:[],
-  crew:[{name:"Priya",role:"Journeyman",hrs:9,ah:0},{name:"Kyle",role:"Apprentice",hrs:9,ah:0}],
-  parts:[{n:"Modine HD100 unit heater",q:2,p:2990},{n:"Gas piping and fittings",q:1,p:860},{n:"Thermostat, line voltage",q:2,p:175},{n:"Scissor lift rental, 1 day",q:1,p:null}],
-  extras:[["Disposal, old units",184]],
-  work:["Replaced unit heaters in bays 1 and 3 with Modine HD100","Ran new gas drops","Relocated thermostats beside the overhead doors","Removed and disposed of old units"],
-  flags:["Lift rental isn't priced yet. Enter the amount from the rental company's bill before approving."],
-  defs:[{t:"Bay 2 unit heater",n:"Same age as the two replaced. Tech suggests quoting it before next winter."}],
-  invNote:"Nov 20 / Priya & Kyle - Replaced 2x unit heaters, bays 1 & 3, with Modine HD100. New gas drops, thermostats relocated by overhead doors. Removed and disposed of old units.",
-  report:"We replaced the unit heaters in bays 1 and 3, ran new gas lines and moved the thermostats beside the overhead doors. The heater in bay 2 is the same age; we can quote it before next winter."},
- {id:"J-2481",who:"Kowalski residence, Harbour Landing",what:"Furnace replacement, 96% high efficiency",site:"Harbour Landing",type:"res",done:"Nov 13",days:10,audience:"homeowner",
-  note:"Kowalski place in Harbour Landing. Pulled the old furnace, twenty years old, put in the sixty thousand BTU ninety-six percent unit. New filter rack, new venting adapters. Inlet pressure seven inches, temp rise forty-eight. Me and Sam, six and a half hours each. Gas permit's pulled. Left the rebate form with Mrs. Kowalski. Return air's small for this furnace, they should think about a second return.",
-  photos:["Nameplate","Venting"],unit:"60k BTU 96% AFUE furnace",serial:"4821A60512 (read from photo, office confirms)",
-  readings:[["Inlet gas pressure","7.0 in. WC"],["Temperature rise","48 °F"]],
-  crew:[{name:"Dale",role:"Journeyman",hrs:6.5,ah:0},{name:"Sam",role:"Apprentice",hrs:6.5,ah:0}],
-  parts:[{n:"Furnace, 60k BTU 96% AFUE",q:1,p:4890},{n:"Filter rack and venting adapters",q:1,p:548}],
-  extras:[["Gas permit, at cost",95,false],["Removal and disposal",165]],
-  work:["Removed 20-year-old furnace","Installed 60k BTU 96% furnace with new filter rack and venting adapters","Checked inlet pressure and temperature rise"],
-  flags:["The rebate form needs the model and serial. Both came from the nameplate photo: confirm them before the homeowner submits."],
-  defs:[{t:"Second return air",n:"Return air is undersized for the new furnace. For the service manager to price."}],
-  invNote:"Nov 13 / Dale & Sam - Removed 20 yr old furnace. Installed 60k BTU 96% furnace c/w new filter rack & venting adapters. Inlet 7.0\" WC, temp rise 48F. Rebate form left with homeowner.",
-  report:"We removed your 20-year-old furnace and installed a new high-efficiency one with a new filter rack and venting. It's running normally. Your return air is a little small for the new furnace; we can quote adding a second return."},
- {id:"J-2490",who:"Chen residence, Lakeview",what:"Water heater install",site:"Lakeview",type:"res",done:"Nov 17",days:6,audience:"homeowner",
-  note:"Chen residence, Lakeview. Swapped the fifty gallon power vent for a new fifty gallon power vent. New expansion tank and shutoff. Five hours. Hauled the old tank. Their furnace is due for its tune-up, they're on the comfort plan.",
-  photos:["Nameplate"],unit:"50 gal power vent water heater",serial:"GS0925C11873 (read from photo, office confirms)",readings:[],
-  crew:[{name:"Dale",role:"Journeyman",hrs:5,ah:0}],
-  parts:[{n:"50 gal power vent water heater",q:1,p:1890},{n:"Expansion tank and valves",q:1,p:235}],
-  extras:[["Disposal",35]],
-  work:["Replaced 50 gal power vent water heater","Installed new expansion tank and shutoff","Removed old tank"],
-  flags:["Register the water heater warranty with the manufacturer. The serial is on file from the photo."],
-  defs:[{t:"Furnace tune-up due",n:"On the comfort plan. For the office to book."}],
-  invNote:"Nov 17 / Dale - Replaced 50 gal power vent water heater with new 50 gal power vent. Installed new expansion tank & shutoff. Removed and disposed of old tank.",
-  report:"We replaced your water heater with a new 50-gallon power-vent model and added a new expansion tank and shutoff valve. Your furnace tune-up is due under your comfort plan, and we'll call to book it."},
- {id:"J-2493",who:"Prairie Pet Hospital",what:"Boiler repair, circulator pump",site:"Prairie Pet Hospital, mechanical room",type:"com",done:"Nov 18",days:5,audience:"clinic manager",
-  note:"Prairie Pet Hospital. Zone two was cold. Circulator was seized. Replaced the pump and flanges, purged the air, zone's heating. Four hours. That pump went in March last year, so it might be under warranty.",
-  photos:[],unit:"Boiler, zone 2 circulator",serial:"",readings:[],
-  crew:[{name:"Marcus",role:"Journeyman",hrs:4,ah:0}],
-  parts:[{n:"Circulator pump",q:1,p:820,w:true},{n:"Flanges and gaskets",q:1,p:88}],
-  extras:[],
-  work:["Diagnosed zone 2 no heat: circulator pump seized","Replaced pump with new flanges and gaskets","Purged air, zone heating normally"],
-  flags:["Northgate installed this pump in March 2025. Check the manufacturer warranty before billing the part.","No serial for the new pump and no photo. Ask Marcus for a nameplate photo."],
-  defs:[],
-  invNote:"Nov 18 / Marcus - Zone 2 no heat. Found circulator pump seized. Replaced pump c/w new flanges & gaskets. Purged air from system, zone heating normally.",
-  report:"Zone 2 wasn't heating because its circulator pump had seized. We replaced the pump, purged the air from the system, and the zone is heating normally."},
- {id:"J-2486",who:"Lakeview Dental",what:"Rooftop unit maintenance, under agreement",site:"Lakeview Dental, roof",type:"com",agree:true,done:"Nov 16",days:7,audience:"office manager",
-  note:"Lakeview Dental fall maintenance on both rooftop units. Filters, belts, rinsed the coils. Belt on unit two was worn, replaced it. Three hours. It's under their agreement so it's just the belt and filters. Unit two condenser fan motor is getting noisy.",
-  photos:["Worn belt"],unit:"Rooftop units 1 and 2",serial:"On file",readings:[],
-  crew:[{name:"Priya",role:"Journeyman",hrs:3,ah:0}],
-  parts:[{n:"Filters",q:8,p:37},{n:"Belt, unit 2",q:1,p:62}],
-  extras:[],
-  work:["Fall maintenance on both rooftop units","Replaced filters, rinsed coils, inspected belts","Replaced worn belt on unit 2"],
-  flags:["Under the commercial maintenance agreement: labour isn't billed, parts and the truck charge are."],
-  defs:[{t:"Condenser fan motor, unit 2",n:"Getting noisy. For the service manager to price before summer."}],
-  invNote:"Nov 16 / Priya - Fall PM on RTU-1 & RTU-2. Replaced filters, inspected belts, rinsed coils. Replaced worn belt on RTU-2. Labour under PM agreement.",
-  report:"We completed fall maintenance on both rooftop units: new filters, coils rinsed, and a worn belt replaced on unit 2. The condenser fan motor on unit 2 is getting noisy; we can quote a replacement before summer."},
- {id:"J-2504",who:"Reimer residence, Albert Park",what:"AC removal, lines capped",site:"Albert Park",type:"res",done:"Nov 20",days:3,audience:"homeowner",
-  note:"Reimer place in Albert Park. Recovered the refrigerant, pulled the old condenser, capped the line set. Three and a half hours.",
-  photos:["Capped lines"],unit:"Old AC condenser (removed)",serial:"Not needed",readings:[],
-  crew:[{name:"Dale",role:"Journeyman",hrs:3.5,ah:0}],
-  parts:[{n:"Line set caps and fittings",q:1,p:86}],
-  extras:[["Refrigerant recovery",240],["Removal and disposal",342]],
-  work:["Recovered refrigerant","Removed old condenser","Capped line set"],
-  flags:["Ask Dale how many pounds of refrigerant he recovered, for your own refrigerant log."],
-  defs:[],
-  invNote:"Nov 20 / Dale - Recovered refrigerant from old AC. Removed condenser. Capped line set.",
-  report:"We recovered the refrigerant, removed the old air conditioner and capped the refrigerant lines."},
- {id:"J-2497",who:"Okafor residence, Arcola East",what:"Furnace tune-up, humidifier added",site:"Arcola East",type:"res",done:"Nov 19",days:4,audience:"homeowner",
-  note:"Okafors', tune-up and put in a bypass humidifier tied into the furnace. Hour and a half for the humidifier. Used a water line kit off the truck. Ngozi asked about a smart thermostat.",
-  photos:["Humidifier"],unit:"Furnace, humidifier added",serial:"On file",readings:[],
-  crew:[{name:"Priya",role:"Journeyman",hrs:1.5,ah:0}],
-  parts:[{n:"Bypass humidifier",q:1,p:289},{n:"Water line kit",q:1,p:null}],
-  extras:[["Furnace tune-up, under comfort plan",0]],
-  work:["Furnace tune-up","Installed bypass humidifier tied into furnace"],
-  flags:["Water line kit isn't in the price book. Enter a price before approving.","The Okafors are on the comfort plan: the tune-up is covered, the humidifier isn't."],
-  defs:[{t:"Smart thermostat",n:"Customer asked. For the office to quote."}],
-  invNote:"Nov 19 / Priya - Furnace tune-up. Installed bypass humidifier tied into furnace c/w water line kit.",
-  report:"We tuned up your furnace and installed a bypass humidifier. You asked about a smart thermostat; the office will send options."}
-];
-const FEAT=jobs[0];
-jobs.forEach(j=>{j.ok=false;j.sent={};j.nte0=j.nte;j.poAsked=false});
+  function money(n){return "$"+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  function whole(n){return "$"+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  var st,timer;
 
-function labour(j){
-  const out=[];
-  for(const c of j.crew){
-    const rate=j.agree?0:RATES[j.type][c.role], hrs=c.hrs, ah=Math.min(hrs,c.ah||0);
-    let reg=hrs, ot=0;
-    if(ah>0){ if(otRule==="split"){ot=ah;reg=hrs-ah} else if(otRule==="whole"){ot=hrs;reg=0} else {ot=Math.min(hrs,Math.max(ah,2));reg=hrs-ot} }
-    const lbl=`${c.role}, ${c.name}`;
-    if(reg>0) out.push({n:lbl+(j.agree?" (under agreement)":""),q:reg,u:rate});
-    if(ot>0) out.push({n:`${lbl}, after hours`,q:ot,u:rate*OTX});
+  function jobTotal(j){
+    return j.lines.reduce(function(s,l){
+      var u=l[2];if(u===null)u=st.price[l[3]]||0;
+      return s+l[1]*u;},0);
   }
-  return out;
-}
-function sections(j){
-  return [["Labour",labour(j).map(l=>({...l,tax:true}))],
-   ["Materials",j.parts.map((p,i)=>({n:p.n,q:p.q,u:p.p??(p.entered||0),need:p.p==null,i,w:p.w,tax:true}))],
-   ["Other",[...j.extras.map(e=>({n:e[0],q:1,u:e[1],tax:e[2]!==false})),{n:"Truck charge",q:1,u:TRUCK,tax:true}]]];
-}
-function money(j){let pre=0,tx=0;for(const [,ls] of sections(j))for(const l of ls){const v=l.q*l.u;pre+=v;if(l.tax)tx+=v}const tax=Math.round(tx*TAX*100)/100;return{pre,tax,total:pre+tax}}
-const missing=j=>j.parts.some(p=>p.p==null&&!(p.entered>0));
-const over=j=>!!j.nte&&money(j).pre>j.nte;
+  function allTotal(){return JOBS.reduce(function(s,j){return s+jobTotal(j);},0);}
+  var EAST=JOBS[0], WEST=JOBS[1], CHEN=JOBS[3], OKA=JOBS[5];
+  function eastPct(){return Math.floor(jobTotal(EAST)/EAST.po.limit*100);}
+  function unpricedCount(){return (st.price.lift?0:1)+(st.price.kit?0:1);}
 
-function poHTML(j){
-  const pre=money(j).pre,pct=Math.round(pre/j.nte*100);
-  return `<div class="po"><div><b>PO ${j.po}</b> · ${fmt2(pre)} of ${fmt(j.nte)} before tax (${pct}%)</div><div class="meter ${pct>=WARN*100?"warn":""}"><i style="width:${Math.min(100,pct)}%"></i></div>${pct>100?'<div class="flag"><b>Over the PO limit.</b> It can\'t be approved until the client raises the PO.</div>':pct>=WARN*100?'<span class="count">Past 80% of the limit. The phone shows the tech this warning before extra work.</span>':'<span class="count">Inside the limit.</span>'}${missing(j)?`<span class="count">So far. Excludes items still to be priced.</span>`:""}</div>`;
-}
-function truckHTML(j){
-  return `<div><div class="lbl2">Voice note, in the truck after the call</div><div class="transcript">${esc(j.note)}</div></div>
-   <div class="thumbs">${j.photos.length?j.photos.map(p=>`<span class="thumb">${esc(p)}</span>`).join(""):'<span class="count">No photos sent.</span>'}</div>`;
-}
-function woHTML(j){
-  return `<div class="two"><div><div class="lbl2">Work performed</div><ul class="work">${j.work.map(w=>`<li>${esc(w)}</li>`).join("")}</ul></div>
-   <div><div class="lbl2">Equipment, readings, crew</div><dl class="kv"><dt>Unit</dt><dd>${esc(j.unit)}</dd><dt>Serial</dt><dd>${esc(j.serial||"Not given")}</dd>
-   ${j.readings.length?j.readings.map(r=>`<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join(""):"<dt>Readings</dt><dd>None given</dd>"}
-   <dt>Crew</dt><dd>${j.crew.map(c=>`${esc(c.name)} ${c.hrs} h${c.ah?` (${c.ah} after hours)`:""}`).join("<br>")}</dd></dl></div></div>
-   <div><div class="lbl2">Invoice note, in the office's style</div><div class="note">${esc(j.invNote)}</div></div>
-   <div><div class="lbl2">Report for the ${esc(j.audience)}</div><div class="msg">${esc(j.report)}</div></div>
-   ${j.flags.map(f=>`<div class="flag"><b>Check:</b> ${esc(f)}</div>`).join("")}`;
-}
-function defsEl(j){
-  const box=el("div");if(!j.defs.length)return box;
-  box.appendChild(el("div","lbl2","Spotted by the tech, for the service manager to price"));
-  j.defs.forEach((d,i)=>{const o=el("div","opp",`<span><b>${esc(d.t)}</b><br>${esc(d.n)}</span>`);
-    const b=el("button","ghost",j.sent[i]?"Sent for pricing":"Send to service manager");b.type="button";b.disabled=!!j.sent[i];
-    b.onclick=()=>{j.sent[i]=true;b.textContent="Sent for pricing";b.disabled=true};o.appendChild(b);box.appendChild(o)});
-  return box;
-}
-function invEl(j){
-  const wrap=el("div");wrap.style.display="grid";wrap.style.gap="12px";
-  const draw=()=>{
-    const m=money(j);let rows="";
-    sections(j).forEach(([t,ls])=>{rows+=`<tr class="sec"><td colspan="4">${t}</td></tr>`;ls.forEach(l=>{
-      const tags=(l.need?'<span class="tag">Price needed</span>':"")+(l.w?'<span class="tag">Check warranty</span>':"");
-      const unit=l.need&&!j.ok?`<input type="number" min="0" step="0.01" inputmode="decimal" data-p="${l.i}" value="${j.parts[l.i].entered||""}" placeholder="0.00" aria-label="Unit price for ${esc(l.n)}">`:fmt2(l.u);
-      rows+=`<tr><td>${esc(l.n)}${tags}</td><td class="r">${unit}</td><td class="r">${l.q}</td><td class="r">${fmt2(l.q*l.u)}</td></tr>`})});
-    wrap.innerHTML=`<dl class="kv"><dt>Bill to</dt><dd>${esc(j.billTo||j.who)}</dd><dt>Job</dt><dd>${j.id} · ${esc(j.site)}</dd>${j.po?`<dt>PO</dt><dd>${j.po}</dd>`:""}</dl>
-     <div class="scroll"><table class="lines"><thead><tr><th>Item</th><th class="r">Unit</th><th class="r">Qty</th><th class="r">Total</th></tr></thead><tbody>${rows}
-     <tr><td colspan="3"><b>Before tax</b></td><td class="r"><b>${fmt2(m.pre)}</b></td></tr>
-     <tr><td colspan="3">Taxes, from your QuickBooks tax codes</td><td class="r">${fmt2(m.tax)}</td></tr>
-     <tr class="tot"><td colspan="3">Total</td><td class="r">${fmt2(m.total)}</td></tr></tbody></table></div>${j.nte?poHTML(j):""}`;
-    const a=el("div","actions");
-    if(j.ok)a.appendChild(el("span","done-msg",`Created in QuickBooks, unsent${j.po?", with the report and PO number attached":""}. The office sends it.`));
-    else{
-      const b=el("button","act","Approve and create in QuickBooks");b.type="button";b.disabled=missing(j)||over(j);b.onclick=()=>{j.ok=true;renderAll()};a.appendChild(b);
-      if(over(j)&&!j.poAsked){const r=el("button","ghost","Draft PO increase request");r.type="button";r.onclick=()=>{j.poAsked=true;renderAll()};a.appendChild(r)}
-      if(over(j)&&j.poAsked){const r=el("button","ghost","Demo: client raises the PO");r.type="button";r.onclick=()=>{j.nte=3000;renderAll()};a.appendChild(r)}
-      a.appendChild(el("span","why-off",missing(j)?"Enter the missing price to approve.":over(j)&&j.poAsked?"The request to the property manager is in the office's Drafts folder.":over(j)?"Over the PO limit.":j.poAsked?"Demo: the client raised the PO to $3,000.":"The draft lives on this page until approved."));
-    }
-    wrap.appendChild(a);
-    wrap.querySelectorAll("input[data-p]").forEach(inp=>inp.addEventListener("change",()=>{j.parts[+inp.dataset.p].entered=Math.max(0,Number(inp.value)||0);draw();renderStats();renderPhone()}));
-  };
-  draw();return wrap;
-}
-
-let step=1, poChecked=false, sending=false;
-function setStep(n){step=n;[1,2,3].forEach(i=>$("s"+i).classList.toggle("on",i<=n))}
-function renderPhone(){
-  const j=FEAT;
-  $("phone").innerHTML=`<div class="jobcard"><span class="count mono">${j.id} · PO ${j.po} · limit ${fmt(j.nte)}</span><b>${esc(j.who)}</b><span class="what">Rooftop · billed to ${esc(j.billTo)}</span><span><span class="pill">${esc(j.what)}</span></span></div>${truckHTML(j)}${poChecked?poHTML(j):""}`;
-  const a=el("div","actions");
-  const c=el("button","ghost","Check PO limit");c.type="button";c.onclick=()=>{poChecked=true;renderPhone()};
-  const s=el("button","act",sending?'<span class="spin"></span>Sending':step>=3?"Sent":"Send to office");s.type="button";s.disabled=sending||step>=3;
-  s.onclick=()=>{sending=true;setStep(2);renderPhone();renderDesk();setTimeout(()=>{sending=false;setStep(3);renderPhone();renderDesk()},900)};
-  a.append(c,s);$("phone").appendChild(a);
-  $("phone").appendChild(el("p","count","Replaces the paper ticket: talk for thirty seconds, snap the nameplate, tap send."));
-}
-function renderDesk(){
-  const d=$("desk");d.innerHTML="";const j=FEAT;
-  const wo=el("div","panel"),inv=el("div","panel");
-  if(step<3){
-    wo.innerHTML=`<div class="head"><h3>Work order</h3><span class="pill">${step===2?"Reading the note":"Waiting for the tech"}</span></div><p class="empty">${step===2?'<span class="spin"></span>Turning the voice note into a work order':"Tap <b>Send to office</b> on the phone."}</p>`;
-    inv.innerHTML=`<div class="head"><h3>Invoice draft</h3><span class="pill">Not started</span></div><p class="empty">Priced from Northgate's price book and labour rates once the work order arrives.</p>`;
-  }else{
-    wo.innerHTML=`<div class="head"><h3>Work order</h3><span class="pill warn">${j.flags.length} to check</span></div>${woHTML(j)}`;wo.appendChild(defsEl(j));
-    inv.innerHTML=`<div class="head"><h3>Invoice draft</h3><span class="pill ${j.ok?"ok":missing(j)||over(j)?"warn":""}">${j.ok?"Approved, created unsent":missing(j)?"Price needed":over(j)?"Over PO limit":"Ready to approve"}</span></div>`;
-    inv.appendChild(invEl(j));
+  var thread=document.getElementById("thread"),chips=document.getElementById("chips"),office=document.getElementById("office");
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text)e.textContent=text;return e;}
+  function bub(text,me){var b=el("div","bub fresh"+(me?" me":""),text);thread.appendChild(b);return b;}
+  function stamp(t){thread.appendChild(el("div","stamp",t));}
+  function scroll(){var l=thread.lastElementChild;if(l&&l.scrollIntoView)l.scrollIntoView({block:"nearest",behavior:"smooth"});}
+  function chip(label,fn,dis){
+    var b=el("button","chip",label);b.type="button";b.disabled=!!dis;
+    b.addEventListener("click",fn);chips.appendChild(b);
   }
-  d.append(wo,inv);
-}
 
-function renderStats(){
-  const open=jobs.filter(j=>!j.ok);
-  const waiting=open.reduce((a,j)=>a+money(j).total,0);
-  const overdue=over_.filter(o=>!o.ok).reduce((a,o)=>a+o.amt,0);
-  const flags=open.reduce((a,j)=>a+j.flags.length,0);
-  $("stats").innerHTML=`<div class="stat key"><span class="num">${fmt(waiting)}</span><span class="lbl">finished work not invoiced yet, unpriced items not counted</span></div>`+
-   `<div class="stat"><span class="num">${flags}</span><span class="lbl">details flagged for a person on ${open.length} invoices waiting</span></div>`+
-   `<div class="stat"><span class="num">${fmt(overdue)}</span><span class="lbl">overdue, reminders written</span></div>`;
-  $("jobsCount").textContent=`${open.length} of ${jobs.length} waiting`;
-  $("overCount").textContent=`${over_.filter(o=>!o.ok).length} of ${over_.length} waiting`;
-}
-
-const openIds=new Set();
-function renderJobs(){
-  const box=$("jobs");box.innerHTML="";
-  [...jobs].sort((a,b)=>b.days-a.days).forEach(j=>{
-    const it=el("div","item");
-    const row=el("button","row");row.type="button";
-    const st=j.ok?'<span class="pill ok">Approved, created unsent</span>':missing(j)?'<span class="pill warn">Price needed</span>':over(j)?'<span class="pill warn">Over PO limit</span>':'<span class="pill">Draft ready</span>';
-    row.innerHTML=`<span><span class="who">${esc(j.who)}</span><br><span class="what">${esc(j.what)} · ${j.id} · ${j.crew.map(c=>c.name).join(" & ")}</span></span>
-      <span><div class="amt">${fmt(money(j).total)}</div><div class="age ${j.days>=7?"hot":""}">done ${j.done} · ${j.days} days</div></span>
-      <span class="status">${st}${!j.ok&&j.flags.length?`<span class="pill">${j.flags.length} to check</span>`:""}${j===FEAT?'<span class="pill">Walked through above</span>':""}</span>`;
-    const d=el("div","detail");d.hidden=!openIds.has(j.id);row.setAttribute("aria-expanded",String(!d.hidden));
-    if(!d.hidden){
-      d.appendChild(el("div","",`<div style="display:grid;gap:10px">${truckHTML(j)}</div>`));
-      d.appendChild(el("div","",`<div style="display:grid;gap:12px">${woHTML(j)}</div>`));
-      d.appendChild(defsEl(j));d.appendChild(el("div","lbl2","Draft invoice"));d.appendChild(invEl(j));
+  function renderChips(){
+    chips.innerHTML="";chips.className="chips";
+    if(st.asking){
+      chips.className="chips pr";
+      PRICES[st.asking].forEach(function(p){chip(whole(p),function(){setPrice(st.asking,p);},false);});
+      return;
     }
-    row.onclick=()=>{openIds.has(j.id)?openIds.delete(j.id):openIds.add(j.id);renderJobs()};
-    it.append(row,d);box.appendChild(it);
-  });
-}
+    if(!st.price.lift)chip("Price the lift rental",function(){ask("lift");},false);
+    if(!st.price.kit)chip("Price the water line kit",function(){ask("kit");},false);
+    chip("What's up with Eastview?",eastview,st.used.east);
+    if(st.used.east&&!st.used.po)chip("Draft a PO increase request",poDraft,false);
+    chip("Hear Mike's voice note",voice,st.used.mike);
+    if(st.ready&&!st.approved)chip("Approve all 6",approve,false);
+  }
 
-const over_=[
- {id:"INV-1932",who:"Harbour Landing Homes Inc.",contact:"Accounts payable",amt:14280,days:41},
- {id:"INV-1951",who:"Kim residence",contact:"Grace Kim",amt:3460,days:33},
- {id:"INV-1967",who:"Queen City Daycare",contact:"Director",amt:1890,days:22},
- {id:"INV-1970",who:"Patel residence",contact:"Raj Patel",amt:905,days:19},
- {id:"INV-1978",who:"Downtown Office Tower Ltd.",contact:"Property manager",amt:1320,days:12},
- {id:"INV-1983",who:"Nguyen residence",contact:"Linh Nguyen",amt:760,days:9}
-];
-over_.forEach(o=>{o.tone=o.days>=30?"final":o.days>=14?"firm":"friendly";o.ok=false});
-function reminder(o){
-  const first=o.contact.includes(" ")&&!/payable|manager|Director/.test(o.contact)?o.contact.split(" ")[0]:"there";
-  if(o.tone==="friendly")return `Subject: Invoice ${o.id} from Northgate Mechanical\n\nHi ${first},\n\nA quick note that invoice ${o.id} for ${fmt2(o.amt)} is now ${o.days} days past due. If it's already on its way, thank you and please ignore this. If you need another copy, reply and we'll send it.\n\nThanks,\nThe office at Northgate Mechanical`;
-  if(o.tone==="firm")return `Subject: Second notice: invoice ${o.id}\n\nHi ${first},\n\nInvoice ${o.id} for ${fmt2(o.amt)} is ${o.days} days past due. Could you let us know when we can expect payment?\n\nThank you,\nThe office at Northgate Mechanical`;
-  return `Subject: Final notice: invoice ${o.id}\n\nHello,\n\nInvoice ${o.id} for ${fmt2(o.amt)} is now ${o.days} days past due. Please arrange payment this week, or call us to talk it through.\n\nRegards,\nThe office at Northgate Mechanical`;
-}
-function renderOver(){
-  const box=$("over");box.innerHTML="";
-  over_.forEach(o=>{
-    const it=el("div","item");const row=el("button","row");row.type="button";
-    row.innerHTML=`<span><span class="who">${esc(o.who)}</span><br><span class="what">${o.id} · ${esc(o.contact)}</span></span>
-      <span><div class="amt">${fmt(o.amt)}</div><div class="age ${o.days>=30?"hot":""}">${o.days} days overdue</div></span>
-      <span class="status"><span class="pill tone-${o.tone}">${o.tone==="friendly"?"Friendly":o.tone==="firm"?"Second notice":"Final notice"}</span>${o.ok?'<span class="pill ok">In office drafts</span>':""}</span>`;
-    const d=el("div","detail");d.hidden=!openIds.has(o.id);row.setAttribute("aria-expanded",String(!d.hidden));
-    d.innerHTML=`<div><div class="lbl2">Reminder, ready to send</div><div class="msg">${esc(reminder(o))}</div></div>`;
-    const a=el("div","actions");
-    if(o.ok)a.appendChild(el("span","done-msg","In the office's Drafts folder, ready to send."));
-    else{const b=el("button","act","Approve to drafts");b.type="button";b.onclick=()=>{o.ok=true;renderAll()};a.appendChild(b)}
-    d.appendChild(a);
-    row.onclick=()=>{openIds.has(o.id)?openIds.delete(o.id):openIds.add(o.id);renderOver()};
-    it.append(row,d);box.appendChild(it);
-  });
-}
-function renderAll(){renderStats();renderJobs();renderOver();renderPhone();renderDesk()}
+  function renderOffice(){
+    office.innerHTML="";
+    function row(title,status,cls,note){
+      var r=el("div","orow");
+      r.appendChild(el("div","",title));
+      r.appendChild(el("div","st "+cls,status));
+      if(note)r.appendChild(el("div","nt",note));
+      office.appendChild(r);
+    }
+    [["lift",WEST],["kit",OKA]].forEach(function(p){
+      var k=p[0],j=p[1];
+      if(st.approved)row(j.who+", "+money(jobTotal(j)),"Created","ok","In QuickBooks, ready for the office to send.");
+      else if(st.price[k])row(j.who+", "+money(jobTotal(j)),"Draft","ok","Priced by the owner at "+whole(st.price[k])+".");
+      else row(j.who,"Waiting on owner","hold","Missing price: "+NAMES[k]+". Owner has been texted.");
+    });
+    row(EAST.who+", "+money(jobTotal(EAST)),st.approved?"Created":"Draft","ok",
+      "Note on the invoice: PO "+EAST.po.no+" is at "+whole(jobTotal(EAST))+" of "+whole(EAST.po.limit)+"."+(st.used.po?" Increase request is in the owner's Drafts.":""));
+    var rt=JOBS[2],rd=JOBS[4];
+    var sum=jobTotal(rt)+jobTotal(CHEN)+jobTotal(rd);
+    row("Kowalski, Chen, Lakeview Dental, "+money(sum),st.approved?"Created":"Draft","ok","Nothing missing.");
+    office.appendChild(el("div","rc",st.approved?"6 invoices created, none sent to a customer yet.":"6 drafts in QuickBooks, "+unpricedCount()+" waiting on the owner."));
+  }
 
-function renderChart(){
-  const vals=[9.4,8.1,10.2,7.6,9.8,8.7,3.1,1.8,1.2,0.9,1.1,0.8];
-  const W=640,H=250,m={t:16,r:12,b:34,l:36},iw=W-m.l-m.r,ih=H-m.t-m.b,max=12,bw=iw/vals.length,y=v=>m.t+ih-(v/max)*ih;
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Bar chart, example numbers: days from job done to invoice. Six weeks before average about 9 days, six weeks after about 1.5 days.">`;
-  for(let t=0;t<=12;t+=3)s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--line)" stroke-width="1"/><text x="${m.l-8}" y="${y(t)+4}" text-anchor="end" font-family="Space Mono, monospace" font-size="11" fill="var(--muted)">${t}</text>`;
-  vals.forEach((v,i)=>{const x=m.l+i*bw+3,w=bw-6,h=(v/max)*ih,yy=y(v),c=i<6?"var(--before)":"var(--after)",r=Math.min(4,h/2);
-    s+=`<path d="M${x},${m.t+ih} V${yy+r} Q${x},${yy} ${x+r},${yy} H${x+w-r} Q${x+w},${yy} ${x+w},${yy+r} V${m.t+ih} Z" fill="${c}"/><rect x="${m.l+i*bw}" y="${m.t}" width="${bw}" height="${ih}" fill="transparent" data-i="${i}" class="hit"/>`;
-    if(i%2===0)s+=`<text x="${x+w/2}" y="${H-12}" text-anchor="middle" font-family="Space Mono, monospace" font-size="10.5" fill="var(--muted)">Wk ${i+1}</text>`});
-  const sx=m.l+6*bw;
-  s+=`<line x1="${sx}" x2="${sx}" y1="${m.t}" y2="${m.t+ih}" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="${sx+6}" y="${m.t+12}" font-family="Arimo, sans-serif" font-size="12" font-weight="700" fill="var(--ink)">Drafts start</text><line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ih}" y2="${m.t+ih}" stroke="var(--ink-2)" stroke-width="1"/></svg>`;
-  const box=$("chart");box.innerHTML=s;const tip=el("div","tip");tip.hidden=true;box.appendChild(tip);
-  box.querySelectorAll(".hit").forEach(r=>{const show=()=>{const i=+r.dataset.i,sr=box.querySelector("svg").getBoundingClientRect(),cb=box.getBoundingClientRect(),k=sr.width/W;tip.textContent=`Week ${i+1}: ${vals[i]} days`;tip.style.left=(sr.left-cb.left+box.scrollLeft+(m.l+i*bw+bw/2)*k)+"px";tip.style.top=(sr.top-cb.top+y(vals[i])*k)+"px";tip.hidden=false};
-    r.addEventListener("mouseenter",show);r.addEventListener("click",show);r.addEventListener("mouseleave",()=>tip.hidden=true)});
-  const avg=a=>a.reduce((x,y)=>x+y,0)/a.length,b=avg(vals.slice(0,6)),a=avg(vals.slice(6));
-  $("avgBefore").textContent=b.toFixed(1);$("avgAfter").textContent=a.toFixed(1);$("avgDiff").textContent=(b-a).toFixed(1);
-}
+  function ask(k){
+    st.asking=k;
+    var j=k==="lift"?WEST:OKA;
+    bub(k==="lift"?"Price the lift rental":"Price the water line kit",true);
+    bub("The "+NAMES[k]+" is not in your price book, so I left it off the "+OWNER[k]+" draft. It is "+money(jobTotal(j))+" without it. What should it be"+(k==="lift"?" for the day":"")+"?");
+    renderChips();scroll();
+  }
+  function setPrice(k,p){
+    st.price[k]=p;st.asking=null;
+    var j=k==="lift"?WEST:OKA;
+    bub(whole(p)+(k==="lift"?" for the day":""),true);
+    var left=unpricedCount();
+    bub("Done. "+NAMES[k]+" is "+whole(p)+". The "+OWNER[k]+" draft is now "+money(jobTotal(j))+" before tax. All 6 drafts total "+money(allTotal())+"."+(left?" 1 price left.":" Both prices are in."));
+    if(!left){
+      timer=setTimeout(function(){
+        stamp("4:11 pm");
+        bub("All 6 are ready. Approve to send from QuickBooks?");
+        st.ready=true;renderChips();renderOffice();scroll();
+      },900);
+    }
+    renderChips();renderOffice();scroll();
+  }
+  function eastview(){
+    st.used.east=true;
+    bub("What's up with Eastview?",true);
+    var pre=jobTotal(EAST),ret=TRUCK+2*CJ+2*RA;
+    bub("Purchase order "+EAST.po.no+" with "+EAST.po.bill+" has a limit of "+whole(EAST.po.limit)+". This job brings it to "+whole(pre)+" ("+eastPct()+"%). That leaves "+whole(EAST.po.limit-pre)+".\n\nThe techs heard a squealing exhaust fan on the second floor. A return visit with 2 techs for 2 hours plus the truck is about "+whole(ret)+", which goes over. Want me to ask for a higher limit?");
+    renderChips();scroll();
+  }
+  function poDraft(){
+    st.used.po=true;
+    bub("Draft a PO increase request",true);
+    var pre=jobTotal(EAST);
+    var t="To: "+EAST.po.bill+"\nSubject: PO "+EAST.po.no+" increase, Eastview Condos\n\nHi,\n\nPurchase order "+EAST.po.no+" for the make-up air unit repair has a limit of "+whole(EAST.po.limit)+". The work so far is "+whole(pre)+" before tax. We found a noisy exhaust fan on the second floor and expect a return visit.\n\nCould you raise the limit to "+whole(NEWLIMIT)+"?\n\nThanks,\nNorthgate Mechanical";
+    var b=bub("",false);
+    b.appendChild(document.createTextNode("Here is the email:"));
+    b.appendChild(el("div","quote",t));
+    b.appendChild(document.createTextNode("It is in your Drafts. You send it. Nothing has gone to Crescent."));
+    renderChips();renderOffice();scroll();
+  }
+  function voice(){
+    st.used.mike=true;
+    bub("Hear Mike's voice note",true);
+    var b=bub("",false);
+    b.appendChild(document.createTextNode("Mike, from the truck after the Chen job:"));
+    b.appendChild(el("div","quote",VOICE));
+    b.appendChild(document.createTextNode("It became these lines, at your price book rates:"));
+    var w=el("div","stk");
+    CHEN.lines.forEach(function(l){
+      var r=el("div","ln");
+      r.appendChild(el("span","",l[0]));
+      r.appendChild(el("span","num",money(l[1]*l[2])));
+      w.appendChild(r);
+    });
+    var tr=el("div","ln");tr.appendChild(el("b","","Chen draft, before tax"));tr.appendChild(el("span","num",money(jobTotal(CHEN))));
+    w.appendChild(tr);
+    b.appendChild(w);
+    renderChips();scroll();
+  }
+  function approve(){
+    st.approved=true;
+    bub("Approve all 6",true);
+    bub("Done. All 6 invoices are created in QuickBooks, "+money(allTotal())+" before tax, ready for the office to send. Nothing has gone to a customer yet.");
+    renderChips();renderOffice();scroll();
+  }
 
-$("ot").innerHTML=Object.entries(OT_RULES).map(([k,v])=>`<option value="${k}">${v}</option>`).join("");
-$("ot").onchange=e=>{otRule=e.target.value;renderAll()};
-$("reset").onclick=()=>{jobs.forEach(j=>{j.ok=false;j.sent={};j.nte=j.nte0;j.poAsked=false;j.parts.forEach(p=>delete p.entered)});over_.forEach(o=>o.ok=false);otRule="split";$("ot").value="split";step=1;poChecked=false;setStep(1);openIds.clear();renderAll()};
-renderAll();renderChart();
+  function init(){
+    clearTimeout(timer);
+    st={used:{},price:{lift:0,kit:0},asking:null,ready:false,approved:false};
+    document.getElementById("h1").textContent="Today's "+JOBS.length+" jobs are invoiced. "+unpricedCount()+" need a price from you.";
+    thread.innerHTML="";
+    stamp("Tuesday 4:05 pm");
+    bub(JOBS.length+" jobs done today. "+JOBS.length+" draft invoices are in QuickBooks, "+money(allTotal())+" before tax so far.\n\n"+unpricedCount()+" are waiting on a price: the Westside lift rental and the Okafor water line kit.\n\n1 is close to its purchase order limit: Eastview, about "+eastPct()+"% of "+whole(EAST.po.limit)+".\n\nReview: northgate.fk.link/i4");
+    renderChips();renderOffice();
+  }
+  document.getElementById("reset").addEventListener("click",init);
+  init();
+})();
 </script>
 
 </body>

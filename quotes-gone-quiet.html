@@ -7,7 +7,7 @@
 </head>
 <body>
 <title>Quotes Gone Quiet</title>
-<meta name="description" content="Franklin Kinetics Labs demo: quotes with no reply, a three-step follow-up with each message drafted, and outcomes logged. Sample data for a made-up company.">
+<meta name="description" content="Franklin Kinetics Labs demo: a Monday call sheet of quotes worth chasing, with the reason to call and the price re-checked. Sample data for a made-up company.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap">
 <style>
 /* Franklin Kinetics brand: Beacon orange marks the point that matters, Steel carries structure, Draftstock is the paper.
@@ -16,17 +16,17 @@
   --beacon:#ED6B2E; --steel:#2B424A; --carbon:#211F21; --draftstock:#EDE8E0;
   --bg:#EDE8E0; --panel:#FBF9F5; --ink:#211F21; --ink-2:#2B424A; --muted:#5d6b70; --line:#d8d1c5;
   --accent:#ED6B2E; --accent-ink:#211F21; --chip:#e4ddd1;
-  --before:#1B7DB5; --after:#ED6B2E; --ok:#2f7d4f; --ok-bg:#e2efe6; --warn-bg:#fbeee0; --warn-ink:#7a3f12;
+  --before:#1B7DB5; --after:#ED6B2E; --ok:#2f7d4f; --ok-bg:#e2efe6;
   --display:"Syne","Prompt","Arial Black",Arial,sans-serif;
   --body:"Arimo","Nimbus Sans","Helvetica Neue",Arial,sans-serif;
   --mono:"Space Mono","SFMono-Regular",Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
-  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; --warn-bg:#3a2a1c; --warn-ink:#f4b98f; color-scheme:dark}}
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#211F21; --panel:#2a282a; --ink:#EDE8E0; --ink-2:#c9d3d6; --muted:#a39d94; --line:#3d3a3d;
-  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; --warn-bg:#3a2a1c; --warn-ink:#f4b98f; color-scheme:dark}
+  --accent:#ED6B2E; --accent-ink:#211F21; --chip:#363336; --before:#3698D2; --after:#DE6328; --ok:#7cc79a; --ok-bg:#24352b; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
 .wrap{max-width:980px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px}
@@ -44,117 +44,80 @@ h3{font-size:1rem}
 p{margin:0}
 .lede{max-width:62ch;color:var(--ink-2)}
 .eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.hero{display:grid;gap:12px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:4px}
-.stat .num{font-family:var(--mono);font-size:1.9rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
-.stat.key{border-top:4px solid var(--accent)}
-.stat .lbl{color:var(--muted);font-size:.92rem}
-section{display:grid;gap:12px}
-.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
-.count{font-family:var(--mono);color:var(--muted);font-size:.9rem}
-.queue{display:grid;gap:8px}
-.item{background:var(--panel);border:1px solid var(--line);border-radius:4px}
-.item>button.row{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:12px 14px;align-items:center}
-.item>button.row:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.who{font-weight:700}
-.what{color:var(--muted);font-size:.92rem}
-.amt{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
-.age{font-family:var(--mono);font-size:.82rem;text-align:right;color:var(--muted)}
-.age.hot{color:var(--accent);font-weight:700}
-.status{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px}
-.pill{font-size:.75rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:3px;background:var(--chip);color:var(--ink-2)}
-.pill.ok{background:var(--ok-bg);color:var(--ok)}
-.pill.tone-friendly{background:var(--chip)}
-.pill.tone-firm{background:var(--chip);color:var(--ink)}
-.pill.tone-final{background:var(--accent);color:var(--accent-ink)}
-.detail{border-top:1px dashed var(--line);padding:12px 14px 14px;display:grid;gap:12px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.note{font-family:var(--mono);font-size:.86rem;background:var(--chip);padding:10px 12px;border-radius:3px;white-space:pre-wrap}
-.lbl2{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-table.lines{width:100%;border-collapse:collapse;font-size:.92rem}
-table.lines td{padding:4px 0;border-bottom:1px solid var(--line)}
-table.lines td.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-table.lines tr.tot td{font-weight:700;border-bottom:0;padding-top:8px}
-.msg{white-space:pre-wrap;background:var(--chip);padding:10px 12px;border-radius:3px;font-size:.95rem}
-.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-button.act{font-family:var(--body);font-weight:700;font-size:.95rem;background:var(--accent);color:var(--accent-ink);border:0;border-radius:3px;padding:8px 14px;cursor:pointer}
-button.ghost{font-family:var(--body);font-size:.9rem;background:transparent;color:var(--ink-2);border:1.5px solid var(--line);border-radius:3px;padding:7px 12px;cursor:pointer}
-button.act:focus-visible,button.ghost:focus-visible{outline:3px solid var(--ink-2);outline-offset:2px}
-.done-msg{color:var(--ok);font-size:.92rem;font-weight:600}
-.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:10px;min-width:0}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;color:var(--ink-2)}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px}
-.chart{position:relative;overflow-x:auto}
-.chart svg{display:block;width:100%;min-width:520px;height:auto}
-.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:.8rem;padding:6px 8px;border-radius:3px;white-space:nowrap;transform:translate(-50%,-110%)}
-.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.how div{border-left:3px solid var(--ink-2);padding:2px 0 2px 12px;display:grid;gap:4px}
-.how div.never{border-color:var(--accent)}
-.how b{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:.9rem}
-.cta{background:var(--steel);color:#EDE8E0;border-radius:4px;padding:22px;display:grid;gap:10px}
-.cta h2{color:#EDE8E0}
-.cta a.btn{justify-self:start;background:var(--beacon);color:#211F21;font-weight:700;text-decoration:none;padding:10px 16px;border-radius:3px}
-.cta a.btn:focus-visible{outline:3px solid #EDE8E0;outline-offset:2px}
-footer{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
-@media (max-width:640px){.two{grid-template-columns:1fr}.stat .num{font-size:1.6rem}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-button.ghost[aria-pressed="true"]{background:var(--ink-2);color:var(--bg);border-color:var(--ink-2)}
-/* v3 components: truck-to-office walkthrough, flags, price-needed inputs, PO meter, history, shop rules */
-.mono{font-family:var(--mono)}
-.scroll{overflow-x:auto}
-.steps{display:flex;flex-wrap:wrap;gap:8px}
-.step{font-family:var(--mono);font-size:.76rem;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:var(--panel)}
-.step.on{border-color:var(--accent);color:var(--ink);background:var(--warn-bg)}
-.walk{display:grid;grid-template-columns:310px 1fr;gap:20px;align-items:start}
-.phone{background:var(--carbon);border-radius:28px;padding:11px}
-.screen{background:var(--panel);border-radius:19px;padding:14px;display:grid;gap:12px}
-.jobcard{border:1px solid var(--line);border-radius:4px;padding:10px;display:grid;gap:3px}
-.transcript{font-size:.9rem;background:var(--chip);border-radius:3px;padding:10px 12px;line-height:1.45}
-.thumbs{display:flex;flex-wrap:wrap;gap:8px}
-.thumb{width:66px;height:66px;border-radius:4px;background:var(--steel);color:#EDE8E0;font-family:var(--mono);font-size:.6rem;line-height:1.15;padding:5px;display:flex;align-items:flex-end}
-.desk{display:grid;gap:12px;min-width:0}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:12px;min-width:0}
-.panel>.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
-.empty{color:var(--muted);font-size:.92rem;padding:18px 0;text-align:center}
-.flag{background:var(--warn-bg);color:var(--warn-ink);border-left:3px solid var(--accent);padding:7px 10px;font-size:.9rem;border-radius:3px}
-.tag{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:3px;background:var(--warn-bg);color:var(--warn-ink);margin-left:6px;white-space:nowrap}
-.pill.warn{background:var(--warn-bg);color:var(--warn-ink)}
-dl.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:.9rem;margin:0}
-dl.kv dt{color:var(--muted)}
-dl.kv dd{margin:0;font-family:var(--mono);font-size:.84rem}
-ul.work{margin:0;padding-left:18px;font-size:.92rem}
-ul.work li{margin:2px 0}
-.meter{height:8px;background:var(--chip);border-radius:99px;overflow:hidden;margin:6px 0 2px}
-.meter i{display:block;height:100%;background:var(--ok)}
-.meter.warn i{background:var(--accent)}
-.po{border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:.9rem;display:grid;gap:4px}
-.opp{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;border:1px solid var(--line);border-left:3px solid var(--ink-2);padding:8px 10px;border-radius:3px;font-size:.92rem}
-table.lines{min-width:340px}
-table.lines th{text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;padding:4px 0;border-bottom:1px solid var(--line)}
-table.lines th.r{text-align:right}
-table.lines tr.sec td{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:12px;border-bottom:0}
-table.lines td{padding:5px 8px 5px 0}
-table.lines td.r{padding-right:0;padding-left:8px;white-space:nowrap}
-table.lines input{width:86px;font:inherit;font-family:var(--mono);text-align:right;background:var(--bg);color:var(--ink);border:1.5px solid var(--accent);border-radius:3px;padding:2px 6px}
-table.hist{width:100%;border-collapse:collapse;font-size:.88rem}
-table.hist td,table.hist th{padding:5px 8px 5px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-table.hist th{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
-table.hist td:first-child{font-family:var(--mono);white-space:nowrap}
-.rule{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--panel);border:1px dashed var(--line);border-radius:4px;padding:10px 12px;font-size:.92rem}
-.rule label{font-weight:700}
-.rule select,.actions select{font:inherit;font-size:.9rem;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:6px 8px;max-width:100%}
-button.act:disabled{opacity:.45;cursor:not-allowed}
-.why-off{font-size:.86rem;color:var(--muted)}
-.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.ladder div{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--ink-2);border-radius:4px;padding:10px 12px;display:grid;gap:2px;font-size:.92rem}
-.ladder div.last{border-top-color:var(--accent)}
-.ladder b{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase}
-.spin{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:fkspin .8s linear infinite;vertical-align:-1px;margin-right:6px}
-@keyframes fkspin{to{transform:rotate(360deg)}}
-@media (max-width:820px){.walk{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+/* v2 owner-first frame. Order on every page: hero (the first-screen line) -> "What you see" surface -> optional "What your office sees" -> Behind the scenes (collapsed) -> CTA. */
+:root{--warn-bg:#fbeee0;--warn-ink:#7a3f12;--ok:#2f7d4f;--ok-bg:#e2efe6;--bubble-in:#ffffff;--bubble-out:#2B424A;--bubble-out-ink:#EDE8E0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}}
+:root[data-theme="dark"]{--warn-bg:#3a2a1c;--warn-ink:#f4b98f;--ok:#7cc79a;--ok-bg:#24352b;--bubble-in:#363336;--bubble-out:#c9d3d6;--bubble-out-ink:#211F21}
+.wrap{max-width:720px;gap:28px}
 [hidden]{display:none!important}
+.hero{display:grid;gap:10px}
+.hero h1{font-size:clamp(1.6rem,6vw,2.4rem);text-transform:none;letter-spacing:0;line-height:1.12}
+.hero .lede{font-size:1.02rem}
+.forwho{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+section{display:grid;gap:12px}
+.label{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+.label::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.label.office::before{background:var(--ink-2)}
+.hint{color:var(--muted);font-size:.95rem}
+/* The surface: a plain card on phones (no fake bezel), a framed device on wide screens. */
+.surface{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.surface .bar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.surface .bar b{color:var(--ink);font-weight:700}
+.surface .body{padding:14px;display:grid;gap:10px}
+@media (min-width:700px){.surface{max-width:400px;justify-self:center;width:100%;border:10px solid var(--carbon);box-shadow:0 10px 30px rgba(0,0,0,.18)}}
+/* Text thread */
+.thread{display:grid;gap:8px}
+.bub{max-width:85%;padding:9px 12px;border-radius:16px;font-size:1rem;line-height:1.4;background:var(--bubble-in);border:1px solid var(--line);justify-self:start;white-space:pre-wrap}
+.bub.me{justify-self:end;background:var(--bubble-out);color:var(--bubble-out-ink);border-color:transparent}
+.bub small{display:block;font-size:.78rem;opacity:.75;margin-top:4px}
+.stamp{justify-self:center;font-size:.8rem;color:var(--muted)}
+.bub.fresh{animation:fkin .25s ease-out}
+@keyframes fkin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Email */
+.mail .from{font-weight:700}
+.mail .subj{font-family:var(--display);font-size:1.15rem;line-height:1.2}
+.mail h4{margin:8px 0 4px;font-family:var(--mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* Tappable rows: big targets with a visible cue */
+.tap{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;width:100%;min-height:52px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.tap::after{content:"›";grid-column:2;grid-row:1 / span 2;font-size:1.5rem;color:var(--muted)}
+.tap[aria-expanded="true"]::after{content:"⌄"}
+.tap:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tap .t{font-weight:700}
+.tap .s{color:var(--muted);font-size:.92rem}
+.open{padding:10px 12px;border-left:3px solid var(--accent);display:grid;gap:8px;background:var(--bg);border-radius:0 8px 8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;padding:10px 14px;border-radius:22px;border:1.5px solid var(--ink-2);color:var(--ink-2);font-weight:600;font-size:.95rem}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chip[disabled]{opacity:.4;cursor:default}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;min-height:48px;padding:12px 18px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:1rem;text-align:center}
+.btn.quiet{background:transparent;color:var(--ink-2);border:1.5px solid var(--line)}
+.btn:focus-visible{outline:3px solid var(--ink-2);outline-offset:2px}
+.row2{display:flex;flex-wrap:wrap;gap:8px}
+.flag{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 12px;font-size:.95rem}
+.okmsg{background:var(--ok-bg);color:var(--ok);border-radius:8px;padding:10px 12px;font-weight:600}
+.big{font-family:var(--mono);font-weight:700;font-size:1.6rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.quote{font-style:italic;border-left:3px solid var(--line);padding-left:10px;color:var(--ink-2)}
+/* Office view: plain, short, clearly secondary */
+.office{background:var(--chip);border-radius:10px;padding:14px;display:grid;gap:8px}
+/* Behind the scenes */
+details.bts{border-top:2px solid var(--ink-2);padding-top:12px}
+details.bts>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:48px;font-family:var(--display);font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em}
+details.bts>summary::-webkit-details-marker{display:none}
+details.bts>summary::after{content:"+";font-size:1.6rem;color:var(--accent)}
+details.bts[open]>summary::after{content:"\2212"}
+.steps2{display:grid;gap:12px;margin-top:8px}
+.steps2 div{border-left:3px solid var(--ink-2);padding:2px 0 2px 12px;display:grid;gap:2px}
+.steps2 div.never{border-color:var(--accent)}
+.steps2 b{font-weight:700}
+.cta{background:var(--steel);color:#EDE8E0;border-radius:10px;padding:20px;display:grid;gap:10px}
+.cta h2{color:#EDE8E0;font-family:var(--display);font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em;margin:0}
+.cta a{justify-self:start;background:var(--beacon);color:#211F21;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:8px;min-height:48px;box-sizing:border-box}
+footer{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+footer button{all:unset;cursor:pointer;text-decoration:underline}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.linklbl{font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.label.office{display:flex;background:none;padding:0;border-radius:0;gap:8px}
 </style>
 
 <div class="wrap">
@@ -165,163 +128,200 @@ button.act:disabled{opacity:.45;cursor:not-allowed}
     </a>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="labs">Labs</span><span class="sample">Sample data. Northgate Mechanical is a made-up company.</span></div>
   </header>
+<style>
+.qg-tally{font-family:var(--mono);font-size:.85rem;color:var(--ink-2);background:var(--chip);border-radius:8px;padding:8px 12px}
+.qg-list{display:grid;gap:8px}
+.qg-pill{display:inline-block;border-radius:12px;padding:1px 9px;font-size:.82rem;font-weight:700;background:var(--chip);color:var(--ink-2)}
+.qg-pill.won{background:var(--ok-bg);color:var(--ok)}
+.qg-h{margin:0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.qg-say{background:var(--bubble-in);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.97rem;line-height:1.45}
+.qg-row.done .tap{opacity:.75}
+.qg-more{color:var(--ink-2);font-size:.95rem;margin:0}
+</style>
 
-  <div class="hero">
-    <span class="eyebrow">Monday quote list · week of November 23</span>
-    <h1>Quotes gone quiet</h1>
-    <p class="lede">Every quote that went out and never got an answer, ranked by value and age, with a reason to call taken from the estimator's site-visit notes and the next message already written. Quotes where a supplier price changed or the quote expired are flagged before anyone follows up. Northgate's office works down the list on Monday morning and logs what happened.</p>
-    <div class="stats" id="stats"></div>
+<div class="hero">
+  <div class="forwho">For HVAC, plumbing and electrical shops</div>
+  <h1 id="h1"></h1>
+  <p class="lede">Every Monday you get five people to call, with a reason and the words to use. Tap a name to open it, then log how the call went.</p>
+</div>
+
+<section>
+  <div class="label">What you see</div>
+  <div class="hint">A call sheet emailed to you Monday at 7:30 am. It opens on your phone as a page, and the buttons log how each call went.</div>
+  <div class="surface">
+    <div class="bar"><b>Call sheet · Mon Nov 23, 7:30 am</b></div>
+    <div class="body">
+      <div class="qg-tally" id="tally"></div>
+      <div class="qg-list" id="list"></div>
+      <p class="qg-more" id="more"></p>
+    </div>
   </div>
+</section>
 
-  <section aria-labelledby="h-ladder">
-    <h2 id="h-ladder">Three follow-ups, then stop</h2>
-    <div class="ladder">
-      <div><b>Day 7 · text or email</b><span>Short and friendly. Texts to homeowners, email to businesses.</span></div>
-      <div><b>Day 14 · call</b><span>A call note with one real reason to call, and a voicemail line if nobody picks up.</span></div>
-      <div class="last"><b>Day 30 · last note</b><span>Keep it open, adjust it, or close the file. After this, the quote leaves the list.</span></div>
-    </div>
-  </section>
+<section>
+  <div class="label office">What your office sees</div>
+  <div class="office">
+    <p>The same five calls, so nobody doubles up with you.</p>
+    <p id="officeLine"></p>
+    <p>They read each one, fix anything, and press send. Nothing goes out on its own.</p>
+  </div>
+</section>
 
-  <section aria-labelledby="h-q">
-    <div class="sechead"><h2 id="h-q">No reply after 7 days</h2><span class="count" id="qCount"></span></div>
-    <div class="actions" role="group" aria-label="Filter by follow-up step">
-      <button class="ghost" type="button" data-f="all" aria-pressed="true">All</button>
-      <button class="ghost" type="button" data-f="text" aria-pressed="false">First follow-up due</button>
-      <button class="ghost" type="button" data-f="call" aria-pressed="false">Call due</button>
-      <button class="ghost" type="button" data-f="last" aria-pressed="false">Last note due</button>
-    </div>
-    <div class="queue" id="quotes"></div>
-  </section>
+<details class="bts">
+  <summary>Behind the scenes</summary>
+  <div class="steps2">
+    <div><b>Reads</b><span>Every quote sent in your quoting tool and the site-visit notes, plus any replies in your email.</span></div>
+    <div><b>Does</b><span>Ranks who to call, writes the reason and what to say, drafts day 7 and day 30 follow-up emails, and re-checks prices against current supplier costs.</span></div>
+    <div><b>A person approves</b><span>Every call is yours. Every email gets sent by a person.</span></div>
+    <div class="never"><b>Never</b><span>Calls or emails a customer itself, or changes a quote price.</span></div>
+    <div><b>Runs on</b><span>Your quoting tool or QuickBooks estimates, plus your email.</span></div>
+  </div>
+</details>
 
-  <section aria-labelledby="h-out">
-    <div class="sechead"><h2 id="h-out">What happened this week</h2><span class="count" id="outCount"></span></div>
-    <div class="panel" id="outcomes"></div>
-  </section>
+<section class="cta">
+  <h2>See it on your own quotes</h2>
+  <p>Send a sample you already have. You get back a one-time page like this within three business days. It's free.</p>
+  <a href="https://www.franklinkinetics.com/contact">Start a conversation</a>
+</section>
 
-  <section aria-labelledby="h-how">
-    <h2 id="h-how">How it works</h2>
-    <div class="how">
-      <div><b>Reads</b><span>Quotes and site-visit notes from your estimating or field software, plus your supplier price lists. A photo of the quote binder works for the first run.</span></div>
-      <div><b>Drafts</b><span>AI writes the text, the call note or the last note, depending on how long the quote has waited.</span></div>
-      <div><b>Flags</b><span>Expired quotes and supplier price changes since the quote went out, so nobody follows up on a price you can't hold.</span></div>
-      <div><b>A person decides</b><span>Your office calls or sends, then logs won, lost or still deciding. Lost reasons add up over time.</span></div>
-      <div class="never"><b>Never</b><span>Changes a price, edits your estimates, or contacts a customer on its own.</span></div>
-      <div><b>You own it</b><span>Everything runs in your accounts. If it stops, you follow up the way you do today. No contract.</span></div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <h2>See it on your own quotes</h2>
-    <p>Send your open quotes from the last 90 days, as an export, a printout or a photo. The page shows the ones that went quiet, the dollar total, which follow-up each one is due for, and the message for each. Cover customer names if you like; dates and amounts are enough. You get back a one-time page like this for your company within three business days. It's free.</p>
-    <a class="btn" href="https://www.franklinkinetics.com/contact">Start a conversation</a>
-  </section>
-
-  <footer><span>Franklin Kinetics · Regina, Saskatchewan</span><span><button class="ghost" type="button" id="reset">Reset demo</button></span></footer>
+<footer>
+  <span>Franklin Kinetics · Regina, Saskatchewan</span>
+  <button type="button" id="reset">Start over</button>
+</footer>
 </div>
 
 <script>
-const fmt=n=>n.toLocaleString("en-CA",{style:"currency",currency:"CAD",maximumFractionDigits:0});
-const $=id=>document.getElementById(id);
-const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e};
-const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
-const quotes=[
- {id:"Q-745",who:"Lakeshore Townhomes (condo board)",what:"Furnace replacements, 12 units",amt:79200,days:8,sent:"Nov 15",first:"Diane",biz:true,est:"Marcus",
-  visit:"Board chair walked the units with us. Capital spending goes to the board's December meeting.",
-  why:"Ask if the quote is on the December agenda and offer to attend for ten minutes to answer questions.",flags:[]},
- {id:"Q-718",who:"Riverside Community Church",what:"Boiler replacement",amt:38400,days:29,sent:"Oct 25",first:"Pastor Ellis",biz:true,est:"Marcus",
-  visit:"Applying for a building grant. Asked whether the work could be done in two phases.",
-  why:"Ask whether the grant application went in, and whether a two-phase option would help.",
-  flags:["Supplier raised boiler prices 4% on November 1, after this quote went out. Re-check the price before offering a phased option.","Quote expires tomorrow, November 24. Confirm the price holds before calling."]},
- {id:"Q-729",who:"Hillsdale Medical Clinic",what:"Rooftop unit replacement",amt:22800,days:18,sent:"Nov 5",first:"Tom",biz:true,est:"Priya",
-  visit:"Clinic manager said they're getting a second quote.",
-  why:"Ask what the other quote included so they compare like for like: crane, curb adapter, permit, disposal.",flags:[]},
- {id:"Q-711",who:"Sorensen residence, Whitmore Park",what:"Furnace and AC together",amt:14600,days:34,sent:"Oct 20",first:"Karen",est:"Dale",
-  visit:"Asked about financing during the site visit.",
-  why:"Mention payment options. If they want to wait, offer to hold the furnace and quote the AC for spring.",
-  flags:["This quote expired November 19 (30-day validity). Confirm the price still holds before the last note goes out."]},
- {id:"Q-742",who:"Taylor residence, Uplands",what:"Furnace replacement",amt:7150,days:9,sent:"Nov 14",first:"Mike",est:"Dale",
-  visit:"Furnace is 24 years old. Needed an igniter last winter.",
-  why:"Furnace is 24 years old and needed an igniter last winter. Ask if they want it replaced before the coldest weeks.",flags:[]},
- {id:"Q-733",who:"Dubois residence, Cathedral",what:"Ductless heat pump",amt:6300,days:15,sent:"Nov 8",first:"Anne",est:"Priya",
-  visit:"Wants it in before the basement renovation.",
-  why:"Ask when the renovation starts so the install fits the schedule.",flags:[]},
- {id:"Q-724",who:"Fehr residence, Harbour Landing",what:"Tankless water heater",amt:4950,days:23,sent:"Oct 31",first:"Jason",est:"Dale",
-  visit:"Asked about tank versus tankless running costs.",
-  why:"Offer the side-by-side running cost sheet.",flags:[]},
- {id:"Q-736",who:"Albert Street Bakery",what:"Walk-in cooler temperature alarm",amt:1180,days:13,sent:"Nov 10",first:"Rosa",biz:true,est:"Marcus",
-  visit:"Cooler compressor failed in July and cost them a day of stock.",
-  why:"An alarm texts them when the cooler warms up, before stock is lost. Ask if they want it in before summer.",flags:[]},
- {id:"Q-740",who:"Moreau residence, Lakeview",what:"Humidifier and air cleaner",amt:1620,days:10,sent:"Nov 13",first:"Paul",est:"Priya",
-  visit:"Dry-air complaint during the tune-up.",
-  why:"It can go in on the same visit as their December tune-up.",flags:[]}
-];
-const REASONS=["Price","Timing, not this year","Chose another contractor","Doing it themselves","No answer after the last note"];
-quotes.forEach(q=>{q.done=false;q.out=null;q.reason=""});
-let filt="all";
-const stage=q=>q.days>=30?"last":q.days>=14?"call":"text";
-const STAGE={text:"First follow-up due",call:"Call due",last:"Last note due"};
-const lc=s=>s.replace(/^./,c=>c.toLowerCase());
-function message(q){
-  const s=stage(q);
-  if(s==="text")return {lbl:q.biz?"Email, ready to send":"Text, ready to send",body:q.biz?`Subject: Your ${lc(q.what)} quote\n\nHi ${q.first},\n\nFollowing up on the quote for the ${lc(q.what)} (${fmt(q.amt)}). Any questions we can answer? Happy to adjust it if something didn't fit.\n\nThe office at Northgate Mechanical`:`Hi ${q.first}, it's the office at Northgate Mechanical. Following up on the quote for the ${lc(q.what)} (${fmt(q.amt)}). Any questions we can answer? Happy to adjust it if something didn't fit.`};
-  if(s==="call")return {lbl:"Call note and voicemail",body:`Call ${q.first}. ${q.why}\n\nIf voicemail: "Hi ${q.first}, it's the office at Northgate Mechanical about the ${lc(q.what)} quote ${q.est} put together. A quick question for you when you have a minute. Call us back at the office."`};
-  return {lbl:"Last note, ready to send",body:`Subject: Your ${lc(q.what)} quote\n\nHi ${q.first},\n\nWe sent the quote for the ${lc(q.what)} on ${q.sent}. We don't want to keep filling your inbox, so this is our last note. Should we keep it open, adjust it, or close the file? A one-word answer is plenty.\n\nThe office at Northgate Mechanical`};
-}
-function score(q){return q.amt*Math.log(q.days+1)}
-function render(){
-  const open=quotes.filter(q=>!q.out);
-  const list=quotes.filter(q=>filt==="all"||stage(q)===filt).sort((a,b)=>(!!a.out-!!b.out)||score(b)-score(a));
-  $("stats").innerHTML=
-   `<div class="stat key"><span class="num">${fmt(open.reduce((a,q)=>a+q.amt,0))}</span><span class="lbl">in quotes with no answer yet</span></div>`+
-   `<div class="stat"><span class="num">${open.filter(q=>!q.done).length}</span><span class="lbl">follow-ups due this week</span></div>`+
-   `<div class="stat"><span class="num">${open.filter(q=>q.flags.length).length}</span><span class="lbl">prices to re-check before following up</span></div>`;
-  $("qCount").textContent=`${list.length} shown · sorted by value and age`;
-  const box=$("quotes");box.innerHTML="";
-  list.forEach(q=>{
-    const it=el("div","item");
-    const row=el("button","row");row.type="button";
-    const s=stage(q);
-    const st=q.out?`<span class="pill ${q.out==="won"?"ok":""}">${q.out==="won"?"Won":q.out==="lost"?"Lost: "+esc(q.reason):"Still deciding"}</span>`:
-      `<span class="pill ${s==="last"?"tone-final":""}">${STAGE[s]}</span>${q.done?'<span class="pill ok">Followed up</span>':""}${q.flags.length?'<span class="pill warn">Re-check price</span>':""}`;
-    row.innerHTML=`<span><span class="who">${esc(q.who)}</span><br><span class="what">${esc(q.what)} · ${q.id} · estimator ${q.est}</span></span>
-     <span><div class="amt">${fmt(q.amt)}</div><div class="age ${q.days>=14?"hot":""}">sent ${q.sent} · ${q.days} days</div></span>
-     <span class="status">${st}</span>`;
-    const d=el("div","detail");d.hidden=!q.open;row.setAttribute("aria-expanded",String(!!q.open));
-    const m=message(q);
-    d.innerHTML=`${q.flags.map(f=>`<div class="flag"><b>Before following up:</b> ${esc(f)}</div>`).join("")}
-     <div class="two"><div style="display:grid;gap:10px;align-content:start"><div><div class="lbl2">From the site visit</div><div class="note">${esc(q.visit)}</div></div><div><div class="lbl2">Reason to reach out</div><div class="note">${esc(q.why)}</div></div></div>
-     <div><div class="lbl2">${m.lbl}</div><div class="msg">${esc(m.body)}</div></div></div>`;
-    const a=el("div","actions");
-    if(q.out){a.appendChild(el("span","done-msg",q.out==="won"?"Logged as won. The office turns it into a job.":q.out==="lost"?"Logged as lost. The reason counts toward the monthly summary.":"Logged as still deciding. It comes back at the next step."))}
-    else{
-      if(!q.done){const b=el("button","act","Mark followed up");b.type="button";b.onclick=()=>{q.done=true;render()};a.appendChild(b)}
-      else a.appendChild(el("span","done-msg","Followed up. Log the answer when it comes."));
-      const w=el("button","ghost","Won");w.type="button";w.onclick=()=>{q.out="won";render()};
-      const sd=el("button","ghost","Still deciding");sd.type="button";sd.onclick=()=>{q.out="wait";render()};
-      const sel=el("select");sel.setAttribute("aria-label",`Lost reason for ${q.who}`);sel.innerHTML=`<option value="">Lost, because…</option>`+REASONS.map(r=>`<option>${r}</option>`).join("");
-      sel.onchange=()=>{if(sel.value){q.out="lost";q.reason=sel.value;render()}};
-      a.append(w,sd,sel);
+(function(){
+  var START=[
+    {id:"Q-745",name:"Diane",org:"Lakeshore Townhomes",job:"Furnaces, 12 units",amt:79200,days:8,warm:0.8,
+     why:"The board chair walked the units with you, and capital spending goes to the board's December meeting.",
+     say:"Hi Diane, it's Northgate Mechanical. I'm checking whether our furnace quote is on the December board agenda. If it helps, I can come for ten minutes and answer the board's questions."},
+    {id:"Q-718",name:"Pastor Ellis",org:"Riverside Community Church",job:"Boiler replacement",amt:38400,days:29,warm:1,cost:26880,
+     why:"The quote expires tomorrow, Nov 24, and they asked on the site visit about doing the job in two phases for their building grant.",
+     say:"Hi Pastor Ellis, it's Northgate Mechanical. Your boiler quote runs out tomorrow. Did the grant application go in? If two phases would help, I can price that for you."},
+    {id:"Q-711",name:"Karen",org:"Sorensen residence",job:"Furnace and AC together",amt:14600,days:34,warm:0.9,
+     why:"They asked about financing on the site visit, and the quote expired Nov 19.",
+     say:"Hi Karen, it's Northgate Mechanical. You asked about financing on the furnace and AC, and I can walk you through the payment options. If you'd rather wait, I can hold the furnace and quote the AC for spring."},
+    {id:"Q-742",name:"Mike",org:"Taylor residence",job:"Furnace replacement",amt:7150,days:9,warm:1,
+     why:"Their furnace is 24 years old and needed an igniter last winter.",
+     say:"Hi Mike, it's Northgate Mechanical. Your furnace is 24 years old and needed an igniter last winter. Do you want it replaced before the coldest weeks hit?"},
+    {id:"Q-736",name:"Rosa",org:"Albert Street Bakery",job:"Walk-in cooler temperature alarm",amt:1180,days:13,warm:0.8,
+     why:"Their cooler compressor failed in July and cost them a day of stock.",
+     say:"Hi Rosa, it's Northgate Mechanical. The alarm in your quote texts you when the cooler warms up, before stock is lost. Do you want it in before next summer?"}
+  ];
+  var DRAFTS=[
+    {id:"Q-729",who:"Hillsdale Medical Clinic",step:7},
+    {id:"Q-733",who:"Dubois residence",step:7},
+    {id:"Q-740",who:"Moreau residence",step:7},
+    {id:"Q-751",who:"Kowalchuk residence",step:7},
+    {id:"Q-752",who:"Prairie Print Shop",step:7},
+    {id:"Q-724",who:"Fehr residence",step:30},
+    {id:"Q-748",who:"Nygaard residence",step:30}
+  ];
+  var REASONS=[["price","Price"],["timing","Timing"],["other","Went with someone else"]];
+  var rows,openId,pickLost;
+  var elH1=document.getElementById("h1"),elList=document.getElementById("list"),
+      elTally=document.getElementById("tally"),elMore=document.getElementById("more"),
+      elOffice=document.getElementById("officeLine");
+
+  function money(n){return "$"+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function margin(r){return Math.round((r.amt-r.cost*1.04)/r.amt*100);}
+  function was(r){return Math.round((r.amt-r.cost)/r.amt*100);}
+  function label(r){
+    if(r.out==="won") return "Won";
+    if(r.out==="wait") return "Still deciding";
+    var m={price:"Price",timing:"Timing",other:"Went with someone else"};
+    return "Lost: "+m[r.reason];
+  }
+
+  function head(){
+    var total=rows.reduce(function(a,r){return a+r.amt;},0);
+    elH1.textContent=rows.length+" quotes worth "+money(total)+" are waiting on an answer. Call these first.";
+    var called=rows.filter(function(r){return r.out;}).length;
+    var won=rows.filter(function(r){return r.out==="won";});
+    var booked=won.reduce(function(a,r){return a+r.amt;},0);
+    elTally.textContent=called+" called, "+won.length+" won, "+money(booked)+" booked";
+    var d7=DRAFTS.filter(function(d){return d.step===7;}).length, d30=DRAFTS.length-d7;
+    elMore.textContent=DRAFTS.length+" more quotes got an email or text follow-up this week. They're in your Drafts for the office to send.";
+    elOffice.textContent=DRAFTS.length+" follow-up emails are waiting in Drafts ("+d7+" day 7, "+d30+" day 30).";
+  }
+
+  function row(r){
+    var isOpen=openId===r.id, logged=!!r.out;
+    var sub=esc(r.org)+", "+esc(r.job)+'. <span class="num">'+money(r.amt)+"</span>, sent "+r.days+" days ago";
+    var h='<div class="qg-row'+(logged?" done":"")+'">'
+      +'<button type="button" class="tap" data-id="'+r.id+'" aria-expanded="'+isOpen+'" aria-controls="o'+r.id+'">'
+      +'<span class="t">'+esc(r.name)+(logged?' <span class="qg-pill'+(r.out==="won"?" won":"")+'">'+esc(label(r))+"</span>":"")+"</span>"
+      +'<span class="s">'+sub+"</span></button>";
+    h+='<div class="open" id="o'+r.id+'"'+(isOpen?"":" hidden")+">";
+    if(logged){
+      h+='<div class="okmsg">Logged: '+esc(label(r))+'.</div>'
+        +'<div class="row2"><button type="button" class="btn quiet" data-act="undo" data-id="'+r.id+'">Undo</button></div>';
+    }else{
+      h+='<div><div class="qg-h">Why call now</div><div>'+esc(r.why)+"</div></div>";
+      if(r.cost && !r.choice){
+        h+='<div class="flag">Supplier raised prices 4% since this quote. Your margin on it drops to '+margin(r)+'% (from '+was(r)+'%). Honour it or re-quote?'
+          +'<div class="chips" style="margin-top:8px"><button type="button" class="chip" data-act="honour" data-id="'+r.id+'">Honour the price</button>'
+          +'<button type="button" class="chip" data-act="requote" data-id="'+r.id+'">Re-quote</button></div></div>';
+      }else if(r.cost){
+        h+='<div class="okmsg">'+(r.choice==="honour"
+          ?"You are honouring "+money(r.amt)+". Margin on this job: "+margin(r)+"%."
+          :"Re-quote noted. Your office prepares the new price. You approve it before it goes out.")+"</div>";
+      }
+      h+='<div><div class="qg-h">What to say</div><div class="qg-say">'+esc(r.say)+"</div></div>";
+      h+='<div class="qg-h">How did the call go?</div><div class="chips">'
+        +'<button type="button" class="chip" data-act="won" data-id="'+r.id+'">Won</button>'
+        +'<button type="button" class="chip" data-act="wait" data-id="'+r.id+'">Still deciding</button>'
+        +'<button type="button" class="chip" data-act="lost" data-id="'+r.id+'" aria-expanded="'+(pickLost===r.id)+'">Lost</button></div>';
+      if(pickLost===r.id){
+        h+='<div class="qg-h">Why was it lost?</div><div class="chips">';
+        REASONS.forEach(function(x){h+='<button type="button" class="chip" data-act="reason" data-r="'+x[0]+'" data-id="'+r.id+'">'+x[1]+"</button>";});
+        h+="</div>";
+      }
     }
-    d.appendChild(a);
-    row.onclick=()=>{q.open=!q.open;render()};
-    it.append(row,d);box.appendChild(it);
+    return h+"</div></div>";
+  }
+
+  function render(){
+    head();
+    elList.innerHTML=rows.map(row).join("");
+  }
+  function focusRow(id){
+    var t=elList.querySelector('.tap[data-id="'+id+'"]');
+    if(t) t.focus();
+  }
+
+  elList.addEventListener("click",function(e){
+    var b=e.target.closest("button");
+    if(!b) return;
+    var id=b.getAttribute("data-id"), act=b.getAttribute("data-act");
+    var r=rows.filter(function(x){return x.id===id;})[0];
+    if(!act){
+      openId=(openId===id)?null:id; pickLost=null;
+    }else if(act==="honour"||act==="requote"){
+      r.choice=act;
+    }else if(act==="won"||act==="wait"){
+      r.out=act; openId=null; pickLost=null;
+    }else if(act==="lost"){
+      pickLost=(pickLost===id)?null:id;
+    }else if(act==="reason"){
+      r.out="lost"; r.reason=b.getAttribute("data-r"); openId=null; pickLost=null;
+    }else if(act==="undo"){
+      r.out=null; r.reason=null; pickLost=null;
+    }
+    render();
+    if(!act||act==="undo"||r.out) focusRow(id);
   });
-  renderOutcomes();
-}
-function renderOutcomes(){
-  const won=quotes.filter(q=>q.out==="won"),lost=quotes.filter(q=>q.out==="lost"),wait=quotes.filter(q=>q.out==="wait");
-  $("outCount").textContent=`${won.length+lost.length+wait.length} logged`;
-  if(!won.length&&!lost.length&&!wait.length){$("outcomes").innerHTML='<p class="empty">Nothing logged yet. Open a quote and log won, lost or still deciding. Over a few months, the lost reasons tell you whether it\'s price, timing or follow-up.</p>';return}
-  const byR={};lost.forEach(q=>byR[q.reason]=(byR[q.reason]||0)+q.amt);
-  $("outcomes").innerHTML=`<div class="stats">
-    <div class="stat"><span class="num">${fmt(won.reduce((a,q)=>a+q.amt,0))}</span><span class="lbl">won (${won.length})</span></div>
-    <div class="stat"><span class="num">${fmt(lost.reduce((a,q)=>a+q.amt,0))}</span><span class="lbl">lost (${lost.length})</span></div>
-    <div class="stat"><span class="num">${fmt(wait.reduce((a,q)=>a+q.amt,0))}</span><span class="lbl">still deciding (${wait.length})</span></div></div>
-    ${lost.length?`<table class="hist"><thead><tr><th>Lost because</th><th>Value</th></tr></thead><tbody>${Object.entries(byR).sort((a,b)=>b[1]-a[1]).map(([r,v])=>`<tr><td>${esc(r)}</td><td>${fmt(v)}</td></tr>`).join("")}</tbody></table>`:""}`;
-}
-document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filt=b.dataset.f;document.querySelectorAll("[data-f]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});
-$("reset").onclick=()=>{quotes.forEach(q=>{q.done=false;q.out=null;q.reason="";q.open=false});render()};
-render();
+
+  function reset(){
+    rows=JSON.parse(JSON.stringify(START)).sort(function(a,b){return b.amt*b.warm-a.amt*a.warm;});
+    openId=null; pickLost=null;
+    render();
+  }
+  document.getElementById("reset").addEventListener("click",reset);
+  reset();
+})();
 </script>
 
 </body>
