@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cressman RPM | Regina Property Management for Owners</title>
+<meta name="description" content="Family-run, licensed Regina brokerage managing 300+ long-term rentals. See what you'd hand off.">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--o:#e46b2e;--o2:#c2551d;--ink:#13202b;--mut:#5a6672;--line:#e6e0da;--sand:#f7f2ec;--navy:#13202b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.6 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+h1,h2,h3{line-height:1.12;font-weight:800;letter-spacing:-.015em}
+.fk{background:#000;color:#ddd;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:62px;gap:10px}
+.logo{font-weight:800;font-size:1.15rem;text-decoration:none}
+.logo span{color:var(--o)}
+.portals{display:flex;gap:6px}
+.portals a{font-size:.82rem;font-weight:700;text-decoration:none;border:1.5px solid var(--line);border-radius:999px;padding:8px 12px;white-space:nowrap}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:12px;background:var(--o);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-size:1rem}
+.b.d{background:var(--ink)}
+.b.o{background:none;border:2px solid currentColor;color:inherit}
+.hero{background:var(--sand);padding:34px 0 40px}
+.hero h1{font-size:clamp(2rem,6.5vw,3.2rem);max-width:13em}
+.hero p{color:var(--mut);max-width:34em;margin:12px 0 20px;font-size:1.06rem}
+.hero .row{display:flex;flex-wrap:wrap;gap:10px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.facts span{background:#fff;border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:700}
+.renter{font-size:.92rem;margin-top:14px;color:var(--mut)}
+/* week */
+section{padding:50px 0}
+.k{font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--o2);margin-bottom:8px}
+h2.s{font-size:clamp(1.6rem,4.8vw,2.4rem);margin-bottom:10px}
+.lead{color:var(--mut);max-width:38em;margin-bottom:20px}
+.sw{display:inline-flex;background:var(--sand);border-radius:999px;padding:4px;margin-bottom:16px}
+.sw button{border:0;background:none;min-height:42px;padding:0 16px;border-radius:999px;font:700 .92rem 'Plus Jakarta Sans';cursor:pointer;color:var(--mut)}
+.sw button[aria-pressed=true]{background:var(--ink);color:#fff}
+.week{display:grid;gap:8px}
+.day{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.day b.t{font-size:.8rem;color:var(--mut);padding-top:2px}
+.day .w{font-weight:700}
+.day .d{font-size:.92rem;color:var(--mut)}
+.day.you{border-color:#f3c7ae;background:#fff8f3}
+.who{display:inline-block;font-size:.72rem;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+.who.y{background:#fde3d4;color:var(--o2)}.who.c{background:#e3ecf5;color:#24506e}
+.tally{margin-top:14px;font-weight:700}
+/* what's included */
+.inc{background:var(--navy);color:#dfe6ec}
+.ig{display:grid;gap:1px;background:#2a3a48;border-radius:16px;overflow:hidden}
+@media(min-width:760px){.ig{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.ig{grid-template-columns:repeat(3,1fr)}}
+.ig div{background:var(--navy);padding:20px}
+.ig h3{color:#fff;font-size:1.1rem;margin-bottom:4px}
+.ig p{font-size:.93rem;opacity:.8}
+.not{margin-top:16px;font-size:.92rem;opacity:.85}
+/* family */
+.fam{display:grid;gap:12px}
+@media(min-width:760px){.fam{grid-template-columns:repeat(3,1fr)}}
+.p{border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center}
+.p i{width:56px;height:56px;border-radius:50%;background:linear-gradient(140deg,#f2b48f,#c2551d);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:800}
+.p span{display:block;color:var(--mut);font-size:.9rem}
+.areas{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.areas span{background:var(--sand);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9rem}
+form{display:grid;gap:10px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}
+form input,form select{font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px;min-height:48px;width:100%}
+.ok{display:none;color:#14713a;font-weight:700}
+.end{display:grid;gap:22px}
+@media(min-width:820px){.end{grid-template-columns:1fr 1fr;align-items:center}}
+footer{border-top:1px solid var(--line);padding:24px 0 36px;color:var(--mut);font-size:.88rem}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Cressman Realty and Property Management. Not the live site.</div>
+<div class="wrap top"><a class="logo" href="#">Cressman <span>RPM</span></a><div class="portals"><a href="#">Owner login</a><a href="#">Tenant login</a></div></div>
+
+<header class="hero"><div class="wrap">
+  <h1>Own a rental in Regina? Get your evenings back.</h1>
+  <p>A family-run, licensed brokerage managing 300+ long-term rentals. Screening, repairs, rent and reporting, handled by people you can call by name.</p>
+  <div class="row"><a class="b" href="#start">Get a management proposal</a><a class="b o" href="#week">See what you'd hand off</a></div>
+  <div class="facts"><span>300+ homes managed</span><span>Broker licensed since 2004</span><span>24/7 maintenance response</span><span>4.0★ on 93 Google reviews</span></div>
+  <p class="renter">Looking to rent? <a href="#"><b>See available homes →</b></a></p>
+</div></header>
+
+<section id="week"><div class="wrap">
+  <div class="k">A typical month with one rental</div><h2 class="s">Who handles what?</h2>
+  <p class="lead">Switch between managing it yourself and handing it to Cressman.</p>
+  <div class="sw" role="group" aria-label="Who manages"><button aria-pressed="true" data-m="self">You manage it</button><button aria-pressed="false" data-m="crpm">Cressman manages it</button></div>
+  <div class="week" id="wk"></div>
+  <p class="tally" id="tally"></p>
+</div></section>
+
+<section class="inc"><div class="wrap">
+  <div class="k" style="color:#f2a77f">Full-service, nothing less</div><h2 class="s" style="color:#fff">What management includes</h2>
+  <div class="ig">
+    <div><h3>Leasing</h3><p>Advertising, showings and applications.</p></div>
+    <div><h3>Screening</h3><p>Thorough checks before anyone gets keys.</p></div>
+    <div><h3>Rent collection</h3><p>Collected, followed up and deposited.</p></div>
+    <div><h3>Maintenance</h3><p>24/7 response, coordinated through Property Meld.</p></div>
+    <div><h3>Inspections</h3><p>Move-in, routine and move-out.</p></div>
+    <div><h3>Owner reporting</h3><p>Statements and work orders in Buildium.</p></div>
+  </div>
+  <p class="not">What we don't do: placement-only, Airbnb or other short-term rentals. Long-term homes, managed properly.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="k">The family behind it</div><h2 class="s">You'll know who's looking after your property</h2>
+  <div class="fam">
+    <div class="p"><i>NC</i><div><b>Nathan Cressman</b><span>Principal broker, licensed since 2004</span></div></div>
+    <div class="p"><i>MC</i><div><b>Melanie Cressman</b><span>Property coordination</span></div></div>
+    <div class="p"><i>KC</i><div><b>Kaden Cressman</b><span>Operations support</span></div></div>
+  </div>
+  <div class="areas"><span>Regina</span><span>White City</span><span>Pilot Butte</span><span>Emerald Park</span><span>Balgonie</span></div>
+</div></section>
+
+<section id="start" style="background:var(--sand)"><div class="wrap end">
+  <div><div class="k">Get started</div><h2 class="s">Tell us about your property</h2><p class="lead">We'll send a straight answer on rent, condition and what management would look like. No obligation.</p>
+  <p>155 Leonard Street North, Regina · <a href="tel:+13065847368"><b>(306) 584-7368</b></a></p></div>
+  <form id="f"><input required placeholder="Name" autocomplete="name"><input required placeholder="Phone or email"><input placeholder="Property address or area"><select><option>Single-family house</option><option>Condo or townhouse</option><option>Duplex or multi-unit</option></select><select><option>Currently rented</option><option>Vacant</option><option>I'm moving out and keeping it</option></select><button class="b" type="submit">Get my proposal</button><div class="ok" role="status">Thanks. Nathan's team will be in touch. (Demo only: nothing was sent.)</div></form>
+</div></section>
+<footer><div class="wrap">Cressman Realty and Property Management Inc. · Licensed Saskatchewan brokerage. Concept by Franklin Kinetics; facts from Cressman's current site.</div></footer>
+<script>
+(function(){
+  var W=[['Day 1','Rent due','Two tenants paid. One didn\'t.','Rent collected and deposited; late tenant gets notice automatically.'],
+    ['Day 4','Late rent','Chase the late payment, by text, again.','Arrears follow-up handled.'],
+    ['Day 9','Furnace call, 11 pm','Tenant phones you. You find a tech at night.','24/7 maintenance line answers; trusted trade dispatched.'],
+    ['Day 15','Notice to vacate','Unit 2 is leaving. Start advertising.','Listing, photos and showings scheduled.'],
+    ['Day 22','Showings','Three evening showings, one no-show.','Showings run; applicants screened.'],
+    ['Day 30','Books','Sort receipts for your accountant.','Statement in your owner portal.']];
+  var wk=document.getElementById('wk'),t=document.getElementById('tally');
+  function draw(m){wk.innerHTML=W.map(function(d){var y=m==='self';return '<div class="day'+(y?' you':'')+'"><b class="t">'+d[0]+'</b><div><div class="w">'+d[1]+'<span class="who '+(y?'y">You':'c">Cressman')+'</span></div><div class="d">'+(y?d[2]:d[3])+'</div></div></div>'}).join('');
+    t.textContent=m==='self'?'6 jobs on your plate this month, one at 11 pm.':'Your part: read the statement.';}
+  document.querySelectorAll('.sw button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.sw button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});draw(b.dataset.m)}});
+  draw('self');
+  document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};
+})();
+</script>
+</body>
+</html>

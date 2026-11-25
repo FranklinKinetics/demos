@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Clean Brite Canada | Commercial Cleaning, Regina</title>
+<meta name="description" content="Supervised commercial janitorial crews for Regina offices and buildings. Build an estimate in a minute.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--b:#1c8ad0;--b2:#0f5f95;--g:#1a9a4a;--ink:#0f2a3d;--mut:#5a7383;--sky:#eaf5fc;--line:#d6e6f0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.6 'Nunito Sans',system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+h1,h2,h3{font-family:Nunito,sans-serif;line-height:1.12;font-weight:900}
+.fk{background:var(--ink);color:#dfe;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:64px;gap:10px}
+.logo{font:900 1.45rem Nunito;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--g)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;background:var(--b);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-size:1rem}
+.pill.w{background:#fff;color:var(--b);border:2px solid var(--b)}
+.hero{background:linear-gradient(180deg,var(--sky),#fff);padding:30px 0 10px}
+.hero h1{font-size:clamp(2rem,7vw,3.3rem);max-width:15em}
+.hero p{color:var(--mut);font-size:1.1rem;margin:12px 0 0;max-width:34em}
+/* estimator */
+.est{margin:26px 0 0;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 50px rgba(15,42,61,.08);overflow:hidden;display:grid}
+@media(min-width:860px){.est{grid-template-columns:1.25fr 1fr}}
+.est .q{padding:22px}
+.est h2{font-size:1.35rem;margin-bottom:16px}
+.step{margin-bottom:20px}
+.step>b{display:block;margin-bottom:8px}
+.seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px}
+.seg button{min-height:48px;border-radius:14px;border:2px solid var(--line);background:#fff;font:700 .92rem 'Nunito Sans';color:var(--ink);cursor:pointer;padding:6px}
+.seg button[aria-pressed=true]{border-color:var(--b);background:var(--sky);color:var(--b2)}
+input[type=range]{width:100%;accent-color:var(--b);height:32px}
+.sz{display:flex;justify-content:space-between;font-weight:700}
+.extras label{display:flex;gap:10px;align-items:center;min-height:40px;font-weight:600}
+.extras input{width:20px;height:20px;accent-color:var(--b)}
+.est .r{background:var(--b);color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.r .lab{font-weight:700;opacity:.85;font-size:.9rem;text-transform:uppercase;letter-spacing:.1em}
+.r .big{font:900 clamp(2.2rem,8vw,3rem) Nunito;line-height:1}
+.r .per{opacity:.85}
+.r ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
+.r ul li:before{content:"✓ ";font-weight:900}
+.r .note{font-size:.78rem;opacity:.75}
+.r .pill{background:#fff;color:var(--b2)}
+/* promise */
+section{padding:52px 0}
+.k{color:var(--g);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-bottom:8px}
+h2.s{font-size:clamp(1.6rem,5vw,2.3rem);margin-bottom:12px}
+.miss{display:grid;gap:14px}
+@media(min-width:800px){.miss{grid-template-columns:repeat(3,1fr)}}
+.m{border-radius:20px;background:var(--sky);padding:20px}
+.m .n{width:36px;height:36px;border-radius:50%;background:var(--b);color:#fff;font:900 1rem Nunito;display:grid;place-items:center;margin-bottom:10px}
+.m p{color:var(--mut)}
+.check{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:18px}
+.check table{width:100%;border-collapse:collapse;font-size:.92rem}
+.check th,.check td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+.check td:last-child{color:var(--g);font-weight:800;text-align:right;white-space:nowrap}
+.clients{display:flex;flex-wrap:wrap;gap:10px}
+.clients span{border:2px dashed var(--line);border-radius:14px;padding:14px 18px;font-weight:800;color:var(--mut)}
+.qs{display:grid;gap:12px;margin-top:18px}
+@media(min-width:760px){.qs{grid-template-columns:1fr 1fr}}
+blockquote{border-left:4px solid var(--g);padding:4px 0 4px 16px}
+blockquote footer{color:var(--mut);font-weight:700;font-size:.9rem;margin-top:6px}
+.jobs{background:var(--ink);color:#fff;border-radius:24px;padding:26px;display:grid;gap:14px}
+@media(min-width:760px){.jobs{grid-template-columns:1.4fr auto;align-items:center}}
+.jobs p{opacity:.8}
+footer.f{padding:30px 0 40px;color:var(--mut);font-size:.9rem;border-top:1px solid var(--line)}
+.done{display:none;background:#e3f6ea;color:#14713a;border-radius:12px;padding:12px;font-weight:700}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Clean Brite Canada. Not the live site.</div>
+<div class="wrap top"><a class="logo" href="#">clean<span>brite</span></a><a class="pill" href="tel:+13063529953">(306) 352-9953</a></div>
+
+<div class="hero"><div class="wrap">
+  <h1>What would it cost to have your building cleaned properly?</h1>
+  <p>Answer three questions. You'll see a monthly range right away, then we walk the building and fix the price.</p>
+
+  <div class="est">
+    <div class="q">
+      <div class="step"><b>1. What kind of space?</b>
+        <div class="seg" data-g="type"><button aria-pressed="true" data-v="1">Office</button><button aria-pressed="false" data-v="1.25">Clinic or lab</button><button aria-pressed="false" data-v="0.8">Warehouse</button><button aria-pressed="false" data-v="1.1">Retail</button></div></div>
+      <div class="step"><b>2. How big?</b>
+        <div class="sz"><span id="szv">8,000 sq. ft.</span></div>
+        <input id="sz" type="range" min="1000" max="60000" step="500" value="8000" aria-label="Square feet"></div>
+      <div class="step"><b>3. How often?</b>
+        <div class="seg" data-g="freq"><button aria-pressed="false" data-v="4.3">Weekly</button><button aria-pressed="false" data-v="13">3× a week</button><button aria-pressed="true" data-v="21.7">Weeknights</button></div></div>
+      <div class="extras"><b>Add-ons</b>
+        <label><input type="checkbox" data-add="0.03"> Carpet steam cleaning (quarterly)</label>
+        <label><input type="checkbox" data-add="0.02"> Windows and high dusting (monthly)</label>
+      </div>
+    </div>
+    <div class="r">
+      <div><div class="lab">Estimated monthly</div><div class="big" id="out">$0</div><div class="per" id="per"></div></div>
+      <ul><li>Supervisor on every shift</li><li>Green products standard</li><li>Fixed monthly price after walkthrough</li></ul>
+      <a class="pill" href="#book">Book my free walkthrough</a>
+      <div class="note">Sample rates for this concept. Clean Brite would set the real numbers.</div>
+    </div>
+  </div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="k">Why nothing gets skipped</div>
+  <h2 class="s">Most cleaning complaints are tasks that quietly stopped.</h2>
+  <div class="miss">
+    <div class="m"><div class="n">1</div><h3>Team cleaning</h3><p>Each cleaner owns set tasks across the building, so nothing depends on one person remembering.</p></div>
+    <div class="m"><div class="n">2</div><h3>Supervised shifts</h3><p>A supervisor checks the work against your contract schedule before the crew leaves.</p></div>
+    <div class="m"><div class="n">3</div><h3>We ask your tenants</h3><p>Managers visit during office hours and, with your permission, spot-check with tenants directly.</p></div>
+  </div>
+  <div class="check"><b>Sample: your building's nightly checklist</b>
+    <table><tr><th>Task</th><th>Done</th></tr>
+    <tr><td>Washrooms cleaned and restocked</td><td>✓ 9:40 pm</td></tr>
+    <tr><td>Kitchen counters, sinks, appliances</td><td>✓ 9:55 pm</td></tr>
+    <tr><td>Floors vacuumed and mopped</td><td>✓ 10:30 pm</td></tr>
+    <tr><td>Garbage and recycling out</td><td>✓ 10:45 pm</td></tr>
+    <tr><td>Supervisor walkthrough</td><td>✓ 11:05 pm</td></tr></table>
+  </div>
+</div></section>
+
+<section style="background:var(--sky)"><div class="wrap">
+  <div class="k">Who we clean for</div>
+  <h2 class="s">Buildings that can't look tired</h2>
+  <div class="clients"><span>Canadian Blood Services</span><span>Innovation Place</span><span>Global Saskatoon</span></div>
+  <div class="qs">
+    <blockquote>"Timely and efficient. A pleasure to work with. Clean Brite makes my job easier."<footer>John Strake, Skycan Manufacturing</footer></blockquote>
+    <blockquote>"Their level of service has exceeded our expectations. Would hire again."<footer>Chris Yang, Rogue Radar Mount</footer></blockquote>
+  </div>
+</div></section>
+
+<section id="book"><div class="wrap" style="max-width:620px">
+  <div class="k">Free walkthrough</div><h2 class="s">Book a time to walk the building</h2>
+  <form id="f" style="display:grid;gap:10px">
+    <input required placeholder="Name" autocomplete="name" style="font:inherit;padding:12px;border:1px solid var(--line);border-radius:12px;min-height:48px">
+    <input placeholder="Company and address" style="font:inherit;padding:12px;border:1px solid var(--line);border-radius:12px;min-height:48px">
+    <input required placeholder="Phone or email" style="font:inherit;padding:12px;border:1px solid var(--line);border-radius:12px;min-height:48px">
+    <button class="pill" type="submit">Book walkthrough</button>
+    <div class="done" role="status">Thanks. We'll call to set a time. Your estimate is attached. (Demo only: nothing was sent.)</div>
+  </form>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="jobs"><div><h3 style="font-size:1.4rem">Evening work, real training</h3><p>Join a crew with supervisors who back you up. Evening and weekend shifts across Regina.</p></div><a class="pill" href="tel:+13063529953">Ask about jobs</a></div></div></section>
+
+<footer class="f"><div class="wrap"><b>Clean Brite Canada Ltd.</b> · 1037 Winnipeg Street, Regina, SK S4R 1J3 · <a href="tel:+13063529953">(306) 352-9953</a><br>Concept by Franklin Kinetics. Clients and quotes from Clean Brite's current site.</div></footer>
+<script>
+(function(){
+  var st={type:1,freq:21.7};
+  var sz=document.getElementById('sz');
+  function calc(){
+    var f=+sz.value, perVisit=Math.max(70,f*0.018*st.type);
+    var m=perVisit*st.freq;
+    document.querySelectorAll('[data-add]').forEach(function(c){if(c.checked)m+=f*+c.dataset.add*st.type});
+    var lo=Math.round(m*0.9/10)*10, hi=Math.round(m*1.15/10)*10;
+    document.getElementById('szv').textContent=f.toLocaleString('en-CA')+' sq. ft.';
+    document.getElementById('out').textContent='$'+lo.toLocaleString('en-CA')+' to $'+hi.toLocaleString('en-CA');
+    document.getElementById('per').textContent='About '+Math.round(st.freq)+' cleans a month';
+  }
+  document.querySelectorAll('.seg').forEach(function(g){g.querySelectorAll('button').forEach(function(b){b.onclick=function(){
+    g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});st[g.dataset.g]=+b.dataset.v;calc();}})});
+  sz.oninput=calc;document.querySelectorAll('[data-add]').forEach(function(c){c.onchange=calc});calc();
+  document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.done').style.display='block'};
+})();
+</script>
+</body>
+</html>

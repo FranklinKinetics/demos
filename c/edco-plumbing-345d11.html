@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>EDCO Plumbing &amp; Heating | Regina | Rebates on Upgrades</title>
+<meta name="description" content="Regina plumbing, heating and commercial mechanical since 1969. Lennox dealer. SaskEnergy rebates on furnaces and tankless water heaters.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1e4fbf;--navy:#0d1730;--red:#c8102e;--ink:#121a2b;--mut:#5a647b;--line:#dde3ef;--soft:#f1f4fa;--green:#12804a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.55 Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+h1,h2,h3{font-family:Montserrat,sans-serif;line-height:1.12}
+.fk{background:#000;color:#ddd;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:62px;gap:10px}
+.logo{font:800 1.5rem Montserrat;font-style:italic;color:var(--red);text-decoration:none;letter-spacing:-.02em}
+.logo small{font:700 .66rem Inter;font-style:normal;color:var(--blue);letter-spacing:.1em;display:block;margin-top:-4px}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:10px;background:var(--red);color:#fff;font-weight:700;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-size:1rem}
+.b.bl{background:var(--blue)}
+.b.o{background:none;border:2px solid currentColor;color:inherit}
+.split{display:grid;grid-template-columns:1fr 1fr}
+.split a{display:block;padding:26px 16px 24px;text-decoration:none;color:#fff;min-height:170px}
+.split a:first-child{background:linear-gradient(160deg,#1e4fbf,#0d1730)}
+.split a:last-child{background:linear-gradient(160deg,#2d3446,#121722)}
+.split small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-weight:700}
+.split h2{font-size:clamp(1.25rem,4.5vw,2rem);margin:6px 0}
+.split p{opacity:.85;font-size:.92rem}
+@media(min-width:800px){.split a{padding:40px}}
+.badges{display:flex;flex-wrap:wrap;gap:8px;padding:14px 0;border-bottom:1px solid var(--line)}
+.badges span{font-size:.85rem;font-weight:600;background:var(--soft);border-radius:999px;padding:6px 12px}
+section{padding:46px 0}
+.k{font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+h2.s{font-size:clamp(1.6rem,5vw,2.3rem);margin-bottom:10px}
+.lead{color:var(--mut);max-width:38em;margin-bottom:20px}
+/* rebate picker */
+.rp{display:grid;gap:16px}
+@media(min-width:860px){.rp{grid-template-columns:1.1fr 1fr}}
+.opts{display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;background:#fff}
+.opt input{width:22px;height:22px;accent-color:var(--blue)}
+.opt b{display:block}
+.opt span{font-size:.88rem;color:var(--mut)}
+.opt em{font-style:normal;font:800 1.1rem Montserrat;color:var(--green);white-space:nowrap}
+.opt:has(input:checked){border-color:var(--blue);background:#f5f8ff}
+.sum{background:var(--navy);color:#fff;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.sum .lab{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:700}
+.sum .tot{font:800 3rem Montserrat;line-height:1;color:#7ee2a8}
+.sum ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
+.sum ul li:before{content:"→ ";color:#7ee2a8}
+.sum small{opacity:.7;font-size:.8rem}
+/* commercial */
+.com{background:var(--soft)}
+.cg{display:grid;gap:10px}
+@media(min-width:700px){.cg{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.cg{grid-template-columns:repeat(4,1fr)}}
+.cg div{background:#fff;border-radius:14px;padding:16px;border:1px solid var(--line)}
+.cg h3{font-size:1.05rem;margin-bottom:4px}
+.cg p{font-size:.92rem;color:var(--mut)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.stat div{text-align:center;background:#fff;border-radius:14px;padding:14px 6px;border:1px solid var(--line)}
+.stat b{display:block;font:800 1.6rem Montserrat;color:var(--blue)}
+.stat span{font-size:.8rem;color:var(--mut)}
+.team{display:grid;gap:18px}
+@media(min-width:820px){.team{grid-template-columns:1fr 1fr;align-items:center}}
+.ph{min-height:220px;border-radius:16px;background:linear-gradient(140deg,#8ea2cf,#1e2f5c);position:relative}
+.ph span{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:.72rem;padding:4px 8px;border-radius:6px}
+form{display:grid;gap:10px}
+form input,form select{font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px;min-height:48px;width:100%}
+.ok{display:none;color:var(--green);font-weight:700}
+footer{background:var(--navy);color:#b6c1dc;padding:26px 0 36px;font-size:.88rem}
+.cf{background:#fff0bd;color:#6b5300;font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:4px}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for EDCO Plumbing &amp; Heating. Not the live site.</div>
+<div class="wrap top"><a class="logo" href="#">EDCO<small>PLUMBING &amp; HEATING</small></a><a class="b" href="tel:+13067212056">(306) 721-2056</a></div>
+
+<div class="split">
+  <a href="#rebates"><small>For your home</small><h2>Upgrade and get paid back</h2><p>Furnaces, AC, water heaters, plumbing.</p></a>
+  <a href="#commercial"><small>For your building</small><h2>Commercial mechanical</h2><p>HVAC, boilers, design-build.</p></a>
+</div>
+<div class="wrap badges"><span>Regina since 1969</span><span>Authorized Lennox dealer</span><span>Red Seal journeymen</span><span>Licensed, bonded, insured</span><span>Financing available</span></div>
+
+<section id="rebates"><div class="wrap">
+  <div class="k">Rebate picker</div><h2 class="s">What are you thinking of upgrading?</h2>
+  <p class="lead">Tick everything you're considering. EDCO handles the SaskEnergy rebate paperwork for you.</p>
+  <div class="rp">
+    <div class="opts" id="opts">
+      <label class="opt"><input type="checkbox" data-r="325" data-n="97%+ AFUE furnace"><div><b>High-efficiency furnace</b><span>97%+ AFUE, Lennox</span></div><em>$325</em></label>
+      <label class="opt"><input type="checkbox" data-r="1000" data-n="Tankless water heater"><div><b>Tankless water heater</b><span>Endless hot water, less space</span></div><em>$1,000</em></label>
+      <label class="opt"><input type="checkbox" data-r="0" data-n="Central air"><div><b>Central air conditioning</b><span>Ask about current programs</span></div><em>Ask</em></label>
+      <label class="opt"><input type="checkbox" data-r="0" data-n="Smart thermostat"><div><b>Smart thermostat</b><span>Ask about current programs</span></div><em>Ask</em></label>
+    </div>
+    <div class="sum"><div><div class="lab">Your SaskEnergy rebates</div><div class="tot" id="tot">$0</div></div>
+      <ul id="sl"><li>Pick an upgrade to see your rebate</li></ul>
+      <a class="b" href="#book">Book a free consultation</a>
+      <small>Plus new-customer discounts. Rebates from EDCO's current site; program terms <span class="cf">confirm</span>.</small></div>
+  </div>
+</div></section>
+
+<section class="com" id="commercial"><div class="wrap">
+  <div class="k">Commercial &amp; institutional</div><h2 class="s">The mechanical contractor Regina buildings call</h2>
+  <div class="cg">
+    <div><h3>Commercial mechanical</h3><p>Construction and maintenance.</p></div>
+    <div><h3>Commercial HVAC</h3><p>Service and planned maintenance.</p></div>
+    <div><h3>Boiler service</h3><p>Commercial and institutional plants.</p></div>
+    <div><h3>Building solutions</h3><p>Design-build and upgrades.</p></div>
+  </div>
+  <div class="stat"><div><b>50+</b><span>years</span></div><div><b>30+</b><span>commercial projects a year</span></div><div><b>100+</b><span>years combined team experience</span></div></div>
+</div></section>
+
+<section><div class="wrap team">
+  <div class="ph"><span>Photo: the EDCO team</span></div>
+  <div><div class="k">Our people</div><h2 class="s">Red Seal journeymen who've been here 20 years</h2><p style="color:var(--mut)">Several team members have over 20 years with EDCO. Faucet or full system, the same standard applies, and every consultation is free.</p></div>
+</div></section>
+
+<section id="book" style="background:var(--soft)"><div class="wrap" style="max-width:600px">
+  <div class="k">Free consultation</div><h2 class="s">Book a visit</h2>
+  <form id="f"><input required placeholder="Name" autocomplete="name"><input required type="tel" placeholder="Phone" autocomplete="tel"><input id="pick" placeholder="Upgrades you're considering" readonly><select><option>Residential</option><option>Commercial</option></select><button class="b" type="submit">Book consultation</button><div class="ok" role="status">Sent. EDCO will call to book. (Demo only: nothing was sent.)</div></form>
+</div></section>
+<footer><div class="wrap"><b style="color:#fff">EDCO Plumbing &amp; Heating</b> · Locally owned and operated since 1969 · <a href="tel:+13067212056">(306) 721-2056</a> · Address <span class="cf">confirm</span><br>Concept by Franklin Kinetics. Facts from EDCO's current site.</div></footer>
+<script>
+(function(){
+  var boxes=document.querySelectorAll('#opts input');
+  function up(){var t=0,n=[],l=[];boxes.forEach(function(b){if(b.checked){t+=+b.dataset.r;n.push(b.dataset.n);l.push(b.dataset.n+(+b.dataset.r?': $'+(+b.dataset.r).toLocaleString('en-CA')+' rebate':': we check current programs'))}});
+    document.getElementById('tot').textContent='$'+t.toLocaleString('en-CA');
+    document.getElementById('sl').innerHTML=l.length?l.map(function(x){return '<li>'+x+'</li>'}).join(''):'<li>Pick an upgrade to see your rebate</li>';
+    document.getElementById('pick').value=n.join(', ');}
+  boxes.forEach(function(b){b.onchange=up});
+  document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};
+})();
+</script>
+</body>
+</html>

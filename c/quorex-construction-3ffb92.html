@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Quorex Construction | Saskatchewan General Contractor</title>
+<meta name="description" content="Saskatchewan-owned commercial, institutional and industrial general contractor. Regina and Saskatoon.">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--y:#f5c400;--k:#0d0d0d;--k2:#1a1a1a;--g:#8b8b8b;--l:#2a2a2a;--w:#f4f2ec}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--k);color:var(--w);font:16px/1.6 'IBM Plex Sans',system-ui,sans-serif}
+a{color:inherit}
+.fk{background:var(--y);color:#000;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+h1,h2,h3{font-family:Oswald,sans-serif;text-transform:uppercase;line-height:1.02;font-weight:700}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+nav{border-bottom:1px solid var(--l)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;min-height:64px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.4rem Oswald;letter-spacing:.04em}
+.logo i{width:30px;height:30px;background:var(--y);clip-path:polygon(0 0,70% 0,100% 100%,30% 100%)}
+.nl{display:none;gap:26px;font-size:.92rem}
+.nl a{text-decoration:none;color:#bbb}
+@media(min-width:880px){.nl{display:flex}}
+.cta{display:inline-flex;align-items:center;min-height:46px;padding:0 18px;background:var(--y);color:#000;font:700 .95rem 'IBM Plex Sans';text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.cta.o{background:none;color:var(--w);border:1px solid #555}
+header.h{padding:56px 0 40px;border-bottom:1px solid var(--l)}
+header.h h1{font-size:clamp(2.6rem,11vw,6.4rem);margin:14px 0 22px}
+header.h h1 span{color:var(--y)}
+.hrow{display:grid;gap:22px}
+@media(min-width:880px){.hrow{grid-template-columns:1.2fr 1fr;align-items:end}}
+.hrow p{color:#cfcac0;max-width:34em;font-size:1.08rem}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+/* project index */
+.idx{padding:48px 0}
+.idx .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}
+.idx h2{font-size:clamp(2rem,6vw,3.2rem)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{background:none;border:1px solid #444;color:#ccc;font:500 .8rem 'IBM Plex Mono';letter-spacing:.06em;text-transform:uppercase;min-height:40px;padding:0 12px;cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--y);border-color:var(--y);color:#000}
+.rows{border-top:1px solid var(--l)}
+.row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:18px 0;border-bottom:1px solid var(--l);align-items:center}
+@media(min-width:760px){.row{grid-template-columns:2.2fr 1fr 1fr 1fr 40px}}
+.row h3{font-size:1.35rem}
+.row .v{font:500 .95rem 'IBM Plex Mono';color:#ddd}
+.row .hide{display:none}
+@media(min-width:760px){.row .hide{display:block}}
+.row .arrow{color:var(--y);font-size:1.4rem;text-align:right}
+.row.ph h3{color:#666}
+.row details{grid-column:1/-1}
+.row summary{list-style:none;cursor:pointer}
+.feat{display:grid;gap:0;margin-top:14px;border:1px solid var(--l)}
+@media(min-width:760px){.feat{grid-template-columns:1.3fr 1fr}}
+.shot{min-height:240px;background:linear-gradient(135deg,#3b434a,#15191c);position:relative}
+.shot:after{content:"Project photo: Gravelbourg School";position:absolute;left:12px;bottom:12px;font:500 .72rem 'IBM Plex Mono';background:rgba(0,0,0,.6);padding:5px 8px}
+.spec{padding:20px;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;align-content:start}
+.spec dt{font:500 .75rem 'IBM Plex Mono';color:var(--g);text-transform:uppercase;padding-top:3px}
+.spec dd{font-weight:600}
+/* prequal */
+.pq{background:var(--w);color:var(--k);padding:52px 0}
+.pq h2{font-size:clamp(2rem,6vw,3.2rem);margin-bottom:8px}
+.pq .mono{color:#6b6b6b}
+.pqg{display:grid;gap:0;margin-top:24px;border-top:2px solid #000}
+@media(min-width:760px){.pqg{grid-template-columns:repeat(3,1fr)}}
+.pqg div{padding:18px 0;border-bottom:1px solid #cfcac0}
+@media(min-width:760px){.pqg div{padding:18px 18px 18px 0}}
+.pqg b{display:block;font:700 1.2rem Oswald;text-transform:uppercase;margin-bottom:4px}
+.pqg p{font-size:.95rem;color:#333}
+.cf{background:#fff3b0;color:#6b5300;font:600 .7rem system-ui;padding:1px 6px;border-radius:3px;vertical-align:middle}
+.dl{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.dl a{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border:2px solid #000;font-weight:600;text-decoration:none}
+/* offices */
+.off{padding:52px 0;display:grid;gap:22px}
+@media(min-width:760px){.off{grid-template-columns:1fr 1fr 1fr}}
+.off h3{font-size:1.6rem;color:var(--y);margin-bottom:6px}
+.off p{color:#cfcac0}
+.off a.tel{font:700 1.3rem Oswald;text-decoration:none;color:var(--w);display:inline-block;margin-top:6px}
+form{display:grid;gap:10px}
+form input,form select,form textarea{font:inherit;background:var(--k2);color:var(--w);border:1px solid #444;padding:12px;min-height:48px;width:100%}
+.ok{display:none;color:var(--y);font-weight:600}
+footer{border-top:1px solid var(--l);padding:22px 0 30px;color:#777;font-size:.82rem}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Quorex Construction. Not the live site.</div>
+<nav><div class="wrap">
+  <a class="logo" href="#"><i></i>QUOREX</a>
+  <div class="nl"><a href="#projects">Projects</a><a href="#prequal">Prequalification</a><a href="#offices">Offices</a><a href="#offices">Careers</a></div>
+  <a class="cta" href="#offices">Invite us to tender</a>
+</div></nav>
+
+<header class="h"><div class="wrap">
+  <div class="mono">Commercial · Institutional · Industrial · Saskatchewan-owned</div>
+  <h1>Teamwork<br>builds <span>quality.</span></h1>
+  <div class="hrow">
+    <p>Schools, healthcare, commercial and industrial buildings for Saskatchewan owners, consultants and government agencies. We commit to timeline, budget and result, and we deliver on the promise.</p>
+    <div class="btns"><a class="cta" href="#projects">See the project index</a><a class="cta o" href="#prequal">Prequalification facts</a></div>
+  </div>
+</div></header>
+
+<section class="idx" id="projects"><div class="wrap">
+  <div class="top"><div><div class="mono">Project index</div><h2>The work</h2></div>
+    <div class="filters" role="group" aria-label="Filter by sector">
+      <button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="edu">Education</button><button aria-pressed="false" data-f="hc">Healthcare</button><button aria-pressed="false" data-f="com">Commercial</button><button aria-pressed="false" data-f="ind">Industrial</button>
+    </div></div>
+  <div class="rows">
+    <div class="row" data-s="edu">
+      <h3>Gravelbourg School</h3><span class="v hide">Education</span><span class="v">$8.0M</span><span class="v hide">2016</span><span class="arrow">↓</span>
+      <div class="feat" style="grid-column:1/-1">
+        <div class="shot"></div>
+        <dl class="spec"><dt>Owner</dt><dd>Prairie South School Division No. 210</dd><dt>Sector</dt><dd>Educational and learning</dd><dt>Size</dt><dd>47,990 sq. ft.</dd><dt>Value</dt><dd>$8,000,000</dd><dt>Completed</dt><dd>2016</dd></dl>
+      </div>
+    </div>
+    <div class="row ph" data-s="hc"><h3>Healthcare project from the portfolio</h3><span class="v hide">Healthcare</span><span class="v">$ value</span><span class="v hide">Year</span><span class="arrow">→</span></div>
+    <div class="row ph" data-s="com"><h3>Commercial project from the portfolio</h3><span class="v hide">Commercial</span><span class="v">$ value</span><span class="v hide">Year</span><span class="arrow">→</span></div>
+    <div class="row ph" data-s="ind"><h3>Industrial project from the portfolio</h3><span class="v hide">Industrial</span><span class="v">$ value</span><span class="v hide">Year</span><span class="arrow">→</span></div>
+    <div class="row ph" data-s="edu"><h3>Institutional project from the portfolio</h3><span class="v hide">Education</span><span class="v">$ value</span><span class="v hide">Year</span><span class="arrow">→</span></div>
+  </div>
+  <p class="mono" style="margin-top:12px">Grey rows are slots for Quorex's existing project pages.</p>
+</div></section>
+
+<section class="pq" id="prequal"><div class="wrap">
+  <div class="mono">For owners, consultants and procurement</div>
+  <h2>Prequalification at a glance</h2>
+  <p>The facts a tender committee checks first, on one screen.</p>
+  <div class="pqg">
+    <div><b>Delivery methods</b><p>General contracting, construction management, design-build and special projects.</p></div>
+    <div><b>Ownership</b><p>Saskatchewan based and locally owned.</p></div>
+    <div><b>Offices</b><p>Regina and Saskatoon, serving the whole province.</p></div>
+    <div><b>Health and safety</b><p>Company-wide safety program on every site. <span class="cf">confirm certification</span></p></div>
+    <div><b>Sustainability</b><p>Responsible sites and efficient buildings.</p></div>
+    <div><b>Community and Indigenous commitment</b><p>Local hiring, subtrades and community partnerships.</p></div>
+  </div>
+  <div class="dl"><a href="#offices">↓ Company profile (PDF)</a><a href="#offices">↓ Safety statistics</a><a href="#offices">↓ Bonding letter</a></div>
+</div></section>
+
+<section id="offices"><div class="wrap off">
+  <div><div class="mono">Regina</div><h3>Regina office</h3><p>1630A 8th Avenue<br>Regina, SK S4R 1E5</p><a class="tel" href="tel:+13067612222">(306) 761-2222</a></div>
+  <div><div class="mono">Saskatoon</div><h3>Saskatoon office</h3><p>142 Cardinal Crescent<br>Saskatoon, SK S7L 6H6</p><a class="tel" href="tel:+13062443717">(306) 244-3717</a></div>
+  <form id="f"><div class="mono">Invite us to tender</div>
+    <input required placeholder="Name" autocomplete="name"><input placeholder="Organization" autocomplete="organization"><input required type="email" placeholder="Email" autocomplete="email">
+    <select><option>Education</option><option>Healthcare</option><option>Commercial</option><option>Industrial</option></select>
+    <button class="cta" type="submit">Send</button><div class="ok" role="status">Sent to the estimating team. (Demo only: nothing was sent.)</div></form>
+</div></section>
+<footer><div class="wrap">Concept by Franklin Kinetics. Text from Quorex's current site. Quorex is always looking for great people: careers link goes here.</div></footer>
+<script>
+document.querySelectorAll('.filters button').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  document.querySelectorAll('.row').forEach(function(r){r.style.display=(b.dataset.f==='all'||r.dataset.s===b.dataset.f)?'':'none'});
+}});
+document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};
+</script>
+</body>
+</html>

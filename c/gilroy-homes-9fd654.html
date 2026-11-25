@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gilroy Homes | Better by Design | Regina</title>
+<meta name="description" content="Regina custom home builder for over 45 years. Find a plan, tour a showhome, or build your own.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f3ec;--ink:#22201c;--mut:#6f685d;--brass:#9a7a3c;--line:#ddd3c2;--deep:#2b2823}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:16.5px/1.65 Karla,system-ui,sans-serif}
+a{color:inherit}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.05}
+.fk{background:var(--deep);color:#e8e1d4;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:68px;gap:12px}
+.logo{text-decoration:none;font:600 1.6rem 'Cormorant Garamond';letter-spacing:.01em}
+.logo em{display:block;font:italic 500 .9rem 'Cormorant Garamond';color:var(--brass);margin-top:-4px}
+.lk{display:none;gap:26px;font-size:.9rem;text-transform:uppercase;letter-spacing:.12em}
+.lk a{text-decoration:none}
+@media(min-width:900px){.lk{display:flex}}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:1px solid var(--ink);text-decoration:none;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;white-space:nowrap;background:none;cursor:pointer;color:var(--ink)}
+.b.f{background:var(--ink);color:var(--paper)}
+/* cover */
+.cover{position:relative;min-height:82vh;display:flex;align-items:flex-end;background:linear-gradient(180deg,rgba(25,22,18,.1),rgba(25,22,18,.78)),linear-gradient(130deg,#b8a88d,#5b5040);color:#fff}
+.cover .ph{position:absolute;top:14px;right:14px;font:600 .72rem system-ui;background:rgba(0,0,0,.45);padding:5px 9px}
+.cover .wrap{padding-bottom:44px;width:100%}
+.issue{font:italic 500 1.1rem 'Cormorant Garamond';color:#e9dcc3}
+.cover h1{font-size:clamp(3rem,12vw,6.5rem);margin:6px 0 16px;font-weight:500}
+.cover h1 i{color:#e9dcc3}
+.cover p{max-width:31em;color:#f1ebe0;font-size:1.08rem}
+.cover .b{border-color:#fff;color:#fff;margin-top:20px}
+.cover .b.f{background:#fff;color:var(--ink)}
+.cover .row{display:flex;flex-wrap:wrap;gap:10px}
+/* finder */
+section{padding:64px 0}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700;color:var(--brass);margin-bottom:10px}
+h2.t{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:500;margin-bottom:18px}
+.ctrl{display:grid;gap:14px;margin-bottom:22px}
+@media(min-width:760px){.ctrl{grid-template-columns:1fr 1fr 1fr;align-items:end}}
+.ctrl b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.ch{display:flex;gap:6px;flex-wrap:wrap}
+.ch button{min-height:44px;min-width:48px;padding:0 14px;border:1px solid var(--line);background:#fff;font:700 .95rem Karla;cursor:pointer}
+.ch button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.plans{display:grid;gap:18px}
+@media(min-width:640px){.plans{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.plans{grid-template-columns:repeat(3,1fr)}}
+.pl{background:#fff;border:1px solid var(--line)}
+.pl svg{display:block;width:100%;height:auto;background:#fbf8f2;border-bottom:1px solid var(--line)}
+.pl .in{padding:16px 18px}
+.pl h3{font-size:1.6rem}
+.pl .m{color:var(--mut);font-size:.92rem}
+.none{display:none;padding:20px;border:1px dashed var(--line);color:var(--mut)}
+.small{font-size:.82rem;color:var(--mut);margin-top:10px}
+/* pull quote */
+.pull{background:var(--deep);color:#f2ece1;text-align:center}
+.pull blockquote{font:italic 500 clamp(1.7rem,5.5vw,2.8rem)/1.2 'Cormorant Garamond';max-width:20em;margin:0 auto}
+.pull cite{display:block;margin-top:16px;font:700 .8rem Karla;letter-spacing:.14em;text-transform:uppercase;color:#c9b68e;font-style:normal}
+/* spreads */
+.spread{display:grid;gap:22px;align-items:center}
+@media(min-width:860px){.spread{grid-template-columns:1fr 1fr;gap:56px}.spread.rev>:first-child{order:2}}
+.img{min-height:320px;position:relative}
+.img span{position:absolute;left:10px;bottom:10px;font:600 .72rem system-ui;background:rgba(0,0,0,.5);color:#fff;padding:5px 9px}
+.spread p{color:#4a453d;margin-bottom:14px}
+.num{font:500 4.5rem/1 'Cormorant Garamond';color:var(--brass)}
+.steps{display:grid;gap:22px;margin-top:10px}
+@media(min-width:800px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps div{border-top:1px solid var(--ink);padding-top:12px}
+.steps i{font:italic 500 1.4rem 'Cormorant Garamond';color:var(--brass)}
+.steps h3{font-size:1.5rem;margin:4px 0}
+.steps p{color:var(--mut);font-size:.95rem}
+form{display:grid;gap:10px;margin-top:16px}
+form input,form select{font:inherit;padding:12px;border:1px solid var(--line);background:#fff;min-height:48px;width:100%}
+.ok{display:none;font:italic 500 1.2rem 'Cormorant Garamond';color:var(--brass)}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-size:.9rem;color:var(--mut)}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Gilroy Homes. Not the live site.</div>
+<div class="wrap nav"><a class="logo" href="#">Gilroy Homes<em>Better by design</em></a>
+  <div class="lk"><a href="#plans">Floor plans</a><a href="#showhomes">Showhomes</a><a href="#harbour">Harbour Pointe</a><a href="#build">How we build</a></div>
+  <a class="b f" href="#visit">Visit</a></div>
+
+<header class="cover"><span class="ph">Hero photo: a finished Gilroy home</span><div class="wrap">
+  <div class="issue">Regina homebuilder · over 45 years</div>
+  <h1>Home, <i>never rushed.</i></h1>
+  <p>We guide every choice with honesty and keep you updated from first sketch to keys. Nearly fifty Regina and Region Home Builders' Association awards say it works.</p>
+  <div class="row"><a class="b f" href="#plans">Find your floor plan</a><a class="b" href="#showhomes">Tour a showhome</a></div>
+</div></header>
+
+<section id="plans"><div class="wrap">
+  <div class="eyebrow">Plan finder</div>
+  <h2 class="t">Start with how you live.</h2>
+  <div class="ctrl">
+    <div><b>Bedrooms</b><div class="ch" data-k="bed"><button aria-pressed="true" data-v="0">Any</button><button aria-pressed="false" data-v="2">2</button><button aria-pressed="false" data-v="3">3</button><button aria-pressed="false" data-v="4">4+</button></div></div>
+    <div><b>Style</b><div class="ch" data-k="sty"><button aria-pressed="true" data-v="any">Any</button><button aria-pressed="false" data-v="bung">Bungalow</button><button aria-pressed="false" data-v="two">Two-storey</button></div></div>
+    <div><b>Size</b><div class="ch" data-k="sz"><button aria-pressed="true" data-v="0">Any</button><button aria-pressed="false" data-v="1">Under 1,800</button><button aria-pressed="false" data-v="2">1,800+</button></div></div>
+  </div>
+  <div class="plans" id="pl"></div>
+  <div class="none" id="none">No sample plan matches. Gilroy will modify any plan, or design one with you. <a href="#visit">Talk to a consultant</a>.</div>
+  <p class="small">Sample plans for this concept. Gilroy's own plan library would load here.</p>
+</div></section>
+
+<section class="pull"><div class="wrap"><blockquote>"It is everything we could ever want and we wouldn't change a thing."</blockquote><cite>The Storeys, Gilroy homeowners</cite></div></section>
+
+<section id="showhomes"><div class="wrap spread">
+  <div class="img" style="background:linear-gradient(140deg,#c9bda6,#7d705b)"><span>Photo: showhome kitchen</span></div>
+  <div><div class="eyebrow">Showhomes &amp; available homes</div><h2 class="t">Walk through it first.</h2>
+  <p>Visit a current showhome or take a virtual tour, then sit down with a New Home Consultant. Move-in ready and upcoming homes are listed with every finish shown.</p>
+  <a class="b f" href="#visit">Book a showhome visit</a></div>
+</div></section>
+
+<section id="harbour" style="background:#efe8dc"><div class="wrap spread rev">
+  <div class="img" style="background:linear-gradient(160deg,#8ea0a9,#33434c)"><span>Photo: Harbour Pointe, Building III</span></div>
+  <div><div class="eyebrow">Harbour Pointe</div><h2 class="t">Custom, on a smaller scale.</h2>
+  <p>Luxury condos with complete design customization. Building III is underway, and every suite is finished the way you choose.</p>
+  <a class="b" href="#visit">Ask about Building III</a></div>
+</div></section>
+
+<section id="build"><div class="wrap">
+  <div class="eyebrow">How we build</div><h2 class="t">Four chapters, no surprises.</h2>
+  <div class="steps">
+    <div><i>i.</i><h3>Listen</h3><p>How you live comes before anything is drawn.</p></div>
+    <div><i>ii.</i><h3>Design</h3><p>Careful selections at your pace, never rushed.</p></div>
+    <div><i>iii.</i><h3>Build</h3><p>Precise structural standards and regular updates.</p></div>
+    <div><i>iv.</i><h3>Keys</h3><p>A home you want now and for decades.</p></div>
+  </div>
+</div></section>
+
+<section id="visit" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap spread">
+  <div><div class="num">~50</div><p><b>RRHBA awards</b> for craftsmanship, energy efficiency and design.</p>
+  <p>"We appreciate everything you have done for us and absolutely love our new home!" <br><i>Megan and John</i></p></div>
+  <div><div class="eyebrow">Visit</div><h2 class="t" style="font-size:2.4rem">Meet a New Home Consultant</h2>
+  <form id="f"><input required placeholder="Name" autocomplete="name"><input required placeholder="Phone or email">
+  <select><option>A plan from the finder</option><option>A move-in ready home</option><option>A fully custom build</option><option>Harbour Pointe</option></select>
+  <button class="b f" type="submit">Request a visit</button><div class="ok" role="status">Thank you. A consultant will be in touch. (Demo only: nothing was sent.)</div></form>
+  <p class="small">Or call <a href="tel:+13067896080"><b>(306) 789-6080</b></a></p></div>
+</div></section>
+
+<footer><div class="wrap"><b>Gilroy Homes</b>, Regina. Concept by Franklin Kinetics; text and testimonials from Gilroy's current site.</div></footer>
+<script>
+(function(){
+  var P=[{n:'The Wascana',b:3,s:'bung',f:1520},{n:'The Lakeview',b:2,s:'bung',f:1340},{n:'The Harbour',b:4,s:'two',f:2280},{n:'The Crescent',b:3,s:'two',f:1950},{n:'The Prairie',b:4,s:'bung',f:1760},{n:'The Cathedral',b:3,s:'two',f:1690}];
+  var st={bed:0,sty:'any',sz:0};
+  function draw(p){var w=p.s==='two'?'two-storey':'bungalow';
+    return '<div class="pl"><svg viewBox="0 0 300 170" aria-hidden="true"><g fill="none" stroke="#8a7f6c" stroke-width="2"><rect x="30" y="20" width="240" height="130"/><line x1="140" y1="20" x2="140" y2="95"/><line x1="30" y1="95" x2="270" y2="95"/><line x1="200" y1="95" x2="200" y2="150"/>'+(p.b>2?'<line x1="205" y1="20" x2="205" y2="95"/>':'')+(p.b>3?'<line x1="90" y1="95" x2="90" y2="150"/>':'')+'</g><text x="36" y="40" font-size="10" fill="#9a7a3c" font-family="Karla">'+p.b+' bed · '+w+'</text></svg><div class="in"><h3>'+p.n+'</h3><div class="m">'+p.b+' bedrooms · '+p.f.toLocaleString('en-CA')+' sq. ft. · '+(p.s==='two'?'Two-storey':'Bungalow')+'</div><a class="b" style="margin-top:12px" href="#visit">Ask about this plan</a></div></div>';}
+  function render(){var r=P.filter(function(p){return (!st.bed||(st.bed==4?p.b>=4:p.b==st.bed))&&(st.sty==='any'||p.s===st.sty)&&(!st.sz||(st.sz==1?p.f<1800:p.f>=1800))});
+    document.getElementById('pl').innerHTML=r.map(draw).join('');document.getElementById('none').style.display=r.length?'none':'block';}
+  document.querySelectorAll('.ch').forEach(function(g){g.querySelectorAll('button').forEach(function(b){b.onclick=function(){
+    g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});var v=b.dataset.v;st[g.dataset.k]=isNaN(v)?v:+v;render();}})});
+  render();
+  document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};
+})();
+</script>
+</body>
+</html>

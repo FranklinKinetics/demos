@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hipperson Construction | Building Saskatchewan Since 1906</title>
+<meta name="description" content="Saskatchewan general contractor since 1906. Industrial, commercial, concrete, water and pre-engineered buildings. Regina and Saskatoon.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Barlow:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3eee4;--ink:#1d2228;--steel:#1f4e79;--rust:#a44a2a;--mut:#6a645a;--line:#d8cfbf}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:17px/1.65 'Source Serif 4',Georgia,serif}
+a{color:inherit}
+h1,h2,h3,.cond{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.fk{background:#000;color:#ddd;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+.nav{display:flex;justify-content:space-between;align-items:center;min-height:64px;border-bottom:2px solid var(--ink);gap:10px}
+.logo{font:800 1.5rem 'Barlow Condensed';letter-spacing:.06em;text-decoration:none}
+.logo small{display:block;font:500 .72rem Barlow;letter-spacing:.18em;color:var(--rust)}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;background:var(--steel);color:#fff;font:600 .95rem Barlow;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.b.o{background:none;border:2px solid var(--ink);color:var(--ink)}
+.cover{padding:48px 0 30px;display:grid;gap:22px}
+@media(min-width:860px){.cover{grid-template-columns:auto 1fr;align-items:end;gap:40px}}
+.yr{font:800 clamp(6rem,30vw,13rem)/0.8 'Barlow Condensed';color:var(--steel);letter-spacing:-.02em}
+.yr span{display:block;font-size:.17em;letter-spacing:.2em;color:var(--rust);margin-top:10px}
+.cover h1{font-size:clamp(2rem,6vw,3rem);margin-bottom:12px}
+.cover p{color:#3d3a34;max-width:32em}
+.cover .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+/* timeline */
+.tl{padding:40px 0;border-top:1px solid var(--line)}
+.tl h2{font-size:2rem;margin-bottom:24px}
+.ev{display:grid;grid-template-columns:92px 1fr;gap:16px;padding:0 0 26px;position:relative}
+.ev:before{content:"";position:absolute;left:100px;top:10px;bottom:0;width:2px;background:var(--line)}
+.ev:last-child:before{display:none}
+.ev .y{font:800 1.7rem 'Barlow Condensed';color:var(--steel);text-align:right}
+.ev .c{padding-left:22px;position:relative}
+.ev .c:before{content:"";position:absolute;left:-9px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--rust)}
+.ev h3{font-size:1.35rem;margin-bottom:4px}
+.ev p{color:#4a463e;font-size:.98rem}
+.ph{display:inline-block;margin-top:6px;font:600 .72rem Barlow;background:#e5dccb;padding:3px 8px;color:#6a5a3a}
+.cf{background:#fff0bd;color:#6b5300;font:600 .7rem Barlow;padding:1px 6px}
+/* capabilities */
+.cap{background:var(--ink);color:#e9e4da;padding:52px 0}
+.cap h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:8px}
+.cap .l{color:#b8b1a4;max-width:36em;margin-bottom:22px}
+.cg{display:grid;gap:1px;background:#3a3f46;border:1px solid #3a3f46}
+@media(min-width:700px){.cg{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.cg{grid-template-columns:repeat(3,1fr)}}
+.cg div{background:var(--ink);padding:20px}
+.cg .n{font:700 .8rem Barlow;color:var(--rust);letter-spacing:.14em}
+.cg h3{font-size:1.5rem;margin:6px 0;color:#fff}
+.cg p{color:#b8b1a4;font-size:.95rem}
+.how{padding:48px 0;display:grid;gap:18px}
+@media(min-width:800px){.how{grid-template-columns:repeat(4,1fr)}}
+.how div{border-top:3px solid var(--steel);padding-top:10px}
+.how h3{font-size:1.3rem;margin-bottom:4px}
+.how p{font-size:.95rem;color:#4a463e}
+.people{background:#e8e1d3;padding:48px 0}
+.pg{display:grid;gap:22px}
+@media(min-width:800px){.pg{grid-template-columns:1.2fr 1fr;align-items:center}}
+.people blockquote{font:italic 400 1.35rem/1.45 'Source Serif 4';border-left:4px solid var(--rust);padding-left:18px}
+.people cite{display:block;font:600 .85rem Barlow;font-style:normal;margin-top:10px;color:var(--mut)}
+.con{padding:48px 0;display:grid;gap:22px}
+@media(min-width:800px){.con{grid-template-columns:1fr 1fr 1.2fr}}
+.con h3{font-size:1.5rem;color:var(--steel);margin-bottom:4px}
+form{display:grid;gap:10px}
+form input,form select{font:500 1rem Barlow;padding:12px;border:1.5px solid var(--ink);background:#fff;min-height:48px;width:100%}
+.ok{display:none;font-weight:600;color:var(--steel)}
+footer{border-top:2px solid var(--ink);padding:18px 0 30px;font:500 .85rem Barlow;color:var(--mut)}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Hipperson Construction. Not the live site.</div>
+<div class="wrap nav"><a class="logo" href="#">Hipperson<small>Construction · Est. 1906</small></a><a class="b" href="#contact">Start a project</a></div>
+
+<div class="wrap cover">
+  <div class="yr">1906<span>Building Saskatchewan</span></div>
+  <div><h1>Four generations. One standard.</h1>
+  <p>Industrial plants, schools, concrete works, water treatment and pre-engineered buildings for public and private clients, delivered on budget and on schedule by people who take pride in the finished building.</p>
+  <div class="row"><a class="b" href="#capabilities">What we build</a><a class="b o" href="#history">Our story</a></div></div>
+</div>
+
+<section class="tl" id="history"><div class="wrap">
+  <h2>A century of building, in brief</h2>
+  <div class="ev"><div class="y">1906</div><div class="c"><h3>The first Hipperson builds</h3><p>The family's building business begins in Saskatchewan.</p><span class="ph">Archive photo here</span></div></div>
+  <div class="ev"><div class="y">19__</div><div class="c"><h3>The second generation</h3><p>A milestone from the company's history. <span class="cf">confirm</span></p><span class="ph">Archive photo here</span></div></div>
+  <div class="ev"><div class="y">1996</div><div class="c"><h3>Hipperson Construction incorporated</h3><p>Today's company forms on that foundation and grows year after year.</p></div></div>
+  <div class="ev"><div class="y">Today</div><div class="c"><h3>Regina and Saskatoon</h3><p>Two offices, design-build and pre-engineered steel added to a century of general contracting.</p></div></div>
+</div></section>
+
+<section class="cap" id="capabilities"><div class="wrap">
+  <h2>What we build</h2><p class="l">Projects of any size and complexity across five sectors.</p>
+  <div class="cg">
+    <div><div class="n">01</div><h3>Industrial</h3><p>Process facilities, shops and plants built around how they operate.</p></div>
+    <div><div class="n">02</div><h3>Commercial &amp; institutional</h3><p>Schools, offices and public buildings, new and renovated.</p></div>
+    <div><div class="n">03</div><h3>Concrete works</h3><p>Foundations, structural concrete and site work.</p></div>
+    <div><div class="n">04</div><h3>Water &amp; wastewater</h3><p>Treatment and pumping facilities for Saskatchewan communities.</p></div>
+    <div><div class="n">05</div><h3>Pre-engineered buildings</h3><p>Steel buildings designed, supplied and erected.</p></div>
+    <div><div class="n">→</div><h3>See projects</h3><p>The project gallery from the current site moves here.</p></div>
+  </div>
+</div></section>
+
+<div class="wrap how">
+  <div><h3>General contractor</h3><p>Built to the consultant's design with one accountable team.</p></div>
+  <div><h3>Design-build</h3><p>One contract from concept to commissioning.</p></div>
+  <div><h3>Construction management</h3><p>Cost, schedule and trades managed for you.</p></div>
+  <div><h3>Pre-engineered</h3><p>Steel buildings delivered as a package.</p></div>
+</div>
+
+<section class="people"><div class="wrap pg">
+  <blockquote>A place where employees trust the people they work for, have pride in what they do, and enjoy the people they work with.<cite>The Great Place to Work definition Hipperson builds its culture on</cite></blockquote>
+  <div><h2 style="font-size:2rem;margin-bottom:8px">Build with us</h2><p>Growth has meant investment in better processes, technology, training and benefits for everyone on the crew.</p><a class="b" style="margin-top:14px" href="mailto:info@hippersonconstruction.com">View careers</a></div>
+</div></section>
+
+<div class="wrap con" id="contact">
+  <div><h3>Regina</h3><p>200-2161 Scarth Street<br>Regina, SK S4P 2H8<br><a href="tel:+13063590303"><b>306.359.0303</b></a></p></div>
+  <div><h3>Saskatoon</h3><p>1729 Ontario Avenue<br>Saskatoon, SK S7K 6M6<br><a href="mailto:info@hippersonconstruction.com">info@hippersonconstruction.com</a></p></div>
+  <form id="f"><h3 style="font-size:1.5rem">Start a project</h3><input required placeholder="Name" autocomplete="name"><input placeholder="Organization" autocomplete="organization"><input required type="email" placeholder="Email" autocomplete="email"><select><option>Industrial</option><option>Commercial or institutional</option><option>Concrete</option><option>Water and wastewater</option><option>Pre-engineered building</option></select><button class="b" type="submit">Send</button><div class="ok" role="status">Sent to the estimating team. (Demo only.)</div></form>
+</div>
+<footer><div class="wrap">Concept by Franklin Kinetics. Facts from Hipperson's current site; the 19__ milestone is a placeholder.</div></footer>
+<script>document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};</script>
+</body>
+</html>

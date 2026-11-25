@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Regency Rentals | Regina Apartments and Homes</title>
+<meta name="description" content="Clean, quality, affordable rentals in Regina since 2003. Search available homes and apply online.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1f4d3f;--g2:#2d6b58;--ink:#16231e;--mut:#5e6e67;--bg:#f5f7f6;--line:#dde5e1;--cream:#fffaf0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 'DM Sans',system-ui,sans-serif}
+a{color:inherit}
+.fk{background:#000;color:#ddd;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;min-height:60px;gap:10px}
+.logo{font-weight:700;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--g);display:inline-block;position:relative}
+.logo i:after{content:"";position:absolute;inset:7px 7px 6px;border:2px solid #fff;border-top-width:0;border-radius:0 0 3px 3px}
+.tabs{display:flex;gap:4px}
+.tabs a{text-decoration:none;font-weight:500;font-size:.92rem;padding:8px 10px;border-radius:8px;white-space:nowrap}
+.tabs a.on{background:#e5efea;color:var(--g)}
+.search{background:var(--g);color:#fff;padding:22px 0 26px}
+.search h1{font-size:clamp(1.6rem,5.5vw,2.4rem);line-height:1.15;margin-bottom:14px;font-weight:700}
+.sbox{background:#fff;border-radius:16px;padding:12px;display:grid;gap:10px;grid-template-columns:1fr 1fr}
+@media(min-width:800px){.sbox{grid-template-columns:repeat(4,1fr) auto}}
+.sbox label{display:grid;gap:4px;color:var(--mut);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.sbox select{font:500 1rem 'DM Sans';color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:46px;width:100%;background:#fff}
+.sbox .go{grid-column:1/-1;min-height:48px;border:0;border-radius:10px;background:var(--g);color:#fff;font:700 1rem 'DM Sans';cursor:pointer}
+@media(min-width:800px){.sbox .go{grid-column:auto;align-self:end;padding:0 22px}}
+.meta{display:flex;justify-content:space-between;align-items:center;padding:16px 0 10px;color:var(--mut);font-size:.92rem}
+.list{display:grid;gap:14px;padding-bottom:30px}
+@media(min-width:700px){.list{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.list{grid-template-columns:repeat(3,1fr)}}
+.u{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.u .ph{height:160px;position:relative}
+.u .ph span{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:.72rem;padding:4px 8px;border-radius:6px}
+.u .ph b{position:absolute;right:10px;top:10px;background:#fff;color:var(--g);font-size:.78rem;padding:4px 10px;border-radius:999px}
+.u .in{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.u .rent{font-size:1.45rem;font-weight:700}
+.u .rent small{font-size:.85rem;color:var(--mut);font-weight:500}
+.u .ft{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.u .ft span{background:var(--bg);border-radius:6px;padding:3px 8px;font-size:.82rem}
+.u .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid var(--g);color:var(--g);background:#fff;cursor:pointer;font-size:.95rem;padding:0 12px;white-space:nowrap}
+.btn.f{background:var(--g);color:#fff}
+.empty{display:none;background:#fff;border:1px dashed var(--line);border-radius:16px;padding:22px;text-align:center}
+.sample{font-size:.8rem;color:var(--mut);padding-bottom:30px}
+/* help strip */
+.help{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0}
+.hg{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+@media(min-width:800px){.hg{grid-template-columns:repeat(4,1fr)}}
+.hg a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:14px;min-height:90px}
+.hg b{display:block;margin-bottom:2px}
+.hg span{color:var(--mut);font-size:.88rem}
+h2{font-size:1.6rem;margin-bottom:12px;line-height:1.2}
+.own{padding:44px 0;display:grid;gap:22px}
+@media(min-width:800px){.own{grid-template-columns:1.2fr 1fr;align-items:center}}
+.own ul{list-style:none;display:grid;gap:8px;margin:12px 0 18px}
+.own li:before{content:"✓";color:var(--g2);font-weight:700;margin-right:8px}
+.card{background:var(--cream);border:1px solid #efe3c8;border-radius:16px;padding:20px}
+.card dl{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}
+.card dd{font-weight:700;text-align:right}
+.cf{background:#fff3c4;color:#6b5300;font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:4px}
+/* modal */
+dialog{border:0;border-radius:18px;padding:20px;max-width:420px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog form{display:grid;gap:10px}
+dialog input,dialog select{font:inherit;padding:11px;border:1px solid var(--line);border-radius:10px;min-height:46px;width:100%}
+.ok{display:none;color:var(--g);font-weight:700}
+footer{padding:28px 0 40px;color:var(--mut);font-size:.9rem}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Regency Property Management. Not the live site. Details marked confirm need checking.</div>
+<div class="top"><div class="wrap"><a class="logo" href="#"><i></i>Regency</a>
+  <nav class="tabs"><a class="on" href="#">Rent</a><a href="#help">Tenants</a><a href="#owners">Owners</a></nav></div></div>
+
+<section class="search"><div class="wrap">
+  <h1>Find a clean, affordable place in Regina.</h1>
+  <div class="sbox">
+    <label>Bedrooms<select id="bd"><option value="0">Any</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></label>
+    <label>Max rent<select id="mx"><option value="9999">Any</option><option value="1200">$1,200</option><option value="1400">$1,400</option><option value="1700">$1,700</option></select></label>
+    <label>Type<select id="ty"><option value="">Any</option><option>Apartment</option><option>Townhome</option><option>House</option></select></label>
+    <label>Pets<select id="pt"><option value="">Any</option><option value="1">Pets OK</option></select></label>
+    <button class="go" id="go">Show rentals</button>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="meta"><span id="cnt"></span><span>Updated daily</span></div>
+  <div class="list" id="list"></div>
+  <div class="empty" id="empty"><b>Nothing matches yet.</b><br>Get a text when a place like this opens up.<br><button class="btn f" style="margin-top:12px" data-open="alert">Set a rental alert</button></div>
+  <p class="sample">Sample listings for this concept. The live page would pull Regency's real vacancies.</p>
+</div>
+
+<section class="help" id="help"><div class="wrap">
+  <h2>Already a Regency tenant?</h2>
+  <div class="hg">
+    <a href="#" data-open="fix"><b>Request a repair</b><span>Add photos, track it until it's fixed</span></a>
+    <a href="#"><b>Pay rent</b><span>Set up automatic payments</span></a>
+    <a href="#"><b>Give notice</b><span>Moving out? Start here</span></a>
+    <a href="tel:+13063591655"><b>Emergency</b><span>Flood, no heat, lockout: call</span></a>
+  </div>
+</div></section>
+
+<section id="owners"><div class="wrap own">
+  <div><h2>Own a rental in Regina?</h2>
+  <p>Regency has managed Regina homes since 2003. We fill vacancies, screen tenants, handle repairs and send you a clear statement every month.</p>
+  <ul><li>Advertising, showings and screening</li><li>Rent collection and arrears follow-up</li><li>Repairs through trusted local trades</li><li>Inspections and renewals</li></ul>
+  <a class="btn f" href="tel:+13063591655">Talk to Regency about your property</a></div>
+  <div class="card"><b>Sample owner statement</b><dl><dt>Rent collected</dt><dd>$4,770</dd><dt>Repair: faucet, unit 2</dt><dd>−$185</dd><dt>Management fee</dt><dd>shown</dd><dt>Deposited to you</dt><dd>1st of month</dd></dl></div>
+</div></section>
+
+<footer><div class="wrap"><b>Regency Property Management &amp; Real Estate Inc.</b><br>237 College Avenue East, Regina, SK S4N 0V7 <span class="cf">confirm</span><br><a href="tel:+13063591655">(306) 359-1655</a> <span class="cf">confirm</span><br><br>Concept by Franklin Kinetics. Regency's own site was offline; details come from public listings.</div></footer>
+
+<dialog id="dlg"><form method="dialog" id="df"><h2 id="dt">Book a viewing</h2><p id="dd" style="color:var(--mut)"></p>
+<input required placeholder="Name" autocomplete="name"><input required type="tel" placeholder="Mobile number" autocomplete="tel">
+<select id="dw"><option>Weekday evening</option><option>Saturday</option><option>Any time</option></select>
+<button class="btn f" value="ok">Send</button><div class="ok" id="dok">Sent. The office will text you to confirm. (Demo only.)</div><button class="btn" value="cancel" formnovalidate>Close</button></form></dialog>
+
+<script>
+(function(){
+  var U=[
+    {r:1150,b:1,t:'Apartment',a:'Cathedral',p:1,f:['Heat included','Laundry in building'],g:'#a9c3b7,#3e6b5b',n:'Available Dec 1'},
+    {r:1325,b:2,t:'Apartment',a:'Near the University',p:0,f:['Parking stall','Balcony'],g:'#b3bfcc,#4f5f70',n:'Available now'},
+    {r:1595,b:3,t:'Townhome',a:'East Regina',p:1,f:['Fenced yard','In-suite laundry'],g:'#c7c1a9,#6f6a4f',n:'Available Jan 1'},
+    {r:995,b:1,t:'Apartment',a:'Downtown',p:0,f:['Walk to work','Heat included'],g:'#c3b0a8,#6e5048',n:'Available now'},
+    {r:1850,b:3,t:'House',a:'Lakeview',p:1,f:['Garage','Finished basement'],g:'#b9c9a6,#56683e',n:'Available Feb 1'}
+  ];
+  function $(i){return document.getElementById(i)}
+  function render(){
+    var bd=+$('bd').value,mx=+$('mx').value,ty=$('ty').value,pt=$('pt').value;
+    var r=U.filter(function(u){return (!bd||(bd===3?u.b>=3:u.b===bd))&&u.r<=mx&&(!ty||u.t===ty)&&(!pt||u.p)});
+    $('cnt').textContent=r.length+' place'+(r.length===1?'':'s')+' available';
+    $('list').innerHTML=r.map(function(u,i){return '<div class="u"><div class="ph" style="background:linear-gradient(140deg,'+u.g+')"><b>'+u.n+'</b><span>Sample photo</span></div><div class="in"><div class="rent">$'+u.r.toLocaleString('en-CA')+' <small>/ month</small></div><div>'+u.b+' bed '+u.t.toLowerCase()+' · '+u.a+'</div><div class="ft">'+u.f.concat(u.p?['Pets OK']:[]).map(function(x){return '<span>'+x+'</span>'}).join('')+'</div><div class="acts"><button class="btn" data-open="view" data-u="'+u.b+' bed '+u.t.toLowerCase()+', '+u.a+'">Book viewing</button><a class="btn f" href="#">Apply</a></div></div></div>'}).join('');
+    $('empty').style.display=r.length?'none':'block';
+  }
+  ['bd','mx','ty','pt'].forEach(function(i){$(i).onchange=render});$('go').onclick=render;render();
+  document.addEventListener('click',function(e){var o=e.target.closest('[data-open]');if(!o)return;e.preventDefault();
+    var k=o.dataset.open;$('dt').textContent=k==='view'?'Book a viewing':k==='fix'?'Request a repair':'Set a rental alert';
+    $('dd').textContent=k==='view'?o.dataset.u:k==='fix'?'Describe the problem; you can add photos next.':'We text you when a match opens.';
+    $('dok').style.display='none';$('dlg').showModal();});
+  $('df').addEventListener('submit',function(e){if(e.submitter&&e.submitter.value==='ok'){e.preventDefault();$('dok').style.display='block'}});
+})();
+</script>
+</body>
+</html>

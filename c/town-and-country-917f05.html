@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Town &amp; Country | Plumbing, Heating, Cooling, Electrical | Regina &amp; Moose Jaw</title>
+<meta name="description" content="Four trades, two cities, one call. Town & Country serves Regina and Moose Jaw homes and businesses.">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--r:#a3161b;--r2:#7d0f13;--ink:#201616;--mut:#6a5e5e;--line:#ecdede;--soft:#fbf4f4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.55 Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+h1,h2,h3{font-family:'Roboto Slab',serif;line-height:1.12}
+.fk{background:#000;color:#ddd;font:12.5px/1.4 system-ui;text-align:center;padding:6px 14px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;min-height:62px;gap:10px}
+.logo{font:800 1.25rem 'Roboto Slab';color:var(--r);text-decoration:none;line-height:1}
+.logo small{display:block;font:600 .64rem Inter;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;margin-top:3px}
+.city{display:inline-flex;border:2px solid var(--r);border-radius:999px;padding:3px}
+.city button{border:0;background:none;min-height:44px;padding:0 12px;border-radius:999px;font:700 .85rem Inter;color:var(--r);cursor:pointer;white-space:nowrap}
+.city button[aria-pressed=true]{background:var(--r);color:#fff}
+.hero{background:var(--r);color:#fff;padding:30px 0 34px}
+.hero h1{font-size:clamp(1.9rem,6.5vw,3rem)}
+.hero h1 span{display:block;font:600 1rem Inter;opacity:.85;margin-bottom:8px}
+.hero .ph{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:10px;font-weight:700;text-decoration:none;white-space:nowrap;border:0;cursor:pointer;font-size:1rem}
+.btn.w{background:#fff;color:var(--r)}
+.btn.r{background:var(--r);color:#fff}
+.btn.o{border:2px solid currentColor;background:none;color:inherit}
+/* finder */
+.finder{margin-top:-1px;background:var(--soft);padding:28px 0}
+.finder h2{font-size:1.4rem;margin-bottom:12px}
+.trades{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:800px){.trades{grid-template-columns:repeat(4,1fr)}}
+.trade{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;text-align:left;cursor:pointer;font:700 1rem Inter;color:var(--ink);min-height:96px;display:flex;flex-direction:column;gap:6px}
+.trade svg{width:28px;height:28px;stroke:var(--r)}
+.trade[aria-pressed=true]{border-color:var(--r);box-shadow:0 0 0 3px rgba(163,22,27,.12)}
+.jobs{margin-top:14px;display:none;background:#fff;border-radius:14px;border:1px solid var(--line);padding:16px}
+.jobs.on{display:block}
+.jl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.jl button{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font:600 .92rem Inter;cursor:pointer}
+.jl button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.next{display:none;border-top:1px dashed var(--line);padding-top:14px}
+.next.on{display:grid;gap:10px}
+.next input{font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px;min-height:48px;width:100%}
+.ok{display:none;color:#14713a;font-weight:700}
+section{padding:48px 0}
+.k{font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--r);margin-bottom:8px}
+h2.s{font-size:clamp(1.6rem,4.5vw,2.2rem);margin-bottom:12px}
+.tune{display:grid;gap:18px}
+@media(min-width:820px){.tune{grid-template-columns:1fr 1fr;align-items:center}}
+.cal{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.cal div{border:1px solid var(--line);border-radius:10px;padding:10px 6px;text-align:center;font-size:.8rem;color:var(--mut)}
+.cal div b{display:block;color:var(--ink);font-size:.92rem}
+.cal div.on{background:var(--r);color:#fff;border-color:var(--r)}
+.cal div.on b{color:#fff}
+.reb{display:grid;gap:10px}
+@media(min-width:760px){.reb{grid-template-columns:repeat(3,1fr)}}
+.reb div{border-left:4px solid var(--r);background:var(--soft);padding:14px 16px;border-radius:0 12px 12px 0}
+.big{background:var(--ink);color:#f2e9e9;padding:40px 0}
+.bg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(min-width:800px){.bg{grid-template-columns:repeat(4,1fr)}}
+.bg b{display:block;font:800 2rem 'Roboto Slab';color:#fff}
+.locs{display:grid;gap:14px}
+@media(min-width:760px){.locs{grid-template-columns:1fr 1fr}}
+.loc{border:2px solid var(--line);border-radius:14px;padding:18px}
+.loc.on{border-color:var(--r)}
+.cf{background:#fff0bd;color:#6b5300;font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:4px}
+footer{padding:24px 0 36px;font-size:.85rem;color:var(--mut)}
+.wrap[class]{padding-left:16px;padding-right:16px}
+</style>
+</head>
+<body>
+<div class="fk"><b>Concept</b> by Franklin Kinetics for Town &amp; Country Plumbing and Heating. Not the live site.</div>
+<div class="wrap top"><a class="logo" href="#">Town &amp; Country<small>Plumbing · Heating · Electrical</small></a>
+  <div class="city" role="group" aria-label="Your city"><button aria-pressed="true" data-c="Regina">Regina</button><button aria-pressed="false" data-c="Moose Jaw">Moose Jaw</button></div></div>
+
+<header class="hero"><div class="wrap">
+  <h1><span id="cityline">Serving Regina</span>Four trades. One call. Someone available today.</h1>
+  <div class="ph"><a class="btn w" id="callbtn" href="tel:+13063524328">Call (306) 352-4328</a><a class="btn o" href="#finder">Book online</a></div>
+</div></header>
+
+<div class="finder" id="finder"><div class="wrap">
+  <h2>What do you need?</h2>
+  <div class="trades" role="group" aria-label="Choose a trade">
+    <button class="trade" aria-pressed="false" data-t="plumb"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Plumbing</button>
+    <button class="trade" aria-pressed="false" data-t="heat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2s5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3 1-6 1-8.5z"/></svg>Heating</button>
+    <button class="trade" aria-pressed="false" data-t="cool"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4.9 7l14.2 10M4.9 17L19.1 7"/></svg>Cooling</button>
+    <button class="trade" aria-pressed="false" data-t="elec"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Electrical</button>
+  </div>
+  <div class="jobs" id="jobs" aria-live="polite">
+    <b id="jt"></b><div class="jl" id="jl"></div>
+    <form class="next" id="nx"><b id="nxt"></b><input required placeholder="Name" autocomplete="name"><input required type="tel" placeholder="Phone" autocomplete="tel"><button class="btn r" type="submit">Book it</button><div class="ok" role="status">Booked request sent to the <span class="cn">Regina</span> office. (Demo only: nothing was sent.)</div></form>
+  </div>
+</div></div>
+
+<section><div class="wrap tune">
+  <div><div class="k">T&amp;C Maintenance Agreement</div><h2 class="s">Precision Tune-Ups, on a schedule you never have to remember</h2>
+  <p style="color:var(--mut)">You have a big investment in your heating and cooling system. Tune-ups catch problems early and cut emergency calls, an inexpensive answer to expensive repairs. We book them and remind you.</p>
+  <a class="btn r" style="margin-top:16px" href="#finder">Join the agreement</a></div>
+  <div class="cal" aria-label="Sample tune-up schedule">
+    <div><b>Jan</b></div><div><b>Feb</b></div><div><b>Mar</b></div><div class="on"><b>Apr</b>AC tune-up</div>
+    <div><b>May</b></div><div><b>Jun</b></div><div><b>Jul</b></div><div><b>Aug</b></div>
+    <div class="on"><b>Sep</b>Furnace tune-up</div><div><b>Oct</b></div><div><b>Nov</b></div><div><b>Dec</b></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="k">Rebates</div><h2 class="s">Upgrading? We'll find the rebate.</h2>
+  <div class="reb"><div><b>High-efficiency furnaces</b><br>We check current SaskEnergy programs for you.</div><div><b>Heat pumps and AC</b><br>Federal and provincial programs change often; we keep track.</div><div><b>Water heaters</b><br>Tankless and high-efficiency options.</div></div>
+  <p style="font-size:.8rem;color:var(--mut);margin-top:8px">Current rebate amounts <span class="cf">confirm</span></p></div></section>
+
+<div class="big"><div class="wrap bg"><div><b>120+</b>people on the team</div><div><b>2</b>cities: Regina and Moose Jaw</div><div><b>4</b>trades under one roof</div><div><b>Commercial</b>service too</div></div></div>
+
+<section><div class="wrap locs">
+  <div class="loc on" data-l="Regina"><h3>Regina</h3><p>Address <span class="cf">confirm</span><br><a href="tel:+13063524328"><b>(306) 352-4328</b></a></p></div>
+  <div class="loc" data-l="Moose Jaw"><h3>Moose Jaw</h3><p>Address and phone <span class="cf">confirm</span></p></div>
+</div></section>
+<footer><div class="wrap">Town &amp; Country Plumbing and Heating (2004) Ltd. Careers, reviews and blog links go in this footer. Concept by Franklin Kinetics.</div></footer>
+<script>
+(function(){
+  var J={plumb:['Leak','Drain backup','Water heater','Fixtures or reno'],heat:['No heat','Furnace tune-up','New furnace quote','Boiler'],cool:['AC not cooling','AC tune-up','New AC or heat pump'],elec:['Panel upgrade','Outlets or lighting','EV charger','Something tripping']};
+  var N={plumb:'Plumbing',heat:'Heating',cool:'Cooling',elec:'Electrical'};
+  var city='Regina';
+  document.querySelectorAll('.city button').forEach(function(b){b.onclick=function(){
+    document.querySelectorAll('.city button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});city=b.dataset.c;
+    document.getElementById('cityline').textContent='Serving '+city;
+    document.querySelectorAll('.cn').forEach(function(x){x.textContent=city});
+    document.querySelectorAll('.loc').forEach(function(l){l.classList.toggle('on',l.dataset.l===city)});}});
+  document.querySelectorAll('.trade').forEach(function(b){b.onclick=function(){
+    document.querySelectorAll('.trade').forEach(function(x){x.setAttribute('aria-pressed',x===b)});var t=b.dataset.t;
+    document.getElementById('jt').textContent=N[t]+': what\'s going on?';
+    document.getElementById('jl').innerHTML=J[t].map(function(j){return '<button type="button" aria-pressed="false">'+j+'</button>'}).join('');
+    document.getElementById('jobs').classList.add('on');document.getElementById('nx').classList.remove('on');
+    document.querySelectorAll('#jl button').forEach(function(x){x.onclick=function(){
+      document.querySelectorAll('#jl button').forEach(function(y){y.setAttribute('aria-pressed',y===x)});
+      document.getElementById('nxt').textContent=N[t]+' · '+x.textContent+' · '+city;document.getElementById('nx').classList.add('on');}});}});
+  document.getElementById('nx').onsubmit=function(e){e.preventDefault();this.querySelector('.ok').style.display='block'};
+})();
+</script>
+</body>
+</html>
