@@ -134,11 +134,11 @@ footer{padding:22px 0 30px;font-size:.85rem;color:var(--mut)}
 (function(){
   var S={
     plant:{l:['Process cooling and refrigeration','Make-up air and exhaust','Boilers and unit heaters','Shutdown-window scheduling'],q:'Our equipment is running well and most emergency repairs have been eliminated since starting preventative maintenance. We used to have ongoing problems with our air conditioning, resulting in water dripping through ceiling tiles and now we have none.',w:'Dan McGillis, Plant Manager, DSI Mining Canada'},
-    condo:{l:['Boilers and domestic hot water','Make-up air units','Parkade exhaust and heaters','Reports written for board meetings'],q:'Welldone keeps the building comfortable and the board informed.',w:'Board members, Lakeshore Manor Condo <span class="cf">confirm quote</span>'},
-    office:{l:['Rooftop units','Controls and thermostats','Tenant comfort calls','Capital replacement planning'],q:'Planned maintenance means tenants stop calling about the temperature.',w:'Commercial client quote goes here <span class="cf">placeholder</span>'}
+    condo:{l:['Boilers and domestic hot water','Make-up air units','Parkade exhaust and heaters','Reports written for board meetings'],q:'',w:''},
+    office:{l:['Rooftop units','Controls and thermostats','Tenant comfort calls','Capital replacement planning'],q:'',w:''}
   };
   var p=document.getElementById('panel');
-  function show(k){var s=S[k];p.innerHTML='<div><h3 style="margin-bottom:10px">What we maintain</h3><ul>'+s.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div><blockquote>"'+s.q+'"<footer>'+s.w+'</footer></blockquote>';}
+  function show(k){var s=S[k];p.innerHTML='<div><h3 style="margin-bottom:10px">What we maintain</h3><ul>'+s.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'+(s.q?'<blockquote>"'+s.q+'"<footer>'+s.w+'</footer></blockquote>':'<div class="card" style="background:#fff;border-radius:12px;padding:16px">Client quote from your files goes here.</div>');}
   document.querySelectorAll('.secs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.secs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});show(b.dataset.s)}});
   show('plant');
   document.getElementById('f').onsubmit=function(e){e.preventDefault();this.querySelector('.okm').style.display='block'};
